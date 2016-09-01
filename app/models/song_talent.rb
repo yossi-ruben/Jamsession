@@ -1,0 +1,2 @@
+class SongTalent < ApplicationRecord
+end

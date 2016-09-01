@@ -1,0 +1,2 @@
+class UserTalent < ApplicationRecord
+end

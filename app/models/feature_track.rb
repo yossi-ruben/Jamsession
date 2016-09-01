@@ -1,0 +1,2 @@
+class FeatureTrack < ApplicationRecord
+end

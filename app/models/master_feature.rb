@@ -1,0 +1,2 @@
+class MasterFeature < ApplicationRecord
+end

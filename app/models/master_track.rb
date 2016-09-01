@@ -1,0 +1,2 @@
+class MasterTrack < ApplicationRecord
+end
