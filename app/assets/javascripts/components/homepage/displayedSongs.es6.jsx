@@ -11,6 +11,7 @@ class DisplayedSong extends React.Component {
   }
 
 
+
 songList(){
   if (this.state.unFinished){
     return <UnFinishedSongs />;
@@ -37,8 +38,7 @@ setSongList(){
     return (
 
       <div className="displayedSongs">
-        <p>asdf</p>
-        <p onClick={this.setSongList}> Switch PlayList</p>
+        <p className="songToggle" onClick={this.setSongList}> Switch PlayList</p>
         {this.songList()}
       </div>
     // return closing

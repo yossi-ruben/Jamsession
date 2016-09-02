@@ -7,8 +7,21 @@ class FinishedSongs extends React.Component{
   render(){
     return(
       <div className="FinishedSongs">
-        <h1> Finished </h1>
-        <h2>Where the Nav will go </h2>
+        <div className="Title"> Finished </div>
+
+        <div className="UnFinNav">
+          <ul>
+            <li>Genres</li>
+            <li>Hot</li>
+            <li>Recently Finished</li>
+            <li>Random</li>
+            <li>Recommended</li>
+          </ul>
+        </div>
+
+
+
+
         <div className="Song">
           <h3>Song Title</h3>
           <p>Info about Song</p>
