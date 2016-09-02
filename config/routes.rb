@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
-  root to: 'songs#index'
+  # root to: 'songs#index'
   resources :users
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'app#index'
 end
