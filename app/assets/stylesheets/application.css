@@ -47,6 +47,13 @@
   border: 1px solid black;
 }
 
+.master-track-holder {
+  border: 1px solid black;
+  padding: 5px;
+  width: 400px;
+  margin: 10px auto;
+}
+
 .submission-form-holder {
-  
+  text-align: center; 
 }
