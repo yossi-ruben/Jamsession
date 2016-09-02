@@ -26,6 +26,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
+
+# Allow for connection to S3 Storage
+gem 'aws-sdk-v1'
+gem 'dotenv-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #serialize data gem
