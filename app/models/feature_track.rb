@@ -8,5 +8,5 @@ class FeatureTrack < ApplicationRecord
   has_many :master_tracks, through: :master_features
 
   # Connect the feature track to the song
-  belongs_to :song, through: :master_tracks
+  belongs_to :song
 end
