@@ -1,4 +1,5 @@
 class Song < ApplicationRecord
+  include ActiveModel::Serializers::JSON
   # Connects song to owner
   belongs_to :user, foreign_key: :owner_id
 
