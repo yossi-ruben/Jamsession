@@ -35,6 +35,7 @@ class MasterTrack extends React.Component {
     })
   }
 
+  // Need to add like button, ability to add comments to track, and ability to download track
   render() {
     return (
       <div className="master-track-holder">
@@ -62,17 +63,17 @@ class MasterTrack extends React.Component {
         </button>
         <div>
           { this.state.displayComments ?
-              <p>Put comments here</p>
+              < TrackComments />
             :
               null
           }
           { this.state.displayDescription ? 
-              <p>Put description here</p>
+              < TrackDescription />
             :
               null
           }
           { this.state.displayCollaborators ?
-              <p>Put collaborators here</p>
+              < TrackCollaborators />
             :
               null
           }
