@@ -21,10 +21,11 @@ class User < ApplicationRecord
 
   # Sets up liking ability
   has_many :likes
-  has_many :liked_tracks, through: :likes, class_name: "MasterTrack"
+  has_many :liked_tracks, through: :likes, source: :master_track
 
   # Sets up feature tracks and connections to collaborated tracks
   has_many :feature_tracks
   has_many :master_features, through: :feature_tracks
-  has_many :collaborated_songs, through: :master_features, class_name: "Song"
+  has_many :master_tracks, through: :master_features
+  has_many :collaborated_songs, through: :master_tracks, source: :song
 end

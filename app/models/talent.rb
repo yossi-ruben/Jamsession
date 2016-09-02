@@ -6,4 +6,6 @@ class Talent < ApplicationRecord
   # Connects talents to users with those talents 
   has_many :user_talents
   has_many :users, through: :user_talents
+
+  has_many :feature_tracks
 end
