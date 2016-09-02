@@ -1,6 +1,6 @@
 # Generate users
 10.times do 
-  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: "password")
+  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: "password", profile_pic_file_path: Faker::Avatar.image)
 end
 
 # Connect followers to following
