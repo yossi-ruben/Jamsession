@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
   def finished_songs
     finished_songs = Song.where(finished: true)
-    render json: finished_songs.as_json(include: [:likes, :genres, :desired_talents])
+    render json: finished_songs.as_json(include: [ :genres, :desired_talents, {master_tracks: [:likes]}])
   end
 
   def unfinished_songs
@@ -11,15 +11,15 @@ class SongsController < ApplicationController
     @logged_in = true if user_signed_in?
     @user_genres = user.genres
     respond_to do |format|
-      format.html {songsindex.html.erb}
-      format.xml {render json: unfinished_songs.as_json(include: [:desired_talents, :genres, :likes])}
+      format.html
+      format.xml {render json: unfinished_songs.as_json(include: [:desired_talents, :genres, {master_tracks: [:likes]}])}
       end
   end
 
   def show
     song = Song.find(params[:id])
-    @private_user_auth = false
     user = User.find(song.owner_id)
+    @private_user_auth = false
     if song.owner_id = current_user.id
       @private_user_auth = true
     end
