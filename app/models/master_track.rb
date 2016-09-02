@@ -1,7 +1,7 @@
 class MasterTrack < ApplicationRecord
   # Connects master track to song and owner of song
   belongs_to :song
-  belongs_to :song_owner, through: :song, class_name: "User"
+  has_one :song_owner, through: :song, class_name: "User"
 
   # Connects master track to feature tracks
   has_many :master_features
