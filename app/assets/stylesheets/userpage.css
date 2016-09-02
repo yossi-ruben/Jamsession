@@ -1,0 +1,81 @@
+div {
+  background: #eeeeee;
+}
+
+.navigation {
+  float: left;
+  margin-left: 40px;
+  margin-top: 30px;
+  background: white;
+  height: 150px;
+  width: 200px;
+  text-align: left;
+  padding-top: 200px;
+  padding-left: 20px;
+  border-radius: 15px;
+}
+
+.container {
+
+}
+
+.content-column{
+  margin-left:300px;
+}
+
+ul.tab {
+    list-style-type: none;
+    margin: 100px;
+    margin-top:30px;
+    padding-top: 30px;
+    overflow: hidden;
+
+    text-align: center;
+    border-radius: 5px;
+    width:73%;
+}
+
+ul.tab li {
+  float: left;
+}
+
+ul.tab li a {
+    background: #d3d3d3;
+    display: inline-block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 20px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    margin-left: 40px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #bdbdbd;}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #939393;}
+
+.user-song-view {
+  border-top: 1px solid #ccc;
+  display:inline-block;
+  text-align: center;
+  margin-top: -100px;
+  margin-left:100px;
+  width: 77%;
+
+}
+
+.song {
+  background: white;
+  border-radius: 15px;
+  border:solid;
+  border-color:white;
+}
+
+.carousel-caption {
+  background: white;
+}
