@@ -3,11 +3,15 @@ class UserProjects extends React.Component{
     return (
 
       <div id="List-of-projects" className="tabcontent">
-        <h3>Finished</h3>
-          < UserSongs />
+        <div className="song">
+          <h3>Finished</h3>
+            < UserSongs />
+        </div>
         <br/>
-        <h3>Unfinished</h3>
-          < UserSongs />
+        <div className="song">
+          <h3>Unfinished</h3>
+            < UserSongs />
+        </div>
       </div>
 
       );

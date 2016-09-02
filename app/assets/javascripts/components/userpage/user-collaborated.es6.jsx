@@ -2,11 +2,15 @@ class UserCollaborated extends React.Component {
   render() {
     return (
       <div id="Collaborated" className="tabcontent">
-        <h3>Finished</h3>
-          < UserSongs />
+        <div className="song">
+          <h3>Finished</h3>
+            < UserSongs />
+        </div>
         <br/>
-        <h3>Unfinished</h3>
-          < UserSongs />
+        <div className="song">
+          <h3>Unfinished</h3>
+            < UserSongs />
+        </div>
       </div>
       );
   }
