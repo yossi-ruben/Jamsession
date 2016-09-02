@@ -24,20 +24,22 @@ class SongPage extends React.Component {
   render() {
     return (
       <div>
-        <div className="tabs">
-          <button onClick={this.showPublic}>Public View</button>
-          <button onClick={this.showPrivate}>Private View</button>
+        <div id="song-view-tabs">
+          <button onClick={this.showPublic} className="song-view-tab">Public View</button>
+          <button onClick={this.showPrivate} className="song-view-tab">Private View</button>
         </div>
-        { this.state.showPublic ? 
-            <p>Public View</p>
-          :
-            null
-        }
-        { this.state.showPrivate ?
-            <p>Private View</p>
-          :
-            null
-        }
+        <div className="song-view">
+          { this.state.showPublic ? 
+              < PublicSongView />
+            :
+              null
+          }
+          { this.state.showPrivate ?
+              <p>Private View</p>
+            :
+              null
+          }
+        </div>
       </div>
     )
   }
