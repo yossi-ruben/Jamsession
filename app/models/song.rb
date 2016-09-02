@@ -16,5 +16,5 @@ class Song < ApplicationRecord
 
   # Connects song to desired talents
   has_many :song_talents
-  has_many :talents, through: :song_talents
+  has_many :desired_talents, through: :song_talents, source: :talent
 end
