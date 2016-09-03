@@ -30,7 +30,7 @@ class SongsController < ApplicationController
     render json: song.as_json(include:
       [{master_tracks: { include: 
         [{feature_tracks: { include: [:user, :talent]}},
-        :comments,
+        {comments: { include: :user }},
         :likes]}},
       :user,
       :genres,
