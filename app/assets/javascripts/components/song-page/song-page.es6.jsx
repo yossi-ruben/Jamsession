@@ -5,7 +5,8 @@ class SongPage extends React.Component {
       showPublic: true,
       showPrivate: false,
       song: {},
-      songOwner: {}
+      songOwner: {},
+      desiredTalents: []
     }
     this.showPublic = this.showPublic.bind(this);
     this.showPrivate = this.showPrivate.bind(this);
@@ -18,7 +19,8 @@ class SongPage extends React.Component {
         debugger;
         this.setState({
           song: json,
-          songOwner: json.user
+          songOwner: json.user,
+          desiredTalents: json.desired_talents
         })
       })
   }
@@ -50,7 +52,8 @@ class SongPage extends React.Component {
           { this.state.showPublic ? 
               < PublicSongView
                 song={this.state.song} 
-                songOwner={this.state.songOwner} />
+                songOwner={this.state.songOwner}
+                desiredTalents={this.state.desiredTalents} />
             :
               null
           }
