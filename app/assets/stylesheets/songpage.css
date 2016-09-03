@@ -48,3 +48,15 @@
 .submission-form-holder {
   text-align: center; 
 }
+
+.form-label, .form-input {
+  display: block;
+  padding: 10px;
+}
+
+.form-holder {
+  margin: 10px auto;
+  padding: 10px;
+  width: 300px;
+  border: 1px solid black;
+}

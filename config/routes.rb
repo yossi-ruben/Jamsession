@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/unfinished_songs', to: 'songs#unfinished_songs'
   get '/finished_songs', to: 'songs#finished_songs'
 
+  resources :feature_tracks, only: :create
+
   root 'app#index'
 
 end
