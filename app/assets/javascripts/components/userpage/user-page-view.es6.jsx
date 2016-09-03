@@ -5,7 +5,9 @@ class UserPageView extends React.Component {
       showUserProjects: true,
       showUserLiked: false,
       showUserCollaborated: false,
-      data: []
+      userStats: [],
+      followers: [],
+      following: []
     }
     this.showUserProjects = this.showUserProjects.bind(this);
     this.showUserLiked = this.showUserLiked.bind(this);
@@ -13,10 +15,13 @@ class UserPageView extends React.Component {
   }
 
   componentDidMount() {
-    fetch (`/users/${this.props.data.user.id}`)
+    fetch (`/users/${this.props.user_id}/info`)
     .then((response) => response.json())
     .then((json) => {
-      this.setState({categories: json})
+      this.setState({userStats: json,
+        followers: json.followers,
+        following: json.following
+      })
     });
   }
 
@@ -46,9 +51,8 @@ class UserPageView extends React.Component {
 
   render(){
     return(
-
         <div className="container">
-          < UserInfo />
+          < UserInfo userStats={this.state.userStats} following={this.state.following} followers={this.state.followers}/>
           <div className="content-column">
             <ul className="tab">
               <li><a onClick={this.showUserProjects} href="#" className="tablinks">List of Projects</a></li>
@@ -57,7 +61,8 @@ class UserPageView extends React.Component {
             </ul>
               <div className="user-song-view">
                 { this.state.showUserProjects ?
-                    < UserProjects unfinished = {this.props.unfinished_songs} finished = {this.props.finished_songs}/>
+                    // < UserProjects unfinished = {this.props.unfinished_songs} finished = {this.props.finished_songs}/>
+                  null
                   :
                     null
                 }

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # root to: 'songs#unfinished_songs'
   resources :users
+  get 'users/:id/info', to: 'users#info'
 
   resources :songs
   get 'songs/:id/info', to: 'songs#info'
