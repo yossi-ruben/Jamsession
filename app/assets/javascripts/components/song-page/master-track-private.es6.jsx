@@ -25,7 +25,7 @@ class MasterTrackPrivate extends React.Component {
           }
         </button>
         { this.state.showAudioPlayer ?
-          <audio controls>
+          <audio controls className="audio-player">
             <source src={masterTrack.file_path} type="audio/mpeg" />
           </audio>
         :

@@ -26,7 +26,7 @@ class FeatureTrack extends React.Component {
           }
         </button>
         { this.state.showAudioPlayer ?
-          <audio controls>
+          <audio controls className="audio-player">
             <source src={featureTrack.file_path} type="audio/mpeg" />
           </audio>
         :
@@ -34,6 +34,7 @@ class FeatureTrack extends React.Component {
         }
         <p>{featureTrack.description}</p>
         <p>Contributed by {featureContributor.username}</p>
+        <a href={featureTrack.file_path}>Download</a>
       </div>
     )
   }

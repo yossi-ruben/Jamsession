@@ -2,9 +2,12 @@ class PrivateSongView extends React.Component {
   constructor() {
     super()
     this.state = {
-      talentArray: []
+      talentArray: [],
+      playAll: false
     }
     this.findAllTalents = this.findAllTalents.bind(this);
+    this.playAllSelected = this.playAllSelected.bind(this);
+    this.pauseAllSelected = this.pauseAllSelected.bind(this);
   }
 
   componentDidMount() {
@@ -24,9 +27,26 @@ class PrivateSongView extends React.Component {
     })
   }
 
-   // Need to write a way to filter out all features included in the most recent master
+  playAllSelected() {
+    var displayedPlayers = document.getElementsByClassName('audio-player');
+    for (var i = 0; i < displayedPlayers.length; i++) {
+      displayedPlayers[i].play();
+    }
+    this.setState({
+      playAll: true
+    });
+  }
 
-  // Need to write a method to play all selected audio players
+  pauseAllSelected() {
+    var displayedPlayers = document.getElementsByClassName('audio-player');
+    for (var i = 0; i < displayedPlayers.length; i++) {
+      displayedPlayers[i].pause();
+    }
+    this.setState({
+      playAll: false
+    });
+  }
+
   render() {
     let featureTracks = this.props.featureTracks
     let currentMasterTrack = this.props.masterTracks[0]
@@ -61,6 +81,11 @@ class PrivateSongView extends React.Component {
           </div>
           )
         })}
+        { this.state.playAll ?
+          <button onClick={this.pauseAllSelected}>Pause All</button>
+        :
+          <button onClick={this.playAllSelected}>Play All</button>
+        }
       </div>
     )
   }
