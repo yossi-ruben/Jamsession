@@ -5,6 +5,7 @@ class PublicSongView extends React.Component {
     let desiredTalents = this.props.desiredTalents
     let currentMasterTrack = this.props.masterTracks[0]
     let genres = this.props.genres
+    let masterHistory = this.props.masterTracks.slice(1, this.props.masterTracks.length)
     return (
       <div>
         <h1 className="song-header">{song.title}</h1>
@@ -36,7 +37,9 @@ class PublicSongView extends React.Component {
           <p>{song.background}</p>
         </div>
         <div>
-          <h3>Master History:</h3>
+          {masterHistory.map((master, i) => {
+            return < MasterTrack masterTrack={master} key={i} />
+          })}
         </div>
         < FeatureSubmission />
       </div>
