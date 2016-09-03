@@ -4,11 +4,26 @@ class UserPageView extends React.Component {
     this.state = {
       showUserProjects: true,
       showUserLiked: false,
-      showUserCollaborated: false
+      showUserCollaborated: false,
+      userStats: [],
+      followers: [],
+      following: []
     }
     this.showUserProjects = this.showUserProjects.bind(this);
     this.showUserLiked = this.showUserLiked.bind(this);
     this.showUserCollaborated = this.showUserCollaborated.bind(this);
+  }
+
+  componentDidMount() {
+    fetch (`/users/${this.props.user_id}/info`)
+    .then((response) => response.json())
+    .then((json) => {
+      this.setState({userStats: json,
+        followers: json.followers,
+        following: json.following
+      })
+    });
+
   }
 
   showUserProjects() {
@@ -37,9 +52,8 @@ class UserPageView extends React.Component {
 
   render(){
     return(
-
         <div className="container">
-          < UserInfo />
+          < UserInfo userStats={this.state.userStats} following={this.state.following} followers={this.state.followers}/>
           <div className="content-column">
             <ul className="tab">
               <li><a onClick={this.showUserProjects} href="#" className="tablinks">List of Projects</a></li>
@@ -48,17 +62,17 @@ class UserPageView extends React.Component {
             </ul>
               <div className="user-song-view">
                 { this.state.showUserProjects ?
-                    < UserProjects />
+                    < UserProjects finished={this.props.finished_songs} unfinished={this.props.unfinished_songs}/>
                   :
                     null
                 }
                 { this.state.showUserLiked ?
-                    < UserLiked />
+                    < UserLiked likedSongs={this.props.liked_songs}/>
                   :
                     null
                 }
                 { this.state.showUserCollaborated ?
-                   < UserCollaborated />
+                   < UserCollaborated collaborated={this.props.collaborated_songs} />
                   :
                     null
                 }
