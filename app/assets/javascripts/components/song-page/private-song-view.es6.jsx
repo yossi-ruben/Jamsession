@@ -38,6 +38,12 @@ class PrivateSongView extends React.Component {
           return < MasterTrackPrivate masterTrack={master} key={i} />
         })}
         <h1>Features Included in Most Recent Master</h1>
+        {currentMasterTrack.feature_tracks.map((feature, i) => {
+          return < FeatureTrack
+                   featureTrack={feature}
+                   featureContributor={feature.user}
+                   key={i} />
+        })}
         <h1>All Features by Talent</h1>
         {this.state.talentArray.map((talent, i) => {
           let featuresWithTalent = featureTracks.filter((feature) => {
