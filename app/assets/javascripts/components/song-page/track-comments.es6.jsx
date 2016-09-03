@@ -1,9 +1,11 @@
 class TrackComments extends React.Component {
   render() {
+    let comments = this.props.comments
     return (
       <ul>
-        <li>Comment display</li>
-        <li>Each comment will be separated</li>
+        {comments.map((comment, i) => {
+          return <li key={i}>{comment.body}</li>
+        })}
       </ul>
     )
   }
