@@ -30,6 +30,9 @@ class PrivateSongView extends React.Component {
   playAllSelected() {
     var displayedPlayers = document.getElementsByClassName('audio-player');
     for (var i = 0; i < displayedPlayers.length; i++) {
+      if (displayedPlayers[i].currentTime === 0) {
+        displayedPlayers[i].volume=0.50;
+      }
       displayedPlayers[i].play();
     }
     this.setState({
