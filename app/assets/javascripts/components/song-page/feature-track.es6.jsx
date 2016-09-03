@@ -1,14 +1,37 @@
 class FeatureTrack extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showAudioPlayer: false
+    }
+    this.toggleShowPlayer = this.toggleShowPlayer.bind(this);
+  }
 
-  // Need to add ability to 
+  toggleShowPlayer() {
+    this.setState({
+      showAudioPlayer: !this.state.showAudioPlayer
+    })
+  }
+
   render() {
     let featureTrack = this.props.featureTrack
     let featureContributor = this.props.featureContributor
     return (
       <div className="feature-track-holder">
-        <audio controls>
-          <source src={featureTrack.file_path} type="audio/mpeg" />
-        </audio>
+        <button onClick={this.toggleShowPlayer}>
+          { this.state.showAudioPlayer ?
+            <p>Hide Audio Player</p>
+          :
+            <p>Show Audio Player</p>
+          }
+        </button>
+        { this.state.showAudioPlayer ?
+          <audio controls>
+            <source src={featureTrack.file_path} type="audio/mpeg" />
+          </audio>
+        :
+          null
+        }
         <p>{featureTrack.description}</p>
         <p>Contributed by {featureContributor.username}</p>
       </div>
