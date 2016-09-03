@@ -45,7 +45,9 @@ class MasterTrack extends React.Component {
           null
         :
           <div className="master-track-holder">
-            <p>Audio player will go here</p>
+            <audio controls>
+              <source src={masterTrack.file_path} type="audio/mpeg" />
+            </audio>
           <button onClick={this.toggleCommentView}>
             { this.state.displayComments ?
                 <p>Hide Comments</p>

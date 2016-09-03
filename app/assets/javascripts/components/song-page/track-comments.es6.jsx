@@ -4,7 +4,7 @@ class TrackComments extends React.Component {
     return (
       <ul>
         {comments.map((comment, i) => {
-          return <li key={i}>{comment.body}</li>
+          return <li key={i}>{comment.body} - {comment.user.username}</li>
         })}
       </ul>
     )

@@ -19,7 +19,6 @@ class SongPage extends React.Component {
     fetch(`/songs/${this.props.song_id}/info`)
       .then((response) => response.json())
       .then((json) => {
-        debugger;
         this.setState({
           song: json,
           songOwner: json.user,
@@ -66,7 +65,10 @@ class SongPage extends React.Component {
               null
           }
           { this.state.showPrivate ?
-              <p>Private View</p>
+              < PrivateSongView 
+                song={this.state.song}
+                masterTracks={this.state.masterTracks}
+                featureTracks={this.state.featureTracks} />
             :
               null
           }
