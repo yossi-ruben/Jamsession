@@ -23,6 +23,7 @@ class UserPageView extends React.Component {
         following: json.following
       })
     });
+
   }
 
   showUserProjects() {
@@ -61,18 +62,17 @@ class UserPageView extends React.Component {
             </ul>
               <div className="user-song-view">
                 { this.state.showUserProjects ?
-                    // < UserProjects unfinished = {this.props.unfinished_songs} finished = {this.props.finished_songs}/>
-                  null
+                    < UserProjects finished={this.props.finished_songs} unfinished={this.props.unfinished_songs}/>
                   :
                     null
                 }
                 { this.state.showUserLiked ?
-                    < UserLiked />
+                    < UserLiked likedSongs={this.props.liked_songs}/>
                   :
                     null
                 }
                 { this.state.showUserCollaborated ?
-                   < UserCollaborated />
+                   < UserCollaborated collaborated={this.props.collaborated_songs} />
                   :
                     null
                 }

@@ -1,18 +1,12 @@
 class UserProjects extends React.Component{
   render(){
+    let finished = this.props.finished
+    let unfinished = this.props.unfinished
     return (
-
-      <div id="List-of-projects" className="tabcontent">
-        <div className="song">
-          <h3>Finished</h3>
-            < UserSongs finished={this.props.finished}/>
-        </div>
+      <div id="UserProjects" className="tabcontent">
+        < UserFinishedSongs finished={this.props.finished} />
         <br/>
-        <div className="song">
-          <h3>Unfinished</h3>
-            < UserSongsUnfinished />
-        </div>
+        < UserUnfinishedSongs unfinished={this.props.unfinished} />
       </div>
-
-      );
+      )
 }}

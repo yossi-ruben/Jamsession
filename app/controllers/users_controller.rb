@@ -19,7 +19,9 @@ class UsersController < ApplicationController
     likes = Like.where(user_id: user.id)
     @liked_masters = []
     likes.each do |like|
-      @liked_masters << MasterTrack.find(like.master_track_id)
+      # each master track in array
+      master_track = MasterTrack.find(like.master_track_id)
+      @liked_masters << {master: (master_track), song: master_track.song}
     end
     return @liked_masters
   end
@@ -28,12 +30,12 @@ class UsersController < ApplicationController
     features_contributed = FeatureTrack.where(user_id: user.id)
     masters_contributed_to = []
     features_contributed.each do |feature|
-      masters_contributed_to << feature.master_tracks
+      masters_contributed_to << feature.master_tracks[feature.master_tracks.length - 1]
     end
     @collaborated_songs = []
-    masters_contributed_to.flatten.each do |master|
-      @collaborated_songs << master.song
+    masters_contributed_to.each do |master|
+      @collaborated_songs << {song: master.song, master: master}
     end
-    return @collabored_songs
+    return @collaborated_songs
   end
 end

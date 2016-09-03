@@ -1,17 +1,13 @@
 class UserCollaborated extends React.Component {
   render() {
     return (
-      <div id="Collaborated" className="tabcontent">
-        <div className="song">
-          <h3>Finished</h3>
-            < UserSongs />
-        </div>
-        <br/>
-        <div className="song">
-          <h3>Unfinished</h3>
-            < UserSongs />
-        </div>
+      <div className="song">
+          <h3>Collaborated</h3>
+            {this.props.collaborated.map((song, i) => {
+              return(
+                <UserCollaboratedSongs info={song} key={i} />
+                )
+            })}
       </div>
-      );
-  }
-}
+    )
+  }}
