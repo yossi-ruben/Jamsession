@@ -4,11 +4,20 @@ class UserPageView extends React.Component {
     this.state = {
       showUserProjects: true,
       showUserLiked: false,
-      showUserCollaborated: false
+      showUserCollaborated: false,
+      data: []
     }
     this.showUserProjects = this.showUserProjects.bind(this);
     this.showUserLiked = this.showUserLiked.bind(this);
     this.showUserCollaborated = this.showUserCollaborated.bind(this);
+  }
+
+  componentDidMount() {
+    fetch (`/users/${this.props.data.user.id}`)
+    .then((response) => response.json())
+    .then((json) => {
+      this.setState({categories: json})
+    });
   }
 
   showUserProjects() {
@@ -48,7 +57,7 @@ class UserPageView extends React.Component {
             </ul>
               <div className="user-song-view">
                 { this.state.showUserProjects ?
-                    < UserProjects />
+                    < UserProjects unfinished = {this.props.unfinished_songs} finished = {this.props.finished_songs}/>
                   :
                     null
                 }
