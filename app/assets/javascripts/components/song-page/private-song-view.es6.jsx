@@ -29,9 +29,14 @@ class PrivateSongView extends React.Component {
   // Need to write a method to play all selected audio players
   render() {
     let featureTracks = this.props.featureTracks
+    let currentMasterTrack = this.props.masterTracks[0]
+    let masterTracks = this.props.masterTracks
     return (
       <div>
         <h1>Masters</h1>
+        {masterTracks.map((master, i) => {
+          return < MasterTrackPrivate masterTrack={master} key={i} />
+        })}
         <h1>Features Included in Most Recent Master</h1>
         <h1>All Features by Talent</h1>
         {this.state.talentArray.map((talent, i) => {

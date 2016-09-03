@@ -37,6 +37,7 @@ class PublicSongView extends React.Component {
           <p>{song.background}</p>
         </div>
         <div>
+          <h1>Master History</h1>
           {masterHistory.map((master, i) => {
             return < MasterTrack masterTrack={master} key={i} />
           })}
