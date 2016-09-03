@@ -3,10 +3,21 @@ class SongPage extends React.Component {
     super();
     this.state = {
       showPublic: true,
-      showPrivate: false
+      showPrivate: false,
+      song: {}
     }
     this.showPublic = this.showPublic.bind(this);
     this.showPrivate = this.showPrivate.bind(this);
+  }
+
+  componentDidMount() {
+    fetch(`/songs/${this.props.song_id}/info`)
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          song: json
+        })
+      })
   }
 
   showPublic() {
@@ -22,6 +33,7 @@ class SongPage extends React.Component {
   }
 
   render() {
+    debugger;
     return (
       <div>
         <div id="song-view-tabs">
@@ -30,7 +42,7 @@ class SongPage extends React.Component {
         </div>
         <div className="song-view">
           { this.state.showPublic ? 
-              < PublicSongView />
+              < PublicSongView song={this.state.song}/>
             :
               null
           }
