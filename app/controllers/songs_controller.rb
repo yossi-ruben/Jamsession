@@ -35,7 +35,7 @@ class SongsController < ApplicationController
       :user,
       :genres,
       :desired_talents,
-      :feature_tracks])
+      feature_tracks: { include: [:user, :talent]}])
   end
 end
 
