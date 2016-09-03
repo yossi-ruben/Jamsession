@@ -27,7 +27,7 @@ class FeatureTrack extends React.Component {
         </button>
         { this.state.showAudioPlayer ?
           <audio controls className="audio-player">
-            <source src="https://mp3-downloading-test-narisi.s3.amazonaws.com/SongTestLeadDrumsSynth.mp3" type="audio/mpeg" />
+            <source src={featureTrack.file_path} type="audio/mpeg" />
           </audio>
         :
           null
