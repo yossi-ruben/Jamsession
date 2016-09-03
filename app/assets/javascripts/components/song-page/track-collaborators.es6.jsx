@@ -1,9 +1,11 @@
 class TrackCollaborators extends React.Component {
   render() {
+    let featureTracks = this.props.featureTracks
     return (
       <ul>
-        <li>Talent added by user</li>
-        <li>Talent added by user</li>
+        {featureTracks.map((feature, i) => {
+          return <li key={i}>{feature.talent.title} by {feature.user.username}</li>
+        })}
       </ul>
     )
   }

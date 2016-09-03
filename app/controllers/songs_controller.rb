@@ -20,12 +20,22 @@ class SongsController < ApplicationController
     song = Song.find(params[:id])
     user = User.find(song.owner_id)
     @private_user_auth = false
-    if song.owner_id = current_user.id
+    if song.owner_id == current_user.id
       @private_user_auth = true
     end
-    @followers_number = user.followers.count
+  end
+
+  def info
+    song = Song.find(params[:id])
     render json: song.as_json(include:
-      [{master_tracks: { include: [:feature_tracks, :comments, :likes]}}, :user, :genres, :desired_talents, :feature_tracks])
+      [{master_tracks: { include: 
+        [{feature_tracks: { include: [:user, :talent]}},
+        :comments,
+        :likes]}},
+      :user,
+      :genres,
+      :desired_talents,
+      :feature_tracks])
   end
 end
 
