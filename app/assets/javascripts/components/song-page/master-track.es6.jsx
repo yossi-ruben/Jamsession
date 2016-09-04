@@ -81,7 +81,7 @@ class MasterTrack extends React.Component {
             <audio controls>
               <source src={masterTrack.file_path} type="audio/mpeg" />
             </audio>
-            <p>{likeCount} 
+            <p> {likeCount}
               { likeCount === 1 ?
                   <span> Like</span>
                 :

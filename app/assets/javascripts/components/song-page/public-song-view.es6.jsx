@@ -8,14 +8,18 @@ class PublicSongView extends React.Component {
     let masterHistory = this.props.masterTracks.slice(0, this.props.masterTracks.length - 1).reverse()
     return (
       <div>
+    { currentMasterTrack === undefined ?
+        null
+      :
+      <div>
         <h1 className="song-header">{song.title}</h1>
         <h3 className="song-originator">Originated by: {songOwner.username}</h3>
         <div className="current-master-view">
           <h2>Current Master:</h2>
-          < MasterTrack
-            masterTrack={currentMasterTrack} 
-            csrf={this.props.csrf}
-            currentUser={this.props.currentUser} />
+            < MasterTrack
+              masterTrack={currentMasterTrack} 
+              csrf={this.props.csrf}
+              currentUser={this.props.currentUser} />
         </div>
         <div className="song-info">
           <h4>Song Info</h4>
@@ -57,6 +61,8 @@ class PublicSongView extends React.Component {
           csrf={this.props.csrf} 
           song={song} />
       </div>
+    }
+    </div>
     )
   }
 }
