@@ -78,7 +78,13 @@ class MasterTrack extends React.Component {
             </button>
             <div>
               { this.state.displayComments ?
-                  < TrackComments comments={masterTrack.comments}/>
+                  <div>
+                    { masterTrack.comments.length === 0 ?
+                        <p>No comments have been added for this track yet.</p>
+                      :
+                        < TrackComments comments={masterTrack.comments}/>
+                    }
+                  </div>
                 :
                   null
               }
