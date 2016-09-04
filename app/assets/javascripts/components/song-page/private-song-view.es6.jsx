@@ -50,6 +50,27 @@ class PrivateSongView extends React.Component {
     });
   }
 
+  resetAllToZero() {
+    var displayedPlayers = document.getElementsByClassName('audio-player');
+    for (var i = 0; i < displayedPlayers.length; i++) {
+      displayedPlayers[i].currentTime = 0;
+    }
+  }
+
+  rewindAll() {
+    var displayedPlayers = document.getElementsByClassName('audio-player');
+    for (var i = 0; i < displayedPlayers.length; i++) {
+      displayedPlayers[i].currentTime = displayedPlayers[i].currentTime - 15; 
+    }
+  }
+
+  fastForwardAll() {
+    var displayedPlayers = document.getElementsByClassName('audio-player');
+    for (var i = 0; i < displayedPlayers.length; i++) {
+      displayedPlayers[i].currentTime = displayedPlayers[i].currentTime + 15;
+    }
+  }
+
   render() {
     let featureTracks = this.props.featureTracks
     let currentMasterTrack = this.props.masterTracks[0]
@@ -84,11 +105,16 @@ class PrivateSongView extends React.Component {
           </div>
           )
         })}
-        { this.state.playAll ?
-          <button onClick={this.pauseAllSelected}>Pause All</button>
-        :
-          <button onClick={this.playAllSelected}>Play All</button>
-        }
+        <div className="global-audio-controls">
+          { this.state.playAll ?
+            <button onClick={this.pauseAllSelected}>Pause All</button>
+          :
+            <button onClick={this.playAllSelected}>Play All</button>
+          }
+          <button onClick={this.resetAllToZero}>Reset Selected Tracks</button>
+          <button onClick={this.rewindAll}> &lt;&lt; </button>
+          <button onClick={this.fastForwardAll}> &gt;&gt; </button>
+        </div>
       </div>
     )
   }
