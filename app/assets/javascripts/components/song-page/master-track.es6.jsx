@@ -11,13 +11,39 @@ class MasterTrack extends React.Component {
     this.toggleDescriptionView = this.toggleDescriptionView.bind(this);
     this.toggleCollaboratorView = this.toggleCollaboratorView.bind(this);
     this.addLike = this.addLike.bind(this);
+    this.removeLike = this.removeLike.bind(this);
+    this.setUserLiked = this.setUserLiked.bind(this);
   }
 
   componentDidMount() {
     this.setState({
       likeCount: this.props.masterTrack.likes.length
     })
+
+    for (var i = 0; i < this.props.masterTrack.likes.length; i++) {
+      if (this.props.masterTrack.likes[i].user_id === this.props.currentUser.id) {
+        this.setUserLiked()
+      }
+    }
+    debugger;
   }
+
+  setUserLiked() {
+    this.setState({
+      likedByUser: true
+    })
+  }
+
+  // setUserLiked() {
+  //   var likeByUser = this.props.masterTrack.likes.filter(function(like) {
+  //     like.user_id === this.props.currentUser.id
+  //   })
+  //   if (likeByUser.length > 0) {
+  //     this.setState({
+  //       likedByUser: true
+  //     })
+  //   }
+  // }
 
   toggleCommentView() {
     this.setState({
@@ -67,7 +93,10 @@ class MasterTrack extends React.Component {
     })
   }
 
-  // Need to add like button and unlike button
+  removeLike() {
+
+  }
+
   render() {
     let masterTrack = this.props.masterTrack
     let likeCount = this.state.likeCount
@@ -88,7 +117,11 @@ class MasterTrack extends React.Component {
                   <span> Likes</span>
               }
             </p>
-            <button onClick={this.addLike}>Like</button>
+            { this.state.userLiked ?
+                <button onClick={this.removeLike}>Unlike</button>
+              :
+                <button onClick={this.addLike}>Like</button>
+            }
             <a href={masterTrack.file_path} download>Download</a>
             <button onClick={this.toggleCommentView}>
               { this.state.displayComments ?
