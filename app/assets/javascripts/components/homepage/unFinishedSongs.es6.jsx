@@ -3,19 +3,19 @@ class UnFinishedSongs extends React.Component{
   constructor(){
     super()
     this.state = {
-      date: []
+      data: []
     }
 
   }
 
 
-// componentDidMount(){
-//   fetch('/unfinished_songs')
-//   .then((response) => response.json())
-//   .then((json) => {
-//     this.setState({data: json})
-//   });
-// }
+componentDidMount(){
+  fetch('/unfinished_songs')
+  .then((response) => response.json())
+  .then((json) => {
+    this.setState({data: json})
+  });
+}
 
 
 
