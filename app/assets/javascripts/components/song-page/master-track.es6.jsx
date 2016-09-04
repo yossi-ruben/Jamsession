@@ -55,7 +55,7 @@ class MasterTrack extends React.Component {
                   <span> Likes</span>
               }
             </p>
-            <a href={masterTrack.file_path}>Download</a>
+            <a href={masterTrack.file_path} download>Download</a>
             <button onClick={this.toggleCommentView}>
               { this.state.displayComments ?
                   <p>Hide Comments</p>
@@ -79,13 +79,10 @@ class MasterTrack extends React.Component {
             </button>
             <div>
               { this.state.displayComments ?
-                  <div>
-                    { masterTrack.comments.length === 0 ?
-                        <p>No comments have been added for this track yet.</p>
-                      :
-                        < TrackComments comments={masterTrack.comments}/>
-                    }
-                  </div>
+                  < CommentDisplay
+                    masterTrack={masterTrack}
+                    currentUser={this.props.currentUser}
+                    csrf={this.props.csrf} />
                 :
                   null
               }

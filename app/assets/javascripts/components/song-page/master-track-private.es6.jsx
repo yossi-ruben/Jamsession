@@ -32,7 +32,7 @@ class MasterTrackPrivate extends React.Component {
           null
         }
         <p>{masterTrack.description}</p>
-        <a href={masterTrack.file_path}>Download</a>
+        <a href={masterTrack.file_path} download>Download</a>
       </div>
     )
   }
