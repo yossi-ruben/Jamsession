@@ -48,7 +48,13 @@ class MasterTrack extends React.Component {
             <audio controls>
               <source src={masterTrack.file_path} type="audio/mpeg" />
             </audio>
-            <p>{masterTrack.likes.length} Likes</p>
+            <p>{masterTrack.likes.length} 
+              { masterTrack.likes.length === 1 ?
+                  <span> Like</span>
+                :
+                  <span> Likes</span>
+              }
+            </p>
             <button onClick={this.toggleCommentView}>
               { this.state.displayComments ?
                   <p>Hide Comments</p>
