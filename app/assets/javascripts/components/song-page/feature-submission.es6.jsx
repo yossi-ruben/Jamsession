@@ -3,8 +3,9 @@ class FeatureSubmission extends React.Component {
     super();
     this.state = {
       showSubmissionForm: false,
-      fileUrl: "",
-      featureFile: null
+      featureFile: null,
+      currentlyUploading: false,
+      uploadComplete: false
     }
     this.toggleFormView = this.toggleFormView.bind(this);
     this.submitFeature = this.submitFeature.bind(this);
@@ -23,28 +24,32 @@ class FeatureSubmission extends React.Component {
     var that = this;
 
     reader.onloadend = function() {
-      that.setState({ imageUrl: reader.result, imageFile: file });
+      that.setState({ featureFile: file });
     }
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      this.setState({ imageUrl: "", imageFile: null});
+      this.setState({ featureFile: null});
     }
   }
 
   submitFeature(e) {
     e.preventDefault();
 
+    this.setState({
+      currentlyUploading: true
+    })
+
     let userID = this.refs.trackUser.value
-    let description = this.refs.trackDescription.value
+    let description = this.refs.trackDescription
     let talentID = this.refs.trackTalent.value
-    let file = this.state.imageFile
+    let file = this.state.featureFile
     let songID = this.refs.trackSong.value
 
     var formData = new FormData();
     formData.append("feature_track[user_id]", userID);
-    formData.append("feature_track[description]", description);
+    formData.append("feature_track[description]", description.value);
     formData.append("feature_track[talent_id]", talentID);
     formData.append("feature_track[file]", file);
     formData.append("feature_track[song_id]", songID);
@@ -58,6 +63,14 @@ class FeatureSubmission extends React.Component {
       credentials: "include",
       body: formData
     })
+    .then(() => {
+      this.setState({
+        currentlyUploading: false,
+        uploadComplete: true,
+        showSubmissionForm: false
+      })
+      description.value = "";
+    })
   }
 
   render() {
@@ -70,6 +83,16 @@ class FeatureSubmission extends React.Component {
               <p>Submit Feature Track</p>
           }
         </button>
+        { this.state.currentlyUploading ?
+            <p>Uploading File...</p>
+          :
+            null
+        }
+        { this.state.uploadComplete ?
+            <p>Upload Complete!</p>
+          :
+            null
+        }
         { this.state.showSubmissionForm ?
             <div className="form-holder">
               <h3>Upload a Feature Track</h3>
