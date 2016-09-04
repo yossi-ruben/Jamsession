@@ -9,6 +9,7 @@ class UnFinishedSongs extends React.Component{
     this.grabGenres = this.grabGenres.bind(this);
     this.grabForMe = this.grabForMe.bind(this);
     this.grabTalents = this.grabTalents.bind(this);
+    this.sortByHot = this.sortByHot.bind(this);
   }
 
 
@@ -19,6 +20,17 @@ componentDidMount(){
     this.setState({data: json})
   });
 }
+
+
+sortByHot(){
+
+
+
+
+}
+
+
+
 
 
 // this is the method to grab only the songs that are recommended
