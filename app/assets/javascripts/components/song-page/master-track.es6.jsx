@@ -5,7 +5,9 @@ class MasterTrack extends React.Component {
       displayComments: false,
       displayDescription: false,
       displayCollaborators: false,
-      likeCount: 0
+      likeCount: 0,
+      fans: [],
+      likedByUser: false
     }
     this.toggleCommentView = this.toggleCommentView.bind(this);
     this.toggleDescriptionView = this.toggleDescriptionView.bind(this);
@@ -15,7 +17,10 @@ class MasterTrack extends React.Component {
 
   componentDidMount() {
     this.setState({
-      likeCount: this.props.masterTrack.likes.length
+      likeCount: this.props.masterTrack.likes.length, 
+      fans: this.props.masterTrack.fans.map((fan) => {
+        return fan.id
+      })
     })
   }
 
@@ -71,6 +76,7 @@ class MasterTrack extends React.Component {
   render() {
     let masterTrack = this.props.masterTrack
     let likeCount = this.state.likeCount
+    let fans = this.state.fans
      // The ternary here is because masterTrack is a deeply nested resource, and needs to wait to receive all of its information. Without the ternary, masterTrack tries to render while still undefined, but with the ternary, it will wait until it is defined to render, removing the chance of a loading error.
     return (
       <div>
@@ -88,7 +94,11 @@ class MasterTrack extends React.Component {
                   <span> Likes</span>
               }
             </p>
-            <button onClick={this.addLike}>Like</button>
+            { fans.includes(this.props.currentUser.id) ?
+                <p>Liked Already</p>
+              :
+                <button onClick={this.addLike}>Like</button>
+            }
             <a href={masterTrack.file_path} download>Download</a>
             <button onClick={this.toggleCommentView}>
               { this.state.displayComments ?

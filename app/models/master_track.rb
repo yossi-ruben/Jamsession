@@ -16,4 +16,5 @@ class MasterTrack < ApplicationRecord
 
   # Connects master track to people who liked it
   has_many :likes
+  has_many :fans, through: :likes, source: :user
 end
