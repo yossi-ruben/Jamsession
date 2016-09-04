@@ -8,6 +8,7 @@ class UnFinishedSongs extends React.Component{
     }
     this.grabGenres = this.grabGenres.bind(this);
     this.grabForMe = this.grabForMe.bind(this);
+    this.grabTalents = this.grabTalents.bind(this);
   }
 
 
@@ -47,9 +48,8 @@ grabForMe(){
       }
     }
   }
-console.log(this.state.data.length)
-console.log(mySongs)
-console.log(finalList)
+
+  console.log(finalList)
 };
 
 
@@ -65,7 +65,6 @@ grabGenres(){
       genreList.push(this.state.data[n].genres[i].name)
     }
   }
-  console.log(genreList)
   genreList.sort();
   var prev;
   for ( var i = 0; i < genreList.length; i ++){
@@ -75,10 +74,31 @@ grabGenres(){
     prev = genreList[i]
   }
 
- return genreListUniq
+return (genreListUniq)
 }
 
+// function to grab all talents
+grabTalents(){
+  var talentListUniq = [];
+  var talentList = [];
+  for(n in this.state.data){
+    for(i in this.state.data[n].desired_talents){
+      // check to see if genreList includes genre before push skip part 2
+      talentList.push(this.state.data[n].desired_talents[i].title)
+    }
+  }
+  talentList.sort();
+  var prev;
+  for ( var i = 0; i < talentList.length; i ++){
+    if( talentList[i] !== prev){
+      talentListUniq.push(talentList[i])
+    }
+    prev = talentList[i]
+  }
 
+return (talentListUniq)
+
+}
 
 
   render(){
@@ -103,7 +123,7 @@ grabGenres(){
 
         {this.grabGenres()}
         {this.grabForMe()}
-
+        {this.grabTalents()}
       </div>
     )
   };
