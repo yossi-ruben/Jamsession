@@ -9,7 +9,8 @@ class SongPage extends React.Component {
       desiredTalents: [],
       masterTracks: [],
       featureTracks: [],
-      genres: []
+      genres: [],
+      csrf: ""
     }
     this.showPublic = this.showPublic.bind(this);
     this.showPrivate = this.showPrivate.bind(this);
@@ -28,6 +29,19 @@ class SongPage extends React.Component {
           genres: json.genres
         })
       })
+
+    this.csrfSetter();
+  }
+
+  csrfSetter() {
+    let metaTags = document.getElementsByTagName('meta');
+    for (var i = 0; i < metaTags.length; i++) {
+      if (metaTags[i].name === 'csrf-token') {
+        this.setState({
+          csrf: metaTags[i].content
+        });
+      }
+    }
   }
 
   showPublic() {
@@ -60,7 +74,9 @@ class SongPage extends React.Component {
                 songOwner={this.state.songOwner}
                 desiredTalents={this.state.desiredTalents}
                 masterTracks={this.state.masterTracks}
-                genres={this.state.genres} />
+                genres={this.state.genres}
+                currentUser={this.props.currentUser}
+                csrf={this.state.csrf} />
             :
               null
           }

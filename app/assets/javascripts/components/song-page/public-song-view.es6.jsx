@@ -42,7 +42,11 @@ class PublicSongView extends React.Component {
             return < MasterTrack masterTrack={master} key={i} />
           })}
         </div>
-        < FeatureSubmission />
+        < FeatureSubmission
+          desiredTalents={this.props.desiredTalents}
+          currentUser={this.props.currentUser}
+          csrf={this.props.csrf} 
+          song={song} />
       </div>
     )
   }
