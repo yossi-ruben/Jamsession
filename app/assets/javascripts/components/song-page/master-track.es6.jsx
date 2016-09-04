@@ -4,11 +4,24 @@ class MasterTrack extends React.Component {
     this.state = {
       displayComments: false,
       displayDescription: false,
-      displayCollaborators: false
+      displayCollaborators: false,
+      likeCount: 0,
+      fans: [],
+      likedByUser: false
     }
     this.toggleCommentView = this.toggleCommentView.bind(this);
     this.toggleDescriptionView = this.toggleDescriptionView.bind(this);
     this.toggleCollaboratorView = this.toggleCollaboratorView.bind(this);
+    this.addLike = this.addLike.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      likeCount: this.props.masterTrack.likes.length, 
+      fans: this.props.masterTrack.fans.map((fan) => {
+        return fan.id
+      })
+    })
   }
 
   toggleCommentView() {
@@ -35,9 +48,35 @@ class MasterTrack extends React.Component {
     })
   }
 
-  // Need to add like button, ability to add comments to track, and ability to download track
+  addLike() {
+    let data = {
+      user_id: this.props.currentUser.id,
+      master_track_id: this.props.masterTrack.id
+    }
+
+    fetch('/likes', {
+      method: "post",
+      dataType: "JSON",
+      headers: {
+        "X-CSRF-Token": this.props.csrf,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    })
+    .then(() => {
+      this.setState({
+        likeCount: this.state.likeCount + 1
+      })
+    })
+  }
+
+
   render() {
     let masterTrack = this.props.masterTrack
+    let likeCount = this.state.likeCount
+    let fans = this.state.fans
      // The ternary here is because masterTrack is a deeply nested resource, and needs to wait to receive all of its information. Without the ternary, masterTrack tries to render while still undefined, but with the ternary, it will wait until it is defined to render, removing the chance of a loading error.
     return (
       <div>
@@ -48,13 +87,19 @@ class MasterTrack extends React.Component {
             <audio controls>
               <source src={masterTrack.file_path} type="audio/mpeg" />
             </audio>
-            <p>{masterTrack.likes.length} 
-              { masterTrack.likes.length === 1 ?
+            <p> {likeCount}
+              { likeCount === 1 ?
                   <span> Like</span>
                 :
                   <span> Likes</span>
               }
             </p>
+            { fans.includes(this.props.currentUser.id) ?
+                <p>Liked Already</p>
+              :
+                <button onClick={this.addLike}>Like</button>
+            }
+            <a href={masterTrack.file_path} download>Download</a>
             <button onClick={this.toggleCommentView}>
               { this.state.displayComments ?
                   <p>Hide Comments</p>
@@ -78,13 +123,10 @@ class MasterTrack extends React.Component {
             </button>
             <div>
               { this.state.displayComments ?
-                  <div>
-                    { masterTrack.comments.length === 0 ?
-                        <p>No comments have been added for this track yet.</p>
-                      :
-                        < TrackComments comments={masterTrack.comments}/>
-                    }
-                  </div>
+                  < CommentDisplay
+                    masterTrack={masterTrack}
+                    currentUser={this.props.currentUser}
+                    csrf={this.props.csrf} />
                 :
                   null
               }

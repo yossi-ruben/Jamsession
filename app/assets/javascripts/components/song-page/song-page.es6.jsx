@@ -84,7 +84,8 @@ class SongPage extends React.Component {
               < PrivateSongView 
                 song={this.state.song}
                 masterTracks={this.state.masterTracks}
-                featureTracks={this.state.featureTracks} />
+                featureTracks={this.state.featureTracks}
+                csrf={this.state.csrf} />
             :
               null
           }

@@ -36,7 +36,8 @@ class SongsController < ApplicationController
       [{master_tracks: { include:
         [{feature_tracks: { include: [:user, :talent]}},
         {comments: { include: :user }},
-        :likes]}},
+        :likes,
+        :fans]}},
       :user,
       :genres,
       :desired_talents,
