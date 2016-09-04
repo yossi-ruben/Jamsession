@@ -1,6 +1,12 @@
 class UserLikedSongs extends React.Component {
-  render(){
+  render(){    
     let info = this.props.info
+    let dateObj = new Date(this.props.info.master.updated_at)
+    let month = dateObj.getUTCMonth();
+    let day = dateObj.getUTCDate();
+    let year = dateObj.getUTCFullYear();
+    let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    let useMonth = monthNames[month]
     return(
       <div>
       { info === undefined ?
@@ -10,11 +16,10 @@ class UserLikedSongs extends React.Component {
 
         <div className="carousel-inner" role="listbox">
           <div className="item active">
-            <img src="img_chania.jpg" alt="Chania" />
+            <a href={'/songs/' + info.song.id}><img src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
             <div className="carousel-caption">
-              
-              <h4>Song Title: {info.song.title}</h4>
-              <h5>Date: {info.master.updated_at}</h5>
+              <a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a>
+              <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <p>Description: {info.master.description}</p>
             </div>
           </div>
