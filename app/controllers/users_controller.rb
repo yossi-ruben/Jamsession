@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     likes.each do |like|
       # each master track in array
       master_track = MasterTrack.find(like.master_track_id)
-      @liked_masters << {master: (master_track), song: master_track.song}
+      @liked_masters << {master: (master_track), song: master_track.song, user: master_track.song.user}
     end
     return @liked_masters
   end
@@ -37,8 +37,7 @@ class UsersController < ApplicationController
     end
     @collaborated_songs = []
     masters_contributed_to.each do |master|
-      # binding.pry
-      @collaborated_songs << {song: master.song, master: master}
+      @collaborated_songs << {song: master.song, master: master, user: master.song.user}
     end
     return @collaborated_songs
   end
