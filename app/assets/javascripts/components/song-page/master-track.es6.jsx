@@ -48,46 +48,47 @@ class MasterTrack extends React.Component {
             <audio controls>
               <source src={masterTrack.file_path} type="audio/mpeg" />
             </audio>
-          <button onClick={this.toggleCommentView}>
-            { this.state.displayComments ?
-                <p>Hide Comments</p>
-              :
-                <p>Show Comments</p>
-            }
-          </button>
-          <button onClick={this.toggleDescriptionView}>
-            { this.state.displayDescription ?
-                <p>Hide Description</p>
-              :
-                <p>Show Description</p>
-            }
-          </button>
-          <button onClick={this.toggleCollaboratorView}>
-            { this.state.displayCollaborators ?
-                <p>Hide Collaborators</p>
-              :
-                <p>Show Collaborators</p>
-            }
-          </button>
-          <div>
-            { this.state.displayComments ?
-                < TrackComments comments={masterTrack.comments}/>
-              :
-                null
-            }
-            { this.state.displayDescription ? 
-                <p>{masterTrack.description}</p>
-              :
-                null
-            }
-            { this.state.displayCollaborators ?
-                < TrackCollaborators featureTracks={masterTrack.feature_tracks}/>
-              :
-                null
-            }
+            <p>{masterTrack.likes.length} Likes</p>
+            <button onClick={this.toggleCommentView}>
+              { this.state.displayComments ?
+                  <p>Hide Comments</p>
+                :
+                  <p>Show Comments</p>
+              }
+            </button>
+            <button onClick={this.toggleDescriptionView}>
+              { this.state.displayDescription ?
+                  <p>Hide Description</p>
+                :
+                  <p>Show Description</p>
+              }
+            </button>
+            <button onClick={this.toggleCollaboratorView}>
+              { this.state.displayCollaborators ?
+                  <p>Hide Collaborators</p>
+                :
+                  <p>Show Collaborators</p>
+              }
+            </button>
+            <div>
+              { this.state.displayComments ?
+                  < TrackComments comments={masterTrack.comments}/>
+                :
+                  null
+              }
+              { this.state.displayDescription ? 
+                  <p>{masterTrack.description}</p>
+                :
+                  null
+              }
+              { this.state.displayCollaborators ?
+                  < TrackCollaborators featureTracks={masterTrack.feature_tracks}/>
+                :
+                  null
+              }
+            </div>
           </div>
-        </div>
-      }
+        }
       </div>
     )
   }
