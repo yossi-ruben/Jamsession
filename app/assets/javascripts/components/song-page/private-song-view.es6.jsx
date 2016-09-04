@@ -115,6 +115,9 @@ class PrivateSongView extends React.Component {
           <button onClick={this.rewindAll}> &lt;&lt; </button>
           <button onClick={this.fastForwardAll}> &gt;&gt; </button>
         </div>
+        < MasterSubmission 
+          song={this.props.song} 
+          csrf={this.props.csrf} />
       </div>
     )
   }

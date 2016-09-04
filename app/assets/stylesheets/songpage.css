@@ -61,6 +61,11 @@
   border: 1px solid black;
 }
 
+.small-text {
+  font-size: .7em;
+  font-style: italic;
+}
+
 audio {
   width: 400px;
 }
