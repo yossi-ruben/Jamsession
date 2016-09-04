@@ -55,6 +55,7 @@ class MasterTrack extends React.Component {
                   <span> Likes</span>
               }
             </p>
+            <a href={masterTrack.file_path}>Download</a>
             <button onClick={this.toggleCommentView}>
               { this.state.displayComments ?
                   <p>Hide Comments</p>
