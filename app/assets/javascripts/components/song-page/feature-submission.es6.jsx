@@ -74,7 +74,7 @@ class FeatureSubmission extends React.Component {
             <div className="form-holder">
               <h3>Upload a Feature Track</h3>
               <form encType="multipart/form-data" onSubmit={this.submitFeature}>
-                <input type="hidden" name="feature_track[user_id]" ref="trackUser" value={this.props.song.id} />
+                <input type="hidden" name="feature_track[user_id]" ref="trackUser" value={this.props.currentUser.id} />
                 <input type="hidden" name="feature_track[song_id]" ref="trackSong" value={this.props.song.id} />
                 <label htmlFor="feature_track[description]" className="form-label">Track Description:</label>
                 <textarea rows="5" cols="30" name="feature_track[description]" ref="trackDescription"></textarea>
