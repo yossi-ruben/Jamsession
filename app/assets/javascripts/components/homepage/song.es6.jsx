@@ -9,18 +9,15 @@ class Song extends React.Component{
 
 
   render(){
+
     return (
-        <div className="Song">
-          <h3>Song Title</h3>
-          <p>Info about Song</p>
-          <div className="artistDiv">
-            <p>Artist Name</p>
-          </div>
-        </div>
+      <div className="Song">
+        <p>Title: {this.props.theSong.title}</p>
+        <p>Description: {this.props.theSong.background}</p>
+        <p>LastTime: Updated: {this.props.theSong.updated_at}</p>
+        <p>Username: {this.props.theSong.owner_id}</p>
+      </div>
+
       )
-
-
   }
-
-
 }
