@@ -2,9 +2,28 @@ class FinishedSongs extends React.Component{
 
   constructor(){
     super()
+    this.state = {
+      data: [],
+      genres: []
+    }
   }
 
+
+
+componentDidMount(){
+  fetch('/finished_songs')
+  .then((response) => response.json())
+  .then((json) => {
+    this.setState({data: json})
+  });
+
+}
+
+
+
+
   render(){
+
     return(
       <div className="FinishedSongs">
         <div className="Title"> Finished </div>
@@ -20,39 +39,11 @@ class FinishedSongs extends React.Component{
         </div>
 
 
+        {this.state.data.map((song, i) =>{
+          return <Song theSong={song} key={i} />
+        })}
 
 
-        <div className="Song">
-          <h3>Song Title</h3>
-          <p>Info about Song</p>
-          <div className="artistDiv">
-            <p>Artist Name</p>
-          </div>
-        </div>
-
-        <div className="Song">
-          <h3>Song Title</h3>
-          <p>Info about Song</p>
-          <div className="artistDiv">
-            <p>Artist Name</p>
-          </div>
-        </div>
-
-        <div className="Song">
-          <h3>Song Title</h3>
-          <p>Info about Song</p>
-          <div className="artistDiv">
-            <p>Artist Name</p>
-          </div>
-        </div>
-
-        <div className="Song">
-          <h3>Song Title</h3>
-          <p>Info about Song</p>
-          <div className="artistDiv">
-            <p>Artist Name</p>
-          </div>
-        </div>
 
 
       </div>
