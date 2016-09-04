@@ -3,15 +3,22 @@ class PrivateSongView extends React.Component {
     super()
     this.state = {
       talentArray: [],
-      playAll: false
+      playAll: false,
+      currentMasterTrack: {},
+      masterTracks: []
     }
     this.findAllTalents = this.findAllTalents.bind(this);
     this.playAllSelected = this.playAllSelected.bind(this);
     this.pauseAllSelected = this.pauseAllSelected.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.findAllTalents();
+
+    this.setState({
+      currentMasterTrack: this.props.masterTracks[this.props.masterTracks.length - 1],
+      masterTracks: this.props.masterTracks.reverse()
+    })
   }
 
   findAllTalents() {
@@ -73,8 +80,8 @@ class PrivateSongView extends React.Component {
 
   render() {
     let featureTracks = this.props.featureTracks
-    let currentMasterTrack = this.props.masterTracks[0]
-    let masterTracks = this.props.masterTracks
+    let currentMasterTrack = this.state.currentMasterTrack
+    let masterTracks = this.state.masterTracks
     return (
       <div>
         <h1>Masters</h1>
