@@ -3,9 +3,9 @@ class PublicSongView extends React.Component {
     let song = this.props.song
     let songOwner = this.props.songOwner
     let desiredTalents = this.props.desiredTalents
-    let currentMasterTrack = this.props.masterTracks[0]
+    let currentMasterTrack = this.props.masterTracks[this.props.masterTracks.length - 1]
     let genres = this.props.genres
-    let masterHistory = this.props.masterTracks.slice(1, this.props.masterTracks.length)
+    let masterHistory = this.props.masterTracks.slice(0, this.props.masterTracks.length - 1).reverse()
     return (
       <div>
         <h1 className="song-header">{song.title}</h1>
