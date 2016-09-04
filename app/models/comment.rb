@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  include ActiveModel::Serializers::JSON
+
   # Connects comment to user
   belongs_to :user
 

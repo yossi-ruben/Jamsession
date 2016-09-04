@@ -48,8 +48,10 @@ class CommentDisplay extends React.Component {
     .then((response) => response.json())
     .then((json) => {
       this.setState({
-        comments: this.state.comments.concat([json])
+        comments: this.state.comments.concat([json]),
+        viewForm: false
       })
+      body.value="";
     })
   }
 
