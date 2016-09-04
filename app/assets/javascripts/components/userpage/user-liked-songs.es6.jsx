@@ -1,5 +1,5 @@
 class UserLikedSongs extends React.Component {
-  render(){    
+  render(){
     let info = this.props.info
     let dateObj = new Date(this.props.info.master.updated_at)
     let month = dateObj.getUTCMonth();
@@ -19,6 +19,8 @@ class UserLikedSongs extends React.Component {
             <a href={'/songs/' + info.song.id}><img src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
             <div className="carousel-caption">
               <a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a>
+              <br/>
+              <a href={'/users/' + info.user.id}>User: {info.user.username}</a>               
               <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <p>Description: {info.master.description}</p>
             </div>

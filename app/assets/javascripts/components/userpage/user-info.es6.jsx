@@ -11,15 +11,14 @@ class UserInfo extends React.Component{
 
   showFollowing() {
     this.setState({
-      showFollowing: true,
-      showFollowers: false
+      showFollowing: !this.state.showFollowing
     })
   }
 
   showFollowers() {
     this.setState({
-      showFollowing: false,
-      showFollowers: true
+
+      showFollowers: !this.state.showFollowers
     })
   }
 
