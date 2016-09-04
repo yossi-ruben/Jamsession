@@ -2,9 +2,7 @@ class FeatureTracksController < ApplicationController
   def create
     s3 = AWS::S3.new(:access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY'])
 
-    print "Here are the params: " + params.to_s
-
-    obj = s3.buckets[ENV['S3_BUCKET']].objects[params[:file].original_filename]
+    obj = s3.buckets[ENV['S3_BUCKET']].objects["dummy"]
 
     obj.write(
       file: params[:file],
