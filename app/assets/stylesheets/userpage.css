@@ -7,12 +7,17 @@ div {
   margin-left: 40px;
   margin-top: 30px;
   background: white;
-  height: 150px;
+  height: 350px;
   width: 200px;
   text-align: left;
-  padding-top: 200px;
+  padding-top: 20px;
   padding-left: 20px;
   border-radius: 15px;
+}
+
+.navigation img {
+  width: 150px;
+  height:auto;
 }
 
 .container {
