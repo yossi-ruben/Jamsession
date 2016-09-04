@@ -24,13 +24,11 @@ class CommentDisplay extends React.Component {
   submitComment(e) {
     e.preventDefault();
 
-    let masterTrackID = this.refs.masterTrackID.value
-    let userID = this.refs.userID.value
     let body = this.refs.body
 
     let data = {
-      master_track_id: masterTrackID,
-      user_id: userID,
+      master_track_id: this.refs.masterTrackID.value,
+      user_id: this.refs.userID.value,
       body: body.value
     }
 

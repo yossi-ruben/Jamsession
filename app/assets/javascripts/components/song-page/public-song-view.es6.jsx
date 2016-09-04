@@ -12,7 +12,8 @@ class PublicSongView extends React.Component {
         <h3 className="song-originator">Originated by: {songOwner.username}</h3>
         <div className="current-master-view">
           <h2>Current Master:</h2>
-          < MasterTrack masterTrack={currentMasterTrack} 
+          < MasterTrack
+            masterTrack={currentMasterTrack} 
             csrf={this.props.csrf}
             currentUser={this.props.currentUser} />
         </div>

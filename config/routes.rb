@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :feature_tracks, only: :create
   resources :master_tracks, only: :create
   resources :comments, only: :create
+  resources :likes, only: [:create, :destroy]
 
   root 'app#index'
 
