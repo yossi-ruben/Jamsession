@@ -12,7 +12,6 @@ class PrivateSongView extends React.Component {
     this.resetAllToZero = this.resetAllToZero.bind(this);
     this.initiateDelete = this.initiateDelete.bind(this);
     this.changeMind = this.changeMind.bind(this);
-    // this.deleteSong = this.deleteSong.bind(this);
   }
 
   componentWillMount() {
@@ -30,19 +29,6 @@ class PrivateSongView extends React.Component {
       deleteInitiated: false
     })
   }
-
-  // deleteSong() {
-  //   fetch(`/songs/${this.props.song.id}`, {
-  //     method: "delete",
-  //     dataType: "JSON",
-  //     headers: {
-  //       "X-CSRF-Token": this.props.csrf,
-  //       "Accept": "application/json",
-  //       "Content-Type": "application/json"
-  //     },
-  //     credentials: "include"
-  //   })
-  // }
 
   findAllTalents() {
     var featureTalentArray = []

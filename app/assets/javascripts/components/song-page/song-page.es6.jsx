@@ -66,6 +66,7 @@ class SongPage extends React.Component {
 
   updateAfterMaster(json) {
     this.setState({
+      song: json,
       masterTracks: json.master_tracks,
       featureTracks: json.feature_tracks
     })
