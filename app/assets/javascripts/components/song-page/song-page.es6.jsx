@@ -14,6 +14,7 @@ class SongPage extends React.Component {
     }
     this.showPublic = this.showPublic.bind(this);
     this.showPrivate = this.showPrivate.bind(this);
+    this.updateSongAfterFeature = this.updateSongAfterFeature.bind(this);
   }
 
   componentWillMount() {
@@ -56,6 +57,12 @@ class SongPage extends React.Component {
     })
   }
 
+  updateSongAfterFeature(json) {
+    this.setState({
+      featureTracks: json
+    })
+  }
+
   render() {
     return (
       <div>
@@ -76,7 +83,8 @@ class SongPage extends React.Component {
                 masterTracks={this.state.masterTracks}
                 genres={this.state.genres}
                 currentUser={this.props.currentUser}
-                csrf={this.state.csrf} />
+                csrf={this.state.csrf}
+                updateSongAfterFeature={this.updateSongAfterFeature} />
             :
               null
           }
