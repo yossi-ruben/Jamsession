@@ -60,7 +60,14 @@ class CommentDisplay extends React.Component {
         { masterTrack.comments.length === 0 ?
             <p>No comments have been added to this track yet.</p>
           :
-            < TrackComments comments={this.state.comments}/>
+            <ul>
+              {this.state.comments.map((comment, i) => {
+                return ( < TrackComment
+                           comment={comment}
+                           currentUser={this.props.currentUser}
+                           key={i} />
+              )})}
+            </ul>
         }
         <button onClick={this.toggleAddCommentForm}>
           { this.state.viewForm ?
