@@ -92,7 +92,11 @@ class PrivateSongView extends React.Component {
 
   render() {
     let currentMasterTrack = this.props.masterTracks[this.props.masterTracks.length - 1]
-    let masterTracks = this.props.masterTracks.reverse()
+    let masterTracks = this.props.masterTracks.sort(function(a,b) {
+      var c = new Date(a.created_at);
+      var d = new Date(b.created_at);
+      return (d - c);
+    })
     let featureTracks = this.props.featureTracks
     return (
       <div>
