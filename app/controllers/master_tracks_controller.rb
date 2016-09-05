@@ -13,10 +13,6 @@ class MasterTracksController < ApplicationController
 
     song.finished = true if params[:songFinished] == "true"
 
-    print "Here we go, it's params time!"
-    print params[:includedFeatures].to_s
-    print params[:songFinished].to_s
-
     master_track = song.master_tracks.new(master_track_params)
 
     master_track.file_name = obj.key
