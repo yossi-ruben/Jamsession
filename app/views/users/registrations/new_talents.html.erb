@@ -12,6 +12,10 @@
     <%= label_tag :genre, "#{genre.name}" %><br>
   <% end %>
 <%= hidden_field_tag :user_id, @user.id %>
+
+<h2>Add a photo</h2>
+  <%= file_field_tag :file %>
+
 <%= submit_tag value="Add" %>
 
 <% end %>

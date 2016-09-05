@@ -14,7 +14,9 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     if @user.save
-      redirect_to new_genres_talents_path
+      @genres = Genre.all
+      @talents = Talent.all
+      render '/users/registrations/new_talents'
     else
       @errors = @user.errors.full_messages
       render :new

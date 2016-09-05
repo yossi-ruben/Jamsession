@@ -1,10 +1,5 @@
 class TalentsController < ApplicationController
-  def new_genres_talents
-    @user = User.last
-    @genres = Genre.all
-    @talents = Talent.all
-    render '/users/registrations/new_talents'
-  end
+
 
    def create_genres_talents
     current_user = User.find(params[:user_id])
@@ -22,6 +17,19 @@ class TalentsController < ApplicationController
     talents_to_add.each do |talent|
       current_user.talents << talent
     end
+
+    s3 = AWS::S3.new(:access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY'])
+
+    obj = s3.buckets[ENV['S3_BUCKET']].objects[params[:file].original_filename]
+
+    obj.write(
+      file: params[:file],
+      acl: :public_read
+    )
+
+      current_user.profile_pic_file_name = obj.key
+      current_user.profile_pic_file_path = obj.public_url
+      current_user.save
 
       redirect_to new_user_session_path
     end
