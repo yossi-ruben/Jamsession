@@ -1,2 +1,2 @@
-<%= react_component('UserPageView', finished_songs: @user_finished_songs, unfinished_songs: @user_unfinished_songs, collaborated_songs: @collaborated_songs, liked_songs: @liked_masters, user_id: params[:id]) %>
+<%= react_component('UserPageView', finished_songs: @user_finished_songs, unfinished_songs: @user_unfinished_songs, collaborated_songs: @collaborated_songs, liked_songs: @liked_masters, user_id: params[:id], currentUser: current_user) %>
 

@@ -7,7 +7,8 @@ class UserPageView extends React.Component {
       showUserCollaborated: false,
       userStats: [],
       followers: [],
-      following: []
+      following: [],
+      csrf: ""
     }
     this.showUserProjects = this.showUserProjects.bind(this);
     this.showUserLiked = this.showUserLiked.bind(this);
@@ -23,7 +24,18 @@ class UserPageView extends React.Component {
         following: json.following
       })
     });
+    this.csrfSetter();
+  }
 
+  csrfSetter() {
+    let metaTags = document.getElementsByTagName('meta');
+    for (var i = 0; i < metaTags.length; i++) {
+      if (metaTags[i].name === 'csrf-token') {
+        this.setState({
+          csrf: metaTags[i].content
+        });
+      }
+    }
   }
 
   showUserProjects() {
@@ -53,7 +65,7 @@ class UserPageView extends React.Component {
   render(){
     return(
         <div className="container">
-          < UserInfo userStats={this.state.userStats} following={this.state.following} followers={this.state.followers}/>
+          < UserInfo csrf={this.state.csrf}userStats={this.state.userStats} currentUser={this.props.currentUser} following={this.state.following} followers={this.state.followers}/>
           <div className="content-column">
             <ul className="tab">
               <li><a onClick={this.showUserProjects} href="#" className="tablinks">List of Projects</a></li>

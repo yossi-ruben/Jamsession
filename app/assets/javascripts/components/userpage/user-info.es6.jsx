@@ -3,10 +3,14 @@ class UserInfo extends React.Component{
     super();
     this.state = {
       showFollowing: false,
-      showFollowers: false
+      showFollowers: false,
+      startFollowing: false,
+      stopFollowing: true
     }
     this.showFollowing = this.showFollowing.bind(this);
     this.showFollowers = this.showFollowers.bind(this);
+    this.startFollowing = this.startFollowing.bind(this);
+    this.stopFollowing = this.stopFollowing.bind(this);
   }
 
   showFollowing() {
@@ -17,8 +21,36 @@ class UserInfo extends React.Component{
 
   showFollowers() {
     this.setState({
-
       showFollowers: !this.state.showFollowers
+    })
+  }
+
+  startFollowing() {
+    let data = {
+      user_id: this.props.currentUser.id,
+      user_to_follow: this.props.userStats.id
+    }
+    this.setState({
+      startFollowing: true,
+      stopFollowing: false
+    })
+    fetch('/connections', {
+      method: "post",
+      dataType: "JSON",
+      headers: {
+        "X-CSRF-Token": this.props.csrf,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    })
+  }
+
+  stopFollowing() {
+    this.setState({
+      startFollowing: false,
+      stopFollowing: true
     })
   }
 
@@ -30,6 +62,19 @@ class UserInfo extends React.Component{
     <aside className="navigation">
       <img src={userStats.profile_pic_file_path} />
       <h3>{userStats.username}</h3>
+        <div className="user-follow">
+          {this.state.startFollowing ?
+            <div>
+              <button onClick={this.stopFollowing}>Unfollow</button>
+            </div>
+            :
+            <div>
+              <button onClick={this.startFollowing}>Follow</button>
+            </div>  
+          }
+
+        </div>
+
         <div className="follow-view">
           <p><a onClick={this.showFollowing} href="#" className="userlinks">Following {following.length}</a></p>
 
@@ -40,7 +85,7 @@ class UserInfo extends React.Component{
                     <UserFollow stat={person} key={i} />
                     )
                 })}
-              </div>
+            </div>
             :
             null
           }
@@ -53,7 +98,7 @@ class UserInfo extends React.Component{
                     <UserFollow stat={person} key={i} />
                     )
                 })}
-              </div>
+            </div>
             :
             null
           }
