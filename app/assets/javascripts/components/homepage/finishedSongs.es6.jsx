@@ -30,7 +30,12 @@ componentDidMount(){
 
         <div className="UnFinNav">
           <ul>
-            <li>Genres</li>
+            <li>Genres:
+              <select>
+                <option value="country">Country</option>
+              </select>
+
+            </li>
             <li>Hot</li>
             <li>Recently Finished</li>
             <li>Random</li>
