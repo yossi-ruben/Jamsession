@@ -7,23 +7,51 @@ class UserPageView extends React.Component {
       showUserCollaborated: false,
       userStats: [],
       followers: [],
-      following: []
+      following: [],
+      connects: [],
+      csrf: ""
     }
     this.showUserProjects = this.showUserProjects.bind(this);
     this.showUserLiked = this.showUserLiked.bind(this);
     this.showUserCollaborated = this.showUserCollaborated.bind(this);
+    this.updateConnects = this.updateConnects.bind(this);
+    this.removeConnects = this.removeConnects.bind(this);
   }
 
   componentDidMount() {
     fetch (`/users/${this.props.user_id}/info`)
     .then((response) => response.json())
-    .then((json) => {
+    .then(function(json) {
       this.setState({userStats: json,
         followers: json.followers,
-        following: json.following
+        following: json.following,
+        connects: json.followers.map((user) => { return user.id })
       })
-    });
+    }.bind(this));
+    this.csrfSetter();
+  }
 
+  csrfSetter() {
+    let metaTags = document.getElementsByTagName('meta');
+    for (var i = 0; i < metaTags.length; i++) {
+      if (metaTags[i].name === 'csrf-token') {
+        this.setState({
+          csrf: metaTags[i].content
+        });
+      }
+    }
+  }
+
+  updateConnects(id) {
+    this.setState({
+      connects: this.state.connects.concat([id])
+    })
+  }
+
+  removeConnects() {
+    this.setState({
+      connects: []
+    })
   }
 
   showUserProjects() {
@@ -53,7 +81,7 @@ class UserPageView extends React.Component {
   render(){
     return(
         <div className="container">
-          < UserInfo userStats={this.state.userStats} following={this.state.following} followers={this.state.followers}/>
+          < UserInfo removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={this.props.currentUser} following={this.state.following} followers={this.state.followers}/>
           <div className="content-column">
             <ul className="tab">
               <li><a onClick={this.showUserProjects} href="#" className="tablinks">List of Projects</a></li>

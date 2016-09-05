@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   resources :comments, only: :create
   resources :likes, only: :create
   delete '/likes', to: 'likes#destroy'
+  resources :connections, only: :create
+  delete '/connections', to: 'connections#destroy'
+
 
   post 'talents/genres_talents', to: 'talents#create_genres_talents'
 
