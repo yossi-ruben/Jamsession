@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'registrations'}
 
 
   root to: 'songs#home_page'
@@ -18,6 +20,5 @@ Rails.application.routes.draw do
   resources :likes, only: :create
   delete '/likes', to: 'likes#destroy'
 
-  root 'app#index'
 
 end

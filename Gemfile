@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 
 gem 'faker'
+gem 'better_errors'
 
 # Allow for connection to S3 Storage
 gem 'aws-sdk-v1'
