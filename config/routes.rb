@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   delete '/likes', to: 'likes#destroy'
 
   get 'new_genres_talents', to: 'talents#new_genres_talents'
-  post 'registrations/genres_talents', to: 'registrations#create_genres_talents'
+  post 'talents/genres_talents', to: 'talents#create_genres_talents'
 
 end
