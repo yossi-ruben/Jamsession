@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :feature_tracks, only: :create
   resources :master_tracks, only: :create
   resources :comments, only: :create
-  resources :likes, only: [:create, :destroy]
+  resources :likes, only: :create
+  delete '/likes', to: 'likes#destroy'
 
   root 'app#index'
 

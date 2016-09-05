@@ -4,7 +4,7 @@ class TrackCollaborators extends React.Component {
     return (
       <ul>
         {featureTracks.map((feature, i) => {
-          return <li key={i}>{feature.talent.title} by {feature.user.username}</li>
+          return <li key={i}>{feature.talent.title} by <a href={`/users/${feature.user.id}`}>{feature.user.username}</a></li>
         })}
       </ul>
     )

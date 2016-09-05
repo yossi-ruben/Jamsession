@@ -63,12 +63,14 @@ class FeatureSubmission extends React.Component {
       credentials: "include",
       body: formData
     })
-    .then(() => {
+    .then((response) => response.json())
+    .then((json) => {
       this.setState({
         currentlyUploading: false,
         uploadComplete: true,
         showSubmissionForm: false
       })
+      this.props.updateAfterFeature(json)
       description.value = "";
     })
   }

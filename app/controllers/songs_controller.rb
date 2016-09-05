@@ -19,6 +19,10 @@ class SongsController < ApplicationController
   end
 
   def home_page
+    user = User.find(current_user.id)
+    @user_talents = user.talents
+    @logged_in = true if user_signed_in?
+    @user_genres = user.genres
   end
 
   def show

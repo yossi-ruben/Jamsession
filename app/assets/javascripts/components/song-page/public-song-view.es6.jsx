@@ -59,7 +59,8 @@ class PublicSongView extends React.Component {
             desiredTalents={this.props.desiredTalents}
             currentUser={this.props.currentUser}
             csrf={this.props.csrf} 
-            song={song} />
+            song={song}
+            updateAfterFeature={this.props.updateAfterFeature} />
         </div>
       }
     </div>

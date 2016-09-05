@@ -17,6 +17,10 @@ class FeatureTracksController < ApplicationController
     feature_track.file_path = obj.public_url
 
     feature_track.save
+
+    new_feature_list = song.feature_tracks
+
+    render json: new_feature_list.as_json(include: [:user, :talent])
   end
 
   private
