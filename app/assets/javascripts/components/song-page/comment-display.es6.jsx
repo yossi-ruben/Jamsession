@@ -71,7 +71,7 @@ class CommentDisplay extends React.Component {
     let masterTrack = this.props.masterTrack;
     return (
       <div>
-        { masterTrack.comments.length === 0 ?
+        { this.state.comments.length === 0 ?
             <p>No comments have been added to this track yet.</p>
           :
             <ul>
