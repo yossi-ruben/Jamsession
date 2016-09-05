@@ -10,6 +10,7 @@ class PrivateSongView extends React.Component {
     this.findAllTalents = this.findAllTalents.bind(this);
     this.playAllSelected = this.playAllSelected.bind(this);
     this.pauseAllSelected = this.pauseAllSelected.bind(this);
+    this.resetAllToZero = this.resetAllToZero.bind(this);
   }
 
   componentWillMount() {
@@ -61,6 +62,9 @@ class PrivateSongView extends React.Component {
     var displayedPlayers = document.getElementsByClassName('audio-player');
     for (var i = 0; i < displayedPlayers.length; i++) {
       displayedPlayers[i].currentTime = 0;
+      if (this.state.playAll) {
+        displayedPlayers[i].play();
+      }
     }
   }
 
