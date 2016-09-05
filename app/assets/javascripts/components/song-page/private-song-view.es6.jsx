@@ -112,7 +112,13 @@ class PrivateSongView extends React.Component {
         }
         <h1>Masters</h1>
         {masterTracks.map((master, i) => {
-          return < MasterTrackPrivate masterTrack={master} key={i} />
+          return (
+            < MasterTrackPrivate
+              masterTrack={master}
+              removeMaster={this.props.removeMaster}
+              csrf={this.props.csrf}
+              key={i} />
+          )
         })}
         <h1>Features Included in Most Recent Master</h1>
         {currentMasterTrack.feature_tracks.map((feature, i) => {

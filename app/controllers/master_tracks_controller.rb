@@ -28,6 +28,25 @@ class MasterTracksController < ApplicationController
         {comments: { include: :user }},
         :likes,
         :fans]}},
+      :user,
+      :genres,
+      :desired_talents,
+      feature_tracks: { include: [:user, :talent]}])
+  end
+
+  def destroy
+    master_track = MasterTrack.find(params[:id])
+    master_track.destroy
+    song = master_track.song
+    render json: song.as_json(include:
+      [{master_tracks: { include: 
+        [{feature_tracks: {include: [:user, :talent]}},
+        {comments: { include: :user }},
+        :likes,
+        :fans]}},
+      :user,
+      :genres,
+      :desired_talents,
       feature_tracks: { include: [:user, :talent]}])
   end
 
