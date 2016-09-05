@@ -56,12 +56,14 @@ class MasterSubmission extends React.Component {
     let songID = this.refs.trackSong.value;
     let file = this.state.masterFile;
     let includedFeatures = this.findIncludedFeatures();
+    let songFinished = this.refs.finished.value;
 
     var formData = new FormData();
     formData.append("master_track[song_id]", songID);
     formData.append("master_track[description]", description.value);
     formData.append("master_track[file]", file);
     formData.append("includedFeatures", includedFeatures);
+    formData.append("songFinished", songFinished);
 
     fetch('/master_tracks', {
       method: "post",
@@ -120,6 +122,11 @@ class MasterSubmission extends React.Component {
                   })
                 }
                 <input type="file" name="master_track[file]" className="form-input" ref="trackFile" onChange={this.changeFile} />
+                <label htmlFor="songFinished]" className="form-label">Is this song now finished?</label>
+                <select ref="finished" name="songFinished">
+                  <option value="false">No</option>
+                  <option value="true">Yes</option>
+                </select>
                 <input type="submit" value="Upload Track" className="form-input" />
               </form>
             </div>

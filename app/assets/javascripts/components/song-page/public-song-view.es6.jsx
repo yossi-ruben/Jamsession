@@ -1,11 +1,4 @@
 class PublicSongView extends React.Component {
-    // var masterHistory = this.props.masterTracks.slice(0, this.props.masterTracks.length - 1)
-    // masterHistory.sort(function(a,b) {
-    //   var c = new Date(a.created_at);
-    //   var d = new Date(b.created_at);
-    //   return c - d;
-    // });
-
   render() {
     let song = this.props.song
     let songOwner = this.props.songOwner
