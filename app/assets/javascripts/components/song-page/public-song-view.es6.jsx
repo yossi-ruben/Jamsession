@@ -10,14 +10,19 @@ class PublicSongView extends React.Component {
     let song = this.props.song
     let songOwner = this.props.songOwner
     let desiredTalents = this.props.desiredTalents
-    let currentMasterTrack = this.props.masterTracks[this.props.masterTracks.length - 1]
+    let currentMasterTrack = this.props.masterTracks.sort(function(a,b) {
+      var c = new Date(a.created_at);
+      var d = new Date(b.created_at);
+      return (d - c)
+    })[0]
     let genres = this.props.genres
-    let masterHistory = this.props.masterTracks
+    let masterHistory = this.props.masterTracks.slice(0, this.props.masterTracks.length - 1).sort(function(a,b) {
+      var c = new Date(a.created_at);
+      var d = new Date(b.created_at);
+      return (d - c);
+    })
     return (
     <div>
-      { currentMasterTrack === undefined ?
-        null
-      :
         <div>
           <h1 className="song-header">{song.title}</h1>
           <h3 className="song-originator">Originated by: {songOwner.username}</h3>
@@ -26,13 +31,17 @@ class PublicSongView extends React.Component {
             :
               <h3>This song is open for submissions</h3>
           }
-          <div className="current-master-view">
-            <h2>Current Master:</h2>
-              < MasterTrack
-                masterTrack={currentMasterTrack} 
-                csrf={this.props.csrf}
-                currentUser={this.props.currentUser} />
-          </div>
+          { currentMasterTrack === undefined ?
+              null
+            :
+              <div className="current-master-view">
+                <h2>Current Master:</h2>
+                  < MasterTrack
+                    masterTrack={currentMasterTrack} 
+                    csrf={this.props.csrf}
+                    currentUser={this.props.currentUser} />
+              </div>
+          }
           <div className="song-info">
             <h4>Song Info</h4>
             <ul>
@@ -78,7 +87,6 @@ class PublicSongView extends React.Component {
                 updateAfterFeature={this.props.updateAfterFeature} />
           }
         </div>
-      }
     </div>
     )
   }
