@@ -1,0 +1,40 @@
+<h1>Begin a New Project</h1>
+
+<%= form_tag songs_path, enctype: 'multipart/form-data' do %>
+  <!-- Song information here -->
+  <%= hidden_field_tag :owner_id, @current_user.id %>
+  <%= label_tag :title, "Title" %><br>
+  <%= text_field_tag :title %><br>
+  <%= label_tag :bpm, "BPM" %><br>
+  <%= text_field_tag :bpm %><br>
+  <%= label_tag :key, "Key" %><br>
+  <%= text_field_tag :key %><br>
+  <%= label_tag :time_signature, "Time Signature" %><br>
+  <%= text_field_tag :time_signature %><br>
+  <%= label_tag :background, "Enter song's background information here" %><br>
+  <%= text_area_tag :background %><br>
+
+  <!-- Song's genres here -->
+  <h3>Choose all genres for this song</h3>
+  <% @genres.each do |genre| %>
+    <%= check_box_tag "genre#{genre.id}", 1 %>
+    <%= label_tag :genre, "#{genre.name}" %><br>
+  <% end %>
+
+  <!-- Song's desired talents here -->
+  <h3>Choose all desired talents for this song</h3>
+  <% @talents.each do |talent| %>
+    <%= check_box_tag "talent#{talent.id}", 1 %>
+    <%= label_tag :talent, "#{talent.title}" %><br> 
+  <% end %>
+
+  <!-- Initial master track here -->
+  <h3>Fill out initial master track information here</h3>
+  <%= label_tag :description, "Enter master track's description here" %><br>
+  <%= text_area_tag :description %><br>
+  <%= label_tag :file, "Upload initial master file" %><br>
+  <%= file_field_tag :file %><br>
+
+  <!-- Submit button -->
+  <%= submit_tag value="Start Project" %>
+<% end %>

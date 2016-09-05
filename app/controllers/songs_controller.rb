@@ -47,5 +47,54 @@ class SongsController < ApplicationController
       :desired_talents,
       feature_tracks: { include: [:user, :talent]}])
   end
+
+  def create
+    # Create a new song
+    song = Song.new(title: params[:title], owner_id: params[:owner_id], bpm: params[:bpm], key: params[:key], time_signature: params[:time_signature], background: params[:background])
+    song.finished = false
+    song.save
+
+    # Add genres to song
+    genre_params = params.keys.select { |param| param =~ /genre/ }
+    genre_ids = genre_params.map { |name| name.gsub(/genre/, "").to_i }
+    genres_to_add = genre_ids.map { |id| Genre.find(id) }
+    genres_to_add.each do |genre|
+      song.genres << genre
+    end
+
+    # Add talents to song
+    talent_params = params.keys.select { |param| param =~ /talent/ }
+    talent_ids = talent_params.map { |name| name.gsub(/talent/, "").to_i }
+    talents_to_add = talent_ids.map { |id| Talent.find(id) }
+    talents_to_add.each do |talent|
+      song.desired_talents << talent
+    end
+
+    # Create initial master track
+    s3 = AWS::S3.new(:access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY'])
+
+    obj = s3.buckets[ENV['S3_BUCKET']].objects[params[:file].original_filename]
+
+    obj.write(
+      file: params[:file],
+      acl: :public_read
+    )
+
+    master_track = song.master_tracks.new(description: params[:description])
+
+    master_track.file_name = obj.key
+    master_track.file_path = obj.public_url
+
+    master_track.save
+
+    # Redirect user to new song page
+    redirect_to "/songs/#{song.id}"
+  end
+
+  def new
+    @genres = Genre.all.order(:name)
+    @talents = Talent.all.order(:title)
+    @current_user = current_user
+  end
 end
 
