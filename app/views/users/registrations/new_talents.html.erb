@@ -1,0 +1,21 @@
+<h1>Add Talents</h1>
+
+<%= form_tag talents_genres_talents_path, enctype: 'multipart/form-data' do %>
+  <% @talents.each do |talent| %>
+    <%= check_box_tag "talent#{talent.id}", 1 %>
+    <%= label_tag :talent, "#{talent.title}" %><br>
+  <% end %>
+
+<h1>Add Favorite Genres</h1>
+   <% @genres.each do |genre| %>
+    <%= check_box_tag "genre#{genre.id}", 1 %>
+    <%= label_tag :genre, "#{genre.name}" %><br>
+  <% end %>
+<%= hidden_field_tag :user_id, @user.id %>
+
+<h2>Add a photo</h2>
+  <%= file_field_tag :file %>
+<br>
+<%= submit_tag value="Complete Registration" %>
+
+<% end %>
