@@ -7,6 +7,7 @@ class CommentDisplay extends React.Component {
     }
     this.toggleAddCommentForm = this.toggleAddCommentForm.bind(this);
     this.submitComment = this.submitComment.bind(this);
+    this.removeComment = this.removeComment.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +54,19 @@ class CommentDisplay extends React.Component {
     })
   }
 
+  removeComment(comment) {
+    var commentID = comment.id
+    var commentIDArray = this.state.comments.map((comment) => {
+      return comment.id
+    })
+    var index = commentIDArray.indexOf(commentID)
+    var newCommentsArray = this.state.comments
+    newCommentsArray.splice(index, 1)
+    this.setState({
+      comments: newCommentsArray
+    })
+  }
+
   render() {
     let masterTrack = this.props.masterTrack;
     return (
@@ -65,6 +79,8 @@ class CommentDisplay extends React.Component {
                 return ( < TrackComment
                            comment={comment}
                            currentUser={this.props.currentUser}
+                           csrf={this.props.csrf}
+                           removeComment={this.removeComment}
                            key={i} />
               )})}
             </ul>
