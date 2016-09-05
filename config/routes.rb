@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users
   get 'users/:id/info', to: 'users#info'
 
+
   resources :songs
   get 'songs/:id/info', to: 'songs#info'
   get '/unfinished_songs', to: 'songs#unfinished_songs'
@@ -20,5 +21,7 @@ Rails.application.routes.draw do
   resources :likes, only: :create
   delete '/likes', to: 'likes#destroy'
 
+  get 'registrations/new_genres_talents', to: 'registrations#new_genres_talents'
+  post 'registrations/genres_talents', to: 'registrations#create_genres_talents'
 
 end

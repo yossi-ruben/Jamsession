@@ -1,0 +1,14 @@
+<h1>Add Talents</h1>
+<% form_for @user do |f|%>
+  <% @talents.each do |talent| %>
+    <%= check_box_tag "talent#{talent.id}", 1 %>
+    <%= label_tag :talent, "#{talent.title}" %><br>
+  <% end %>
+   <% @genres.each do |genre| %>
+    <%= check_box_tag "genre#{genre.id}", 1 %>
+    <%= label_tag :genre, "#{genre.name}" %><br>
+  <% end %>
+  <% f.hidden_field :user_id, :value => @user.id %>
+  <%= f.submit %>
+<% end %>
+
