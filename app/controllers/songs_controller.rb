@@ -94,6 +94,12 @@ class SongsController < ApplicationController
     redirect_to "/songs/#{song.id}"
   end
 
+  def destroy
+    song = Song.find(params[:id])
+    song.destroy
+    redirect_to root_path, status: 303
+  end
+
   def new
     @genres = Genre.all.order(:name)
     @talents = Talent.all.order(:title)

@@ -3,17 +3,46 @@ class PrivateSongView extends React.Component {
     super()
     this.state = {
       talentArray: [],
-      playAll: false
+      playAll: false,
+      deleteInitiated: false
     }
     this.findAllTalents = this.findAllTalents.bind(this);
     this.playAllSelected = this.playAllSelected.bind(this);
     this.pauseAllSelected = this.pauseAllSelected.bind(this);
     this.resetAllToZero = this.resetAllToZero.bind(this);
+    this.initiateDelete = this.initiateDelete.bind(this);
+    this.changeMind = this.changeMind.bind(this);
+    // this.deleteSong = this.deleteSong.bind(this);
   }
 
   componentWillMount() {
     this.findAllTalents();
   }
+
+  initiateDelete() {
+    this.setState({
+      deleteInitiated: true
+    })
+  }
+
+  changeMind() {
+    this.setState({
+      deleteInitiated: false
+    })
+  }
+
+  // deleteSong() {
+  //   fetch(`/songs/${this.props.song.id}`, {
+  //     method: "delete",
+  //     dataType: "JSON",
+  //     headers: {
+  //       "X-CSRF-Token": this.props.csrf,
+  //       "Accept": "application/json",
+  //       "Content-Type": "application/json"
+  //     },
+  //     credentials: "include"
+  //   })
+  // }
 
   findAllTalents() {
     var featureTalentArray = []
@@ -81,6 +110,20 @@ class PrivateSongView extends React.Component {
     let featureTracks = this.props.featureTracks
     return (
       <div>
+        <h1>{this.props.song.title}</h1>
+        { this.state.deleteInitiated ?
+            <div>
+              <p>Are you sure?</p>
+              <form action={`/songs/${this.props.song.id}`} method="post">
+                <input type="hidden" name="_method" value="delete" />
+                <input type="hidden" name="authenticity_token" value={this.props.csrf} />
+                <input type="submit" value="Yes" />
+              </form>
+              <button onClick={this.changeMind}>No, I changed my mind</button>
+            </div>
+          :
+            <button onClick={this.initiateDelete}>Delete This Song</button>
+        }
         <h1>Masters</h1>
         {masterTracks.map((master, i) => {
           return < MasterTrackPrivate masterTrack={master} key={i} />
