@@ -33,7 +33,7 @@ class FeatureTrack extends React.Component {
           null
         }
         <p>{featureTrack.description}</p>
-        <p>Contributed by {featureContributor.username}</p>
+        <p>Contributed by <a href={`/users/${featureContributor.id}`}>{featureContributor.username}</a></p>
         <a href={featureTrack.file_path} download>Download</a>
       </div>
     )
