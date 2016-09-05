@@ -18,19 +18,22 @@ class TalentsController < ApplicationController
       current_user.talents << talent
     end
 
-    s3 = AWS::S3.new(:access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY'])
+      if  params[:file]
+      s3 = AWS::S3.new(:access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY'])
 
-    obj = s3.buckets[ENV['S3_BUCKET']].objects[params[:file].original_filename]
+      obj = s3.buckets[ENV['S3_BUCKET']].objects[params[:file].original_filename]
 
-    obj.write(
-      file: params[:file],
-      acl: :public_read
-    )
+      obj.write(
+        file: params[:file],
+        acl: :public_read
+      )
 
-      current_user.profile_pic_file_name = obj.key
-      current_user.profile_pic_file_path = obj.public_url
+        current_user.profile_pic_file_name = obj.key
+        current_user.profile_pic_file_path = obj.public_url
+      end
+
       current_user.save
 
-      redirect_to new_user_session_path
+      redirect_to user_session_path
     end
 end
