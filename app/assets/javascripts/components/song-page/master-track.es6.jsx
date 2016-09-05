@@ -105,7 +105,10 @@ class MasterTrack extends React.Component {
     let masterTrack = this.props.masterTrack
     let likeCount = this.state.likeCount
     let fans = this.state.fans
-     // The ternary here is because masterTrack is a deeply nested resource, and needs to wait to receive all of its information. Without the ternary, masterTrack tries to render while still undefined, but with the ternary, it will wait until it is defined to render, removing the chance of a loading error.
+     // The ternary here is because masterTrack is a deeply nested resource, and
+     // needs to wait to receive all of its information. Without the ternary, masterTrack
+     // tries to render while still undefined, but with the ternary, it will wait
+     // until it is defined to render, removing the chance of a loading error.
     return (
       <div>
       { masterTrack === undefined ?
