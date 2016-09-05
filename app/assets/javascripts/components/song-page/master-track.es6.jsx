@@ -67,7 +67,8 @@ class MasterTrack extends React.Component {
     })
     .then(() => {
       this.setState({
-        likeCount: this.state.likeCount + 1
+        likeCount: this.state.likeCount + 1,
+        fans: this.state.fans.concat([this.props.currentUser.id])
       })
     })
   }
