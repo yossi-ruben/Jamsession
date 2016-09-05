@@ -10,13 +10,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
 
-
-  def new_genres_talents
-    @genres = Genre.all
-    @talents = Talent.all
-    render '/users/registrations/new_talents'
-  end
-
   def create_genres_talents
     current_user = User.find(params[:user_id])
 
@@ -31,11 +24,11 @@ class RegistrationsController < Devise::RegistrationsController
     talent_ids = talent_params.map { |name| name.gsub(/talent/, "").to_i }
     talents_to_add = talent_ids.map { |id| Talent.find(id) }
     talents_to_add.each do |talent|
-      current_user.talents << talent
+      current_user.desired_talents << talent
     end
 
     if @talents.save && @genres.save
-      redirect_to new_user_session
+      redirect_to new_user_session_path
     else
       render :new_genres_talents
     end
@@ -44,7 +37,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     if @user.save
-      redirect_to registrations_new_genres_talents
+      redirect_to new_genres_talents_path
     else
       @errors = @user.errors.full_messages
       render :new
@@ -54,7 +47,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
   def sign_up_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :genres, :talents)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
 
