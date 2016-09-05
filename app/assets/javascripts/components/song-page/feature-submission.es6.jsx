@@ -70,7 +70,7 @@ class FeatureSubmission extends React.Component {
         uploadComplete: true,
         showSubmissionForm: false
       })
-      this.props.updateSongAfterFeature(json)
+      this.props.updateAfterFeature(json)
       description.value = "";
     })
   }

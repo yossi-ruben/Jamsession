@@ -21,6 +21,14 @@ class MasterTracksController < ApplicationController
     params[:includedFeatures].split(",").each do |feature_id|
       MasterFeature.create(master_track_id: master_track.id, feature_track_id: feature_id.to_i)
     end
+
+    render json: song.as_json(include:
+      [{master_tracks: { include: 
+        [{feature_tracks: {include: [:user, :talent]}},
+        {comments: { include: :user }},
+        :likes,
+        :fans]}},
+      feature_tracks: { include: [:user, :talent]}])
   end
 
   private
