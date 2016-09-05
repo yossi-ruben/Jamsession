@@ -8,22 +8,26 @@ class UserPageView extends React.Component {
       userStats: [],
       followers: [],
       following: [],
+      connects: [],
       csrf: ""
     }
     this.showUserProjects = this.showUserProjects.bind(this);
     this.showUserLiked = this.showUserLiked.bind(this);
     this.showUserCollaborated = this.showUserCollaborated.bind(this);
+    this.updateConnects = this.updateConnects.bind(this);
+    this.removeConnects = this.removeConnects.bind(this);
   }
 
   componentDidMount() {
     fetch (`/users/${this.props.user_id}/info`)
     .then((response) => response.json())
-    .then((json) => {
+    .then(function(json) {
       this.setState({userStats: json,
         followers: json.followers,
-        following: json.following
+        following: json.following,
+        connects: json.followers.map((user) => { return user.id })
       })
-    });
+    }.bind(this));
     this.csrfSetter();
   }
 
@@ -36,6 +40,18 @@ class UserPageView extends React.Component {
         });
       }
     }
+  }
+
+  updateConnects(id) {
+    this.setState({
+      connects: this.state.connects.concat([id])
+    })
+  }
+
+  removeConnects() {
+    this.setState({
+      connects: []
+    })
   }
 
   showUserProjects() {
@@ -65,7 +81,7 @@ class UserPageView extends React.Component {
   render(){
     return(
         <div className="container">
-          < UserInfo csrf={this.state.csrf}userStats={this.state.userStats} currentUser={this.props.currentUser} following={this.state.following} followers={this.state.followers}/>
+          < UserInfo removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={this.props.currentUser} following={this.state.following} followers={this.state.followers}/>
           <div className="content-column">
             <ul className="tab">
               <li><a onClick={this.showUserProjects} href="#" className="tablinks">List of Projects</a></li>

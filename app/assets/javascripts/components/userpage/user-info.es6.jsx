@@ -3,9 +3,7 @@ class UserInfo extends React.Component{
     super();
     this.state = {
       showFollowing: false,
-      showFollowers: false,
-      startFollowing: false,
-      stopFollowing: true
+      showFollowers: false
     }
     this.showFollowing = this.showFollowing.bind(this);
     this.showFollowers = this.showFollowers.bind(this);
@@ -44,33 +42,56 @@ class UserInfo extends React.Component{
       },
       credentials: "include",
       body: JSON.stringify(data)
-    })
+    }).then(() => {
+      this.props.updateConnects(this.props.currentUser.id)        
+      }
+    )
   }
 
   stopFollowing() {
+    let data = {
+      user_id: this.props.currentUser.id,
+      user_to_follow: this.props.userStats.id
+    }
     this.setState({
       startFollowing: false,
       stopFollowing: true
     })
+    fetch('/connections', {
+      method: "delete",
+      dataType: "JSON",
+      headers: {
+        "X-CSRF-Token": this.props.csrf,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    }).then(() => {
+      this.props.removeConnects()
+    })
+
   }
 
   render(){
     let userStats = this.props.userStats
     let following = this.props.following
     let followers = this.props.followers
+    let connects = this.props.connects
     return(
     <aside className="navigation">
       <img src={userStats.profile_pic_file_path} />
       <h3>{userStats.username}</h3>
         <div className="user-follow">
-          {this.state.startFollowing ?
+          {connects.includes(this.props.currentUser.id) ?
             <div>
               <button onClick={this.stopFollowing}>Unfollow</button>
             </div>
             :
             <div>
               <button onClick={this.startFollowing}>Follow</button>
-            </div>  
+            </div> 
+
           }
 
         </div>
