@@ -6,13 +6,13 @@ class MasterTrack extends React.Component {
       displayDescription: false,
       displayCollaborators: false,
       likeCount: 0,
-      fans: [],
-      likedByUser: false
+      fans: []
     }
     this.toggleCommentView = this.toggleCommentView.bind(this);
     this.toggleDescriptionView = this.toggleDescriptionView.bind(this);
     this.toggleCollaboratorView = this.toggleCollaboratorView.bind(this);
     this.addLike = this.addLike.bind(this);
+    this.removeLike = this.removeLike.bind(this);
   }
 
   componentDidMount() {
@@ -73,6 +73,33 @@ class MasterTrack extends React.Component {
     })
   }
 
+  removeLike() {
+    let data = {
+      user_id: this.props.currentUser.id,
+      master_track_id: this.props.masterTrack.id
+    }
+
+    fetch('/likes', {
+      method: "delete",
+      dataType: "JSON",
+      headers: {
+        "X-CSRF-Token": this.props.csrf,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    })
+    .then(() => {
+      var index = this.state.fans.indexOf(this.props.currentUser.id)
+      var fansArray = this.state.fans
+      fansArray.splice(index, 1)
+      this.setState({
+        likeCount: this.state.likeCount - 1,
+        fans: fansArray
+      })
+    })
+  }
 
   render() {
     let masterTrack = this.props.masterTrack
@@ -96,7 +123,7 @@ class MasterTrack extends React.Component {
               }
             </p>
             { fans.includes(this.props.currentUser.id) ?
-                <p>Liked Already</p>
+                <button onClick={this.removeLike}>Unlike</button>
               :
                 <button onClick={this.addLike}>Like</button>
             }
