@@ -2,14 +2,14 @@ class FeatureTrack extends React.Component {
   constructor() {
     super();
     this.state = {
-      showAudioPlayer: false
+      showFull: false
     }
-    this.toggleShowPlayer = this.toggleShowPlayer.bind(this);
+    this.toggleShowFull = this.toggleShowFull.bind(this);
   }
 
-  toggleShowPlayer() {
+  toggleShowFull() {
     this.setState({
-      showAudioPlayer: !this.state.showAudioPlayer
+      showFull: !this.state.showFull
     })
   }
 
@@ -18,23 +18,25 @@ class FeatureTrack extends React.Component {
     let featureContributor = this.props.featureContributor
     return (
       <div className="feature-track-holder">
-        <button onClick={this.toggleShowPlayer}>
-          { this.state.showAudioPlayer ?
+        <p>Contributed by <a href={`/users/${featureContributor.id}`}>{featureContributor.username}</a> <span className="small-text">{featureTrack.file_name}</span></p>
+        <button onClick={this.toggleShowFull}>
+          { this.state.showFull ?
             <p>Hide Audio Player</p>
           :
             <p>Show Audio Player</p>
           }
         </button>
-        { this.state.showAudioPlayer ?
-          <audio controls className="audio-player">
-            <source src={featureTrack.file_path} type="audio/mpeg" />
-          </audio>
+        { this.state.showFull ?
+          <div>
+            <audio controls className="audio-player">
+              <source src={featureTrack.file_path} type="audio/mpeg" />
+            </audio>
+            <p>{featureTrack.description}</p>
+            <a href={featureTrack.file_path} download>Download</a>
+          </div>
         :
           null
         }
-        <p>{featureTrack.description}</p>
-        <p>Contributed by <a href={`/users/${featureContributor.id}`}>{featureContributor.username}</a></p>
-        <a href={featureTrack.file_path} download>Download</a>
       </div>
     )
   }

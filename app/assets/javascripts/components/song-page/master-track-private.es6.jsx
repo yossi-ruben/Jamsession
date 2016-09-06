@@ -2,13 +2,13 @@ class MasterTrackPrivate extends React.Component {
   constructor() {
     super();
     this.state = {
-      showAudioPlayer: false
+      showFull: false
     }
-    this.toggleShowPlayer = this.toggleShowPlayer.bind(this);
+    this.toggleShowFull = this.toggleShowFull.bind(this);
     this.deleteMaster = this.deleteMaster.bind(this);
   }
 
-  toggleShowPlayer() {
+  toggleShowFull() {
     this.setState({
       showAudioPlayer: !this.state.showAudioPlayer
     })
@@ -35,23 +35,25 @@ class MasterTrackPrivate extends React.Component {
     let masterTrack = this.props.masterTrack
     return (
       <div className="feature-track-holder">
-        <button onClick={this.toggleShowPlayer}>
-          { this.state.showAudioPlayer ?
+        <p>{masterTrack.description}</p>
+        <button onClick={this.toggleShowFull}>
+          { this.state.showFull ?
             <p>Hide Audio Player</p>
           :
             <p>Show Audio Player</p>
           }
         </button>
         { this.state.showAudioPlayer ?
-          <audio controls className="audio-player">
-            <source src={masterTrack.file_path} type="audio/mpeg" />
-          </audio>
+          <div>
+            <audio controls className="audio-player">
+              <source src={masterTrack.file_path} type="audio/mpeg" />
+            </audio>
+            <a href={masterTrack.file_path} download>Download</a>
+            <button onClick={this.deleteMaster}>Delete this Master Track</button>
+          </div>
         :
           null
         }
-        <p>{masterTrack.description}</p>
-        <a href={masterTrack.file_path} download>Download</a>
-        <button onClick={this.deleteMaster}>Delete this Master Track</button>
       </div>
     )
   }
