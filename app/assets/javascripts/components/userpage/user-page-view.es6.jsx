@@ -11,6 +11,8 @@ class UserPageView extends React.Component {
       connects: [],
       talents: [],
       genres: [],
+      currentlyPlaying: false,
+      songPlaying: "",
       csrf: ""
     }
     this.showUserProjects = this.showUserProjects.bind(this);
@@ -18,6 +20,7 @@ class UserPageView extends React.Component {
     this.showUserCollaborated = this.showUserCollaborated.bind(this);
     this.updateConnects = this.updateConnects.bind(this);
     this.removeConnects = this.removeConnects.bind(this);
+    this.playSong = this.playSong.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +47,13 @@ class UserPageView extends React.Component {
         });
       }
     }
+  }
+
+  playSong(file_path) {
+    this.setState({
+      currentlyPlaying: true,
+      songPlaying: file_path
+    })
   }
 
   updateConnects(id, json) {
@@ -95,7 +105,7 @@ class UserPageView extends React.Component {
       :
         currentUser = this.props.currentUser
     }
-    return(
+    return (
         <div className="container">
           < UserInfo genres={this.state.genres} talents={this.state.talents} removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={currentUser} following={this.state.following} followers={this.state.followers}/>
           <div className="content-column">
@@ -116,12 +126,19 @@ class UserPageView extends React.Component {
                     null
                 }
                 { this.state.showUserCollaborated ?
-                   < UserCollaborated collaborated={this.props.collaborated_songs} />
+                   < UserCollaborated collaborated={this.props.collaborated_songs} playSong={this.playSong} />
                   :
                     null
                 }
               </div>
           </div>
+          { this.state.currentlyPlaying ?
+              <audio controls id="audio-player">
+                <source src={this.state.songPlaying} type="audio/mpeg" />
+              </audio>
+            :
+              null
+          }
         </div>
       );
 }}
