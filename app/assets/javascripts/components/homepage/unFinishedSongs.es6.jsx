@@ -8,9 +8,13 @@ class UnFinishedSongs extends React.Component{
       talents: [],
       forMeList: [],
       hotList: [],
+      sortByGenreList: [],
+      sortByTalentList: [],
       allSongs: true,
       hot: false,
-      forMe: false
+      forMe: false,
+      sortByGenres: false,
+      sortByTalents: false
     }
     this.grabGenres = this.grabGenres.bind(this);
     this.grabForMe = this.grabForMe.bind(this);
@@ -22,12 +26,13 @@ class UnFinishedSongs extends React.Component{
     this.setForMe = this.setForMe.bind(this);
     this.setTalentsAndGenres = this.setTalentsAndGenres.bind(this);
 
+    this.setSortByGenresList = this.setSortByGenresList.bind(this);
+    this.setSortByTalentsList = this.setSortByTalentsList.bind(this);
+
     this.songsToShow = this.songsToShow.bind(this);
 
     this.totalLikes = this.totalLikes.bind(this);
 
-
-    this.testing = this.testing.bind(this);
   }
 
 
@@ -59,34 +64,53 @@ class UnFinishedSongs extends React.Component{
   }
 
 
-
-
   totalLikes(song){
     // console.log(song.master_tracks)
    return song.master_tracks.reduce(function(prevValue, currValue){
       // console.log(obj.likes.length)
       return (prevValue + currValue.likes.length)
    },0)
-
   }
 
+
+  setToSortByGenres(){
+    this.setState({sortByGenres: true})
+    this.setState({sortByTalents: false})
+    this.setState({hot: false})
+    this.setState({allSongs: false})
+    this.setState({forMe: false})
+  }
+
+  setToSortByTalents(){
+    this.setState({sortByTalents: true})
+    this.setState({sortByGenres: false})
+    this.setState({hot: false})
+    this.setState({allSongs: false})
+    this.setState({forMe: false})
+  }
 
   setToHot(){
     this.setState({hot: true})
     this.setState({allSongs: false})
     this.setState({forMe: false})
+    this.setState({sortByGenres: false})
+    this.setState({sortByTalents: false})
   }
 
   setToAll(){
     this.setState({hot: false})
     this.setState({allSongs: true})
     this.setState({forMe: false})
+    this.setState({sortByGenres: false})
+    this.setState({sortByTalents: false})
   }
 
   setForMe(){
     this.setState({hot: false})
     this.setState({allSongs: false})
     this.setState({forMe: true})
+    this.setState({sortByGenres: false})
+    this.setState({sortByTalents: false})
   }
 
 // this is the method to grab only the songs that are recommended
@@ -165,8 +189,46 @@ class UnFinishedSongs extends React.Component{
   }
 
 
+  setSortByTalentsList(){
+    // for(n in this.state.data){
+    var songList =  this.state.data.filter((el) => {
+      return el.desired_talents.map(function(a) {
+        return a.title
+      }).includes(this.refs.talent.value)
+    })
+
+    this.setState({sortByTalentList: songList});
+    this.setToSortByTalents();
+
+      // this.state.data[n].desired_talents.map(function(a) {
+      //   return a.title
+      // }).includes(this.refs.genre.talents.value)
+
+      // for(i in this.state.data[n].desired_talents){
+      //   debugger
+      // }
+    // }
+  }
+
+
+  setSortByGenresList(){
+
+    var songList = this.state.data.filter((el) =>{
+      return el.genres.map(function(a) {
+        return a.name
+      }).includes(this.refs.genre.value)
+    })
+
+    this.setState({sortByGenreList: songList});
+    this.setToSortByGenres();
+
+  }
+
+
+
+
 songsToShow(){
-  if (this.state.allSongs){
+  if (this.state.allSongs) {
     return (
       <div>
         {this.state.data.map((song, i) => {
@@ -193,17 +255,29 @@ songsToShow(){
       </div>
     )
   }
+  else if(this.state.sortByTalents) {
+    return(
+      <div>
+        {this.state.sortByTalentList.map((song, i) =>{
+          return <Song theSong={song} key={i}/>
+        })}
+      </div>
+    )
+  }
+  else if(this.state.sortByGenres){
+    return(
+      <div>
+        {this.state.sortByGenreList.map((song, i) =>{
+          return <Song theSong={song} key={i}/>
+        })}
+      </div>
+    )
+  }
+
+
 }
 
-testing(){
-  console.log("in testrsdfg")
-  console.log(this.refs.genre.value)
-  listOptions = [this.state.hotList, this.state.forMeList, this.state.data]
-  displayedlistbools = [this.state.hot, this.state.forMe, this.state.allSongs]
-  indexOfSongList = displayedlistbools.indexOf(true)
-  songList = listOptions[indexOfSongList]
-  debugger
-}
+
 
 
   render(){
@@ -215,7 +289,7 @@ testing(){
           <ul>
 
             <li>Talents:
-              <select>
+              <select ref="talent" onChange={this.setSortByTalentsList}>
                 {this.state.talents.map((talent, i) =>
                    <option  key={i} >{talent}</option>
                 )}
@@ -223,7 +297,7 @@ testing(){
             </li>
 
             <li>Genres:
-              <select ref="genre" onChange={this.testing}>
+              <select ref="genre" onChange={this.setSortByGenresList}>
                 {this.state.genres.map((genre, i) =>
                    <option value={genre.id} key={i} >{genre}</option>
                 )}

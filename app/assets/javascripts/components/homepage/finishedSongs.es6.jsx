@@ -8,10 +8,12 @@ class FinishedSongs extends React.Component{
       recommendedList: [],
       hotList: [],
       randomList: [],
+      sortByGenresList: [],
       hot: true,
       recentlylFinished: false,
       random: false,
-      recommended: false
+      recommended: false,
+      sortByGenres: false
     }
 
     this.grabGenres = this.grabGenres.bind(this);
@@ -19,13 +21,14 @@ class FinishedSongs extends React.Component{
 
     this.sortByHot = this.sortByHot.bind(this);
     this.totalLikes = this.totalLikes.bind(this);
+    this.displayGenresList = this.displayGenresList.bind(this);
 
 
     this.setToHot = this.setToHot.bind(this);
     this.setToRecentlyFinished = this.setToRecentlyFinished.bind(this);
     this.setToRandom = this.setToRandom.bind(this);
     this.setToRecommended = this.setToRecommended.bind(this);
-
+    this.setToGenresList = this.setToGenresList.bind(this);
 
     this.songsToShow = this.songsToShow.bind(this);
     this.randomize = this.randomize.bind(this);
@@ -58,11 +61,21 @@ class FinishedSongs extends React.Component{
   }
 
   // used to reset what is being displayed start
+  setToGenresList(){
+    this.setState({sortByGenres: true})
+    this.setState({hot: false})
+    this.setState({recentlylFinished: false})
+    this.setState({random: false})
+    this.setState({recommended: false})
+  }
+
   setToHot(){
     this.setState({hot: true})
     this.setState({recentlylFinished: false})
     this.setState({random: false})
     this.setState({recommended: false})
+    this.setState({sortByGenres: false})
+
   }
 
   setToRecentlyFinished(){
@@ -70,6 +83,7 @@ class FinishedSongs extends React.Component{
     this.setState({recentlylFinished: true})
     this.setState({random: false})
     this.setState({recommended: false})
+    this.setState({sortByGenres: false})
   }
 
   setToRandom(){
@@ -77,6 +91,7 @@ class FinishedSongs extends React.Component{
     this.setState({recentlylFinished: false})
     this.setState({random: true})
     this.setState({recommended: false})
+    this.setState({sortByGenres: false})
   }
 
   setToRecommended(){
@@ -84,6 +99,7 @@ class FinishedSongs extends React.Component{
     this.setState({recentlylFinished: false})
     this.setState({random: false})
     this.setState({recommended: true})
+    this.setState({sortByGenres: false})
   }
 
 // Finish
@@ -124,9 +140,7 @@ class FinishedSongs extends React.Component{
 
   // helper method for sortByHot
   totalLikes(song){
-    // console.log(song.master_tracks)
    return song.master_tracks.reduce(function(prevValue, currValue){
-      // console.log(obj.likes.length)
       return (prevValue + currValue.likes.length)
    },0)
   }
@@ -161,6 +175,18 @@ class FinishedSongs extends React.Component{
     return (finalList)
   };
 // finish
+
+  displayGenresList(){
+    var songList = this.state.data.filter((el) =>{
+      return el.genres.map(function(a){
+        return a.name
+      }).includes(this.refs.genre.value)
+    })
+
+    this.setState({sortByGenresList: songList});
+    this.setToGenresList();
+
+  }
 
   songsToShow(){
     if (this.state.hot){
@@ -199,6 +225,15 @@ class FinishedSongs extends React.Component{
         </div>
       )
     }
+    else if(this.state.sortByGenres){
+      return(
+        <div>
+          {this.state.sortByGenresList.map((song, i) => {
+            return <Song theSong={song} key={i}/>
+          })}
+        </div>
+      )
+    }
 
   }
 
@@ -213,7 +248,7 @@ class FinishedSongs extends React.Component{
         <div className="UnFinNav">
           <ul>
             <li>Genres:
-              <select>
+              <select ref="genre" onChange={this.displayGenresList}>
               {this.state.genres.map((genre, i) =>
                 <option key={i}>{genre}</option>
               )}
