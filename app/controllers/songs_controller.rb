@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
   def finished_songs
     finished_songs = Song.where(finished: true)
-    render json: finished_songs.as_json(include: [ :genres, :desired_talents, {master_tracks: {include: :likes}}])
+    render json: finished_songs.as_json(include: [ :genres, :desired_talents, {master_tracks: {include: :likes}}, :user])
   end
 
   def unfinished_songs
@@ -13,7 +13,7 @@ class SongsController < ApplicationController
     # respond_to do |format|
     #   format.html
     #   format.xml {
-    render json: unfinished_songs.as_json(include: [:desired_talents, :genres, {master_tracks: {include: :likes}}])
+    render json: unfinished_songs.as_json(include: [:desired_talents, :genres, {master_tracks: {include: :likes}}, :user])
       #     ])}
       # end
   end

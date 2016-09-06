@@ -20,8 +20,14 @@ class UnFinishedSongs extends React.Component{
     this.setToHot = this.setToHot.bind(this);
     this.setToAll = this.setToAll.bind(this);
     this.setForMe = this.setForMe.bind(this);
+    this.setTalentsAndGenres = this.setTalentsAndGenres.bind(this);
 
     this.songsToShow = this.songsToShow.bind(this);
+
+    this.totalLikes = this.totalLikes.bind(this);
+
+
+    this.testing = this.testing.bind(this);
   }
 
 
@@ -30,9 +36,9 @@ class UnFinishedSongs extends React.Component{
     .then((response) => response.json())
     .then((json) => {
       this.setState({data: json})
-      this.setState({genres: this.grabGenres()})
-      this.setState({talents: this.grabTalents()})
+      this.setTalentsAndGenres()
       this.setState({forMeList: this.grabForMe()})
+      this.setState({hotList: this.sortByHot()})
     });
   }
 
@@ -42,7 +48,28 @@ class UnFinishedSongs extends React.Component{
   }
 
   sortByHot(){
+    var songsAndLikes = []
+
+    for(n in this.state.data){
+      songsAndLikes.push( [[this.state.data[n]], [this.totalLikes(this.state.data[n])]] )
+    }
+
+    songsAndLikes.sort(function(b,a){return a[1] - b[1]})
+    return (songsAndLikes)
   }
+
+
+
+
+  totalLikes(song){
+    // console.log(song.master_tracks)
+   return song.master_tracks.reduce(function(prevValue, currValue){
+      // console.log(obj.likes.length)
+      return (prevValue + currValue.likes.length)
+   },0)
+
+  }
+
 
   setToHot(){
     this.setState({hot: true})
@@ -61,8 +88,6 @@ class UnFinishedSongs extends React.Component{
     this.setState({allSongs: false})
     this.setState({forMe: true})
   }
-
-
 
 // this is the method to grab only the songs that are recommended
 // need to be able to grab array of users genres and talents
@@ -159,8 +184,26 @@ songsToShow(){
       </div>
     )
   }
+  else if(this.state.hot) {
+    return(
+      <div>
+        {this.state.hotList.map((song, i) => {
+          return <Song theSong={song[0][0]} key={i}/>
+        })}
+      </div>
+    )
+  }
 }
 
+testing(){
+  console.log("in testrsdfg")
+  console.log(this.refs.genre.value)
+  listOptions = [this.state.hotList, this.state.forMeList, this.state.data]
+  displayedlistbools = [this.state.hot, this.state.forMe, this.state.allSongs]
+  indexOfSongList = displayedlistbools.indexOf(true)
+  songList = listOptions[indexOfSongList]
+  debugger
+}
 
 
   render(){
@@ -174,23 +217,23 @@ songsToShow(){
             <li>Talents:
               <select>
                 {this.state.talents.map((talent, i) =>
-                   <option key={i} >{talent}</option>
+                   <option  key={i} >{talent}</option>
                 )}
               </select>
             </li>
 
             <li>Genres:
-              <select>
+              <select ref="genre" onChange={this.testing}>
                 {this.state.genres.map((genre, i) =>
-                   <option key={i} >{genre}</option>
+                   <option value={genre.id} key={i} >{genre}</option>
                 )}
               </select>
             </li>
 
             <li onClick={this.setToHot}>Hot</li>
-            <li onClick={this.setToNew}>New</li>
-            <li onClick={this.setForMe}>For Me</li>
-            <li onClick={this.setToAll}>All</li>
+            <li onClick={this.setToAll}>New</li>
+            <li onClick={this.setForMe}>Recommended</li>
+
 
           </ul>
         </div>
@@ -204,3 +247,39 @@ songsToShow(){
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
