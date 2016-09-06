@@ -105,5 +105,37 @@ class SongsController < ApplicationController
     @talents = Talent.all.order(:title)
     @current_user = current_user
   end
+
+  def finish
+    song = Song.find(params[:id])
+    song.finished = true
+    song.save
+    render json: song.as_json(include:
+      [{master_tracks: { include:
+        [{feature_tracks: { include: [:user, :talent]}},
+        {comments: { include: :user }},
+        :likes,
+        :fans]}},
+      :user,
+      :genres,
+      :desired_talents,
+      feature_tracks: { include: [:user, :talent]}])
+  end
+
+  def reopen
+    song = Song.find(params[:id])
+    song.finished = false
+    song.save
+    render json: song.as_json(include:
+      [{master_tracks: { include:
+        [{feature_tracks: { include: [:user, :talent]}},
+        {comments: { include: :user }},
+        :likes,
+        :fans]}},
+      :user,
+      :genres,
+      :desired_talents,
+      feature_tracks: { include: [:user, :talent]}])
+  end
 end
 

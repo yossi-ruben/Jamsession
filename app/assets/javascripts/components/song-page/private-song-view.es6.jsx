@@ -12,6 +12,8 @@ class PrivateSongView extends React.Component {
     this.resetAllToZero = this.resetAllToZero.bind(this);
     this.initiateDelete = this.initiateDelete.bind(this);
     this.changeMind = this.changeMind.bind(this);
+    this.reopenSong = this.reopenSong.bind(this);
+    this.closeSong = this.closeSong.bind(this);
   }
 
   componentWillMount() {
@@ -27,6 +29,40 @@ class PrivateSongView extends React.Component {
   changeMind() {
     this.setState({
       deleteInitiated: false
+    })
+  }
+
+  reopenSong() {
+    fetch(`/songs/${this.props.song.id}/reopen`, {
+      method: "PATCH",
+      dataType: "JSON",
+      headers: {
+        "X-CSRF-Token": this.props.csrf,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      this.props.updateSong(json);
+    })
+  }
+
+  closeSong() {
+    fetch(`/songs/${this.props.song.id}/finish`, {
+      method: "PATCH",
+      dataType: "JSON",
+      headers: {
+        "X-CSRF-Token": this.props.csrf,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      this.props.updateSong(json);
     })
   }
 
@@ -101,6 +137,11 @@ class PrivateSongView extends React.Component {
     return (
       <div>
         <h1>{this.props.song.title}</h1>
+        { this.props.song.finished ?
+            <button onClick={this.reopenSong}>Re-Open this Song for Submissions</button>
+          :
+            <button onClick={this.closeSong}>Mark this Song as Finished</button>
+        }
         { this.state.deleteInitiated ?
             <div>
               <p>Are you sure?</p>
