@@ -51,7 +51,7 @@ class UserPageView extends React.Component {
 
   playSong(file_path) {
     this.setState({
-      currentlyPlaying: true,
+      currentlyPlaying: !this.state.currentlyPlaying,
       songPlaying: file_path
     })
   }
@@ -116,12 +116,12 @@ class UserPageView extends React.Component {
             </ul>
               <div className="user-song-view">
                 { this.state.showUserProjects ?
-                    < UserProjects finished={this.props.finished_songs} unfinished={this.props.unfinished_songs}/>
+                    < UserProjects finished={this.props.finished_songs} unfinished={this.props.unfinished_songs} playSong={this.playSong} />
                   :
                     null
                 }
                 { this.state.showUserLiked ?
-                    < UserLiked likedSongs={this.props.liked_songs}/>
+                    < UserLiked likedSongs={this.props.liked_songs} playSong={this.playSong}/>
                   :
                     null
                 }
@@ -132,13 +132,15 @@ class UserPageView extends React.Component {
                 }
               </div>
           </div>
+          <div className="audio-player-holder">
           { this.state.currentlyPlaying ?
-              <audio controls id="audio-player">
-                <source src={this.state.songPlaying} type="audio/mpeg" />
-              </audio>
+              < AudioPlayer 
+                songPlaying={this.state.songPlaying} />
             :
-              null
+              < SecondAudioPlayer
+                songPlaying={this.state.songPlaying} />
           }
+          </div>
         </div>
       );
 }}

@@ -21,7 +21,7 @@ div {
 }
 
 .container {
-
+  margin-bottom: 100px;
 }
 
 .content-column{
@@ -83,4 +83,17 @@ ul.tab li a:focus, .active {background-color: #939393;}
 
 .carousel-caption {
   background: white;
+}
+
+.audio-player-holder {
+  position: fixed;
+  bottom: 0;
+  background: #404040;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.audio-player-holder audio {
+  width: 750px;
 }

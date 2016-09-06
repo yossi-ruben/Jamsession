@@ -1,7 +1,16 @@
 class UserSongs extends React.Component {
+  constructor() {
+    super();
+    this.sendSongToParent = this.sendSongToParent.bind(this);
+  }
+
+  sendSongToParent() {
+    this.props.playSong(this.props.info.master.file_path)
+  }
+
   render(){
-    let info = this.props.info
-    let dateObj = new Date(this.props.info.updated_at)
+    let info = this.props.info.song
+    let dateObj = new Date(this.props.info.song.updated_at)
     let month = dateObj.getUTCMonth();
     let day = dateObj.getUTCDate();
     let year = dateObj.getUTCFullYear();
@@ -21,6 +30,7 @@ class UserSongs extends React.Component {
               <a href={'/songs/' + info.id}>Song Title: {info.title}</a>
               <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <p>Description: {info.background}</p>
+              <button onClick={this.sendSongToParent}>Play</button>
             </div>
           </div>
         </div>   

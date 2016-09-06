@@ -4,9 +4,9 @@ class UserProjects extends React.Component{
     let unfinished = this.props.unfinished
     return (
       <div id="UserProjects" className="tabcontent">
-        < UserFinishedSongs finished={this.props.finished} />
+        < UserFinishedSongs finished={this.props.finished} playSong={this.props.playSong}/>
         <br/>
-        < UserUnfinishedSongs unfinished={this.props.unfinished} />
+        < UserUnfinishedSongs unfinished={this.props.unfinished} playSong={this.props.playSong}/>
       </div>
       )
 }}

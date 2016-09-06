@@ -4,8 +4,8 @@ class UsersController < ApplicationController
     user_songs = Song.where(owner_id: user.id)
     @liked_masters = find_liked_songs(user)
     @collaborated_songs = find_collaborated_songs(user)
-    @user_unfinished_songs = user_songs.where(finished: false)
-    @user_finished_songs = user_songs.where(finished: true)
+    @user_unfinished_songs = find_unfinished_songs(user)
+    @user_finished_songs = find_finished_songs(user)
     
   end
 
@@ -40,5 +40,23 @@ class UsersController < ApplicationController
       @collaborated_songs << {song: master.song, master: master, user: master.song.user}
     end
     return @collaborated_songs
+  end
+
+  def find_finished_songs(user)
+    finished_songs = user.songs.where(finished: true)
+    finished_songs_and_masters = []
+    finished_songs.each do |song|
+      finished_songs_and_masters << {song: song, master: song.master_tracks.last}
+    end
+    finished_songs_and_masters
+  end
+
+  def find_unfinished_songs(user) 
+    unfinished_songs = user.songs.where(finished: false)
+    unfinished_songs_and_masters = []
+    unfinished_songs.each do |song|
+      unfinished_songs_and_masters << {song: song, master: song.master_tracks.last }
+    end
+    unfinished_songs_and_masters 
   end
 end
