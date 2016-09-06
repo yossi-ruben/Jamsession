@@ -121,6 +121,8 @@ class SongPage extends React.Component {
                 updateAfterMaster={this.updateAfterMaster}
                 removeMaster={this.removeMaster}
                 updateSong={this.updateSong}
+                allGenres={this.props.allGenres}
+                allTalents={this.props.allTalents}
                 csrf={this.state.csrf} />
             :
               null

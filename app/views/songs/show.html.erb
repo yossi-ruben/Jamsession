@@ -1,1 +1,1 @@
-<%= react_component('SongPage', private_user_auth: @private_user_auth, song_id: params[:id], currentUser: current_user) %>
+<%= react_component('SongPage', private_user_auth: @private_user_auth, song_id: params[:id], currentUser: current_user, allGenres: Genre.all, allTalents: Talent.all) %>

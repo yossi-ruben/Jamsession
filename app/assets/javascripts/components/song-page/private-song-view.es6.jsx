@@ -4,7 +4,8 @@ class PrivateSongView extends React.Component {
     this.state = {
       talentArray: [],
       playAll: false,
-      deleteInitiated: false
+      deleteInitiated: false,
+      editFormVisible: false
     }
     this.findAllTalents = this.findAllTalents.bind(this);
     this.playAllSelected = this.playAllSelected.bind(this);
@@ -14,6 +15,7 @@ class PrivateSongView extends React.Component {
     this.changeMind = this.changeMind.bind(this);
     this.reopenSong = this.reopenSong.bind(this);
     this.closeSong = this.closeSong.bind(this);
+    this.toggleEditForm = this.toggleEditForm.bind(this);
   }
 
   componentWillMount() {
@@ -63,6 +65,12 @@ class PrivateSongView extends React.Component {
     .then((response) => response.json())
     .then((json) => {
       this.props.updateSong(json);
+    })
+  }
+
+  toggleEditForm() {
+    this.setState({
+      editFormVisible: !this.state.editFormVisible
     })
   }
 
@@ -154,6 +162,21 @@ class PrivateSongView extends React.Component {
             </div>
           :
             <button onClick={this.initiateDelete}>Delete This Song</button>
+        }
+        { this.state.editFormVisible ?
+            <button onClick={this.toggleEditForm}>Hide Edit Form</button>
+          :
+            <button onClick={this.toggleEditForm}>Edit Song Information</button>
+        }
+        { this.state.editFormVisible ?
+            < EditSongForm 
+              song={this.props.song}
+              allGenres={this.props.allGenres}
+              allTalents={this.props.allTalents}
+              songGenres={this.props.song.genres}
+              desiredTalents={this.props.song.desired_talents} />
+          :
+            null
         }
         <h1>Masters</h1>
         {masterTracks.map((master, i) => {
