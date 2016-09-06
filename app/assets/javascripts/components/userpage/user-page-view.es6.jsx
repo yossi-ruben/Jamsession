@@ -46,15 +46,22 @@ class UserPageView extends React.Component {
     }
   }
 
-  updateConnects(id) {
+  updateConnects(id, json) {
     this.setState({
-      connects: this.state.connects.concat([id])
+      connects: this.state.connects.concat([id]), followers: this.state.followers.concat([json])
     })
   }
 
-  removeConnects() {
+  removeConnects(json) {
+    let userID = json.id
+    let followersIDs = this.state.followers.map((follower) => {
+      return follower.id
+    })
+    let followerArray = this.state.followers
+    let index = followerArray.indexOf(userID)
+    followerArray.splice(index, 1)
     this.setState({
-      connects: []
+      connects: [], followers: followerArray
     })
   }
 
