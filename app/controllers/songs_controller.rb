@@ -37,7 +37,6 @@ class SongsController < ApplicationController
     # Create a new song
     song = Song.new(title: params[:title], owner_id: params[:owner_id], bpm: params[:bpm], key: params[:key], time_signature: params[:time_signature], background: params[:background])
     song.finished = false
-    song.save
 
     # Add genres to song
     genre_params = params.keys.select { |param| param =~ /genre/ }
@@ -71,6 +70,20 @@ class SongsController < ApplicationController
     master_track.file_path = obj.public_url
 
     master_track.save
+
+    # Create song image
+    img = s3.buckets[ENV['S3_BUCKET']].objects[params[:img_file].original_filename]
+
+    img.write(
+      file: params[:img_file],
+      acl: :public_read
+    )
+
+    song.img_file_name = img.key
+    song.img_file_path = img.public_url
+
+    # Save song
+    song.save
 
     # Redirect user to new song page
     redirect_to "/songs/#{song.id}"
