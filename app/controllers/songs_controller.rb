@@ -23,7 +23,7 @@ class SongsController < ApplicationController
       user = User.find(current_user.id)
       @user_talents = user.talents
       @logged_in = true if user_signed_in?
-      @user_genres = user.genres
+      @user_genres = user.genres.map(&:name)
     end
   end
 

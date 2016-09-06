@@ -118,6 +118,7 @@ class UnFinishedSongs extends React.Component{
 // ill iterate over the json obj and create a moc
 
   grabForMe(){
+    debugger
     var myGenres = ["country", "folk"]
     var myTalents = ["Piano"]
     var mySongs = []
