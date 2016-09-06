@@ -5,7 +5,8 @@ class DisplayedSong extends React.Component {
     this.state = {
       unFinished: true,
       finished: false,
-      songSrc: []
+      songSrc: "",
+      srcKey: 1
     }
     this.songList = this.songList.bind(this);
     this.setSongList = this.setSongList.bind(this);
@@ -38,10 +39,22 @@ class DisplayedSong extends React.Component {
     setSongSrc(arg){
       console.log("new source" + arg)
       this.setState({songSrc: arg})
+      if (this.state.srcKey === 1){
+        this.setState({srcKey: 2})
+      }
+      else {
+        this.setState({srcKey: 1})
+      }
+
     }
 
+
     inputOfSongSrc(){
-       {this.state.songSrc}
+      return(
+        <div>
+          <AudioFile theSrc={this.state.songSrc} theKey={this.state.srcKey}/>
+        </div>
+      )
     }
 
 
@@ -52,15 +65,7 @@ class DisplayedSong extends React.Component {
         <p className="songToggle" onClick={this.setSongList}> Switch PlayList</p>
         {this.songList()}
 
-        <div className="PlayerComponent">
-          <audio controls className="audio-player">
-            <source src={this.inputOfSongSrc()} type="audio/mpeg" />
-          </audio>
-
-
-        </div>
-
-
+        {this.inputOfSongSrc()}
       </div>
     // return closing
     )

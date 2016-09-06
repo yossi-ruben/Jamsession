@@ -134,8 +134,7 @@ class UnFinishedSongs extends React.Component{
       }
     }
   // sorts through current song list and selects only songs that include users Genres
-  console.log("My Songs ")
-  console.log(mySongs)
+
     for (n in mySongs){
       for (i in mySongs[n].genres){
 
@@ -146,8 +145,7 @@ class UnFinishedSongs extends React.Component{
 
       }
     }
-    console.log("Final List")
-    console.log(finalList)
+
 
     return (finalList)
   };

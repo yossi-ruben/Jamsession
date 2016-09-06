@@ -114,9 +114,9 @@ class SongPage extends React.Component {
             null
         }
         <div className="song-view">
-          { this.state.showPublic ? 
+          { this.state.showPublic ?
               < PublicSongView
-                song={this.state.song} 
+                song={this.state.song}
                 songOwner={this.state.songOwner}
                 desiredTalents={this.state.desiredTalents}
                 masterTracks={this.state.masterTracks}
@@ -128,7 +128,7 @@ class SongPage extends React.Component {
               null
           }
           { this.state.showPrivate ?
-              < PrivateSongView 
+              < PrivateSongView
                 song={this.state.song}
                 masterTracks={this.state.masterTracks}
                 featureTracks={this.state.featureTracks}
