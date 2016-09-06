@@ -119,7 +119,7 @@ class UnFinishedSongs extends React.Component{
 // ill iterate over the json obj and create a moc
 
   grabForMe(){
-
+    // make sure to add for case where user has no recomendations or is not logged in
     var myGenres = this.props.user_genres
     var myTalents = this.props.user_talents
     var mySongs = []
@@ -127,20 +127,26 @@ class UnFinishedSongs extends React.Component{
     // grabs songs that include my desired talents
     for (n in this.state.data){
       for (i in this.state.data[n].desired_talents){
+
         if (myTalents.includes(this.state.data[n].desired_talents[i].title)){
+
               mySongs.push(this.state.data[n]);
               break;
           }
       }
     }
   // sorts through current song list and selects only songs that include users Genres
+  console.log(mySongs)
     for (n in mySongs){
       for (i in mySongs[n].genres){
+
         if (myGenres.includes(mySongs[n].genres[i].name)){
           finalList.push(mySongs[n])
         }
+
       }
     }
+
 
     return (finalList)
   };
