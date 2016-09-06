@@ -9,11 +9,11 @@ class PublicSongView extends React.Component {
       return (d - c)
     })[0]
     let genres = this.props.genres
-    let masterHistory = this.props.masterTracks.slice(0, this.props.masterTracks.length - 1).sort(function(a,b) {
+    let masterHistory = this.props.masterTracks.sort(function(a,b) {
       var c = new Date(a.created_at);
       var d = new Date(b.created_at);
-      return (d - c);
-    })
+      return (d - c)
+    }).slice(1, this.props.masterTracks.length)
     return (
     <div>
         <div>
