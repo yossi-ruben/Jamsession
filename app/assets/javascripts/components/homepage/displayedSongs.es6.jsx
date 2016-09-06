@@ -14,10 +14,10 @@ class DisplayedSong extends React.Component {
 
 songList(){
   if (this.state.unFinished){
-    return <UnFinishedSongs />;
+    return <UnFinishedSongs user_genres={this.props.user_genres} user_talents={this.props.user_talents}/>;
   }
   else {
-    return <FinishedSongs />;
+    return <FinishedSongs user_genres={this.props.user_genres} user_talents={this.props.user_talents}/>;
   }
 }
 
