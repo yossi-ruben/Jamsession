@@ -136,12 +136,13 @@ class UnFinishedSongs extends React.Component{
       }
     }
   // sorts through current song list and selects only songs that include users Genres
-  console.log(mySongs)
+
     for (n in mySongs){
       for (i in mySongs[n].genres){
 
         if (myGenres.includes(mySongs[n].genres[i].name)){
           finalList.push(mySongs[n])
+          break;
         }
 
       }
@@ -229,61 +230,65 @@ class UnFinishedSongs extends React.Component{
 
     this.setState({sortByGenreList: songList});
     this.setToSortByGenres();
-
   }
 
 
-
-
-songsToShow(){
-  if (this.state.allSongs) {
-    return (
-      <div>
-        {this.state.data.map((song, i) => {
-          return <Song theSong={song} key={i}/>
-        })}
-      </div>
-    )
+  songsToShow(){
+    if (this.state.allSongs) {
+      return (
+        <div>
+          {this.state.data.map((song, i) => {
+            return <Song theSong={song} key={i}/>
+          })}
+        </div>
+      )
+    }
+    else if (this.state.forMe) {
+      if (this.state.forMeList.length === 0){
+        return (
+          <div>
+            <p> No songs to Display</p>
+          </div>
+        )
+      }
+      else {
+        return(
+           <div>
+            {this.state.forMeList.map((song, i) => {
+              return <Song theSong={song} key={i}/>
+            })}
+          </div>
+        )
+      }
+    }
+    else if(this.state.hot) {
+      return(
+        <div>
+          {this.state.hotList.map((song, i) => {
+            return <Song theSong={song[0][0]} key={i}/>
+          })}
+        </div>
+      )
+    }
+    else if(this.state.sortByTalents) {
+      return(
+        <div>
+          {this.state.sortByTalentList.map((song, i) =>{
+            return <Song theSong={song} key={i}/>
+          })}
+        </div>
+      )
+    }
+    else if(this.state.sortByGenres){
+      return(
+        <div>
+          {this.state.sortByGenreList.map((song, i) =>{
+            return <Song theSong={song} key={i}/>
+          })}
+        </div>
+      )
+    }
   }
-  else if (this.state.forMe) {
-    return(
-      <div>
-        {this.state.forMeList.map((song, i) => {
-          return <Song theSong={song} key={i}/>
-        })}
-      </div>
-    )
-  }
-  else if(this.state.hot) {
-    return(
-      <div>
-        {this.state.hotList.map((song, i) => {
-          return <Song theSong={song[0][0]} key={i}/>
-        })}
-      </div>
-    )
-  }
-  else if(this.state.sortByTalents) {
-    return(
-      <div>
-        {this.state.sortByTalentList.map((song, i) =>{
-          return <Song theSong={song} key={i}/>
-        })}
-      </div>
-    )
-  }
-  else if(this.state.sortByGenres){
-    return(
-      <div>
-        {this.state.sortByGenreList.map((song, i) =>{
-          return <Song theSong={song} key={i}/>
-        })}
-      </div>
-    )
-  }
-
-
-}
 
 
 
