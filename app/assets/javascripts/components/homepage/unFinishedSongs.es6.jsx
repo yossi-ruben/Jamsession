@@ -120,23 +120,22 @@ class UnFinishedSongs extends React.Component{
 
   grabForMe(){
     // make sure to add for case where user has no recomendations or is not logged in
-    var myGenres = this.props.user_genres
-    var myTalents = this.props.user_talents
+    var myGenres = this.props.user_genres || []
+    var myTalents = this.props.user_talents || []
     var mySongs = []
     var finalList = []
     // grabs songs that include my desired talents
     for (n in this.state.data){
       for (i in this.state.data[n].desired_talents){
-
         if (myTalents.includes(this.state.data[n].desired_talents[i].title)){
-
               mySongs.push(this.state.data[n]);
               break;
           }
       }
     }
   // sorts through current song list and selects only songs that include users Genres
-
+  console.log("My Songs ")
+  console.log(mySongs)
     for (n in mySongs){
       for (i in mySongs[n].genres){
 
@@ -147,7 +146,8 @@ class UnFinishedSongs extends React.Component{
 
       }
     }
-
+    console.log("Final List")
+    console.log(finalList)
 
     return (finalList)
   };
@@ -238,7 +238,7 @@ class UnFinishedSongs extends React.Component{
       return (
         <div>
           {this.state.data.map((song, i) => {
-            return <Song theSong={song} key={i}/>
+            return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
           })}
         </div>
       )
@@ -255,7 +255,7 @@ class UnFinishedSongs extends React.Component{
         return(
            <div>
             {this.state.forMeList.map((song, i) => {
-              return <Song theSong={song} key={i}/>
+              return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
             })}
           </div>
         )
@@ -265,7 +265,7 @@ class UnFinishedSongs extends React.Component{
       return(
         <div>
           {this.state.hotList.map((song, i) => {
-            return <Song theSong={song[0][0]} key={i}/>
+            return <Song theSong={song[0][0]} key={i} setSongSrc={this.props.setSongSrc}/>
           })}
         </div>
       )
@@ -274,7 +274,7 @@ class UnFinishedSongs extends React.Component{
       return(
         <div>
           {this.state.sortByTalentList.map((song, i) =>{
-            return <Song theSong={song} key={i}/>
+            return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
           })}
         </div>
       )
@@ -283,7 +283,7 @@ class UnFinishedSongs extends React.Component{
       return(
         <div>
           {this.state.sortByGenreList.map((song, i) =>{
-            return <Song theSong={song} key={i}/>
+            return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
           })}
         </div>
       )
@@ -335,39 +335,3 @@ class UnFinishedSongs extends React.Component{
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

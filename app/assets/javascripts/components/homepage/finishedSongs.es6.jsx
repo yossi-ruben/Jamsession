@@ -150,8 +150,8 @@ class FinishedSongs extends React.Component{
 
   // used to grab recommeded songs
   grabRecommended(){
-    var myGenres = this.props.user_genres
-    var myTalents = this.props.user_talents
+    var myGenres = this.props.user_genres || []
+    var myTalents = this.props.user_talents || []
     var mySongs = []
     var finalList = []
     // grabs songs that include my desired talents
@@ -194,7 +194,7 @@ class FinishedSongs extends React.Component{
       return (
         <div>
           {this.state.hotList.map((song, i) => {
-            return <Song theSong={song[0][0]} key={i}/>
+            return <Song theSong={song[0][0]} key={i} setSongSrc={this.props.setSongSrc}/>
           })}
         </div>
       )
@@ -203,7 +203,7 @@ class FinishedSongs extends React.Component{
       return(
         <div>
           {this.state.data.map((song, i) => {
-            return <Song theSong={song} key={i}/>
+            return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
           })}
         </div>
       )
@@ -220,7 +220,7 @@ class FinishedSongs extends React.Component{
         return (
           <div>
             {this.state.recommendedList.map((song, i) =>{
-              return <Song theSong={song} key={i}/>
+              return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
             })}
           </div>
         )
@@ -230,7 +230,7 @@ class FinishedSongs extends React.Component{
       return(
         <div>
           {this.state.randomList.map((song, i) =>{
-            return <Song theSong={song} key={i}/>
+            return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
           })}
         </div>
       )
@@ -239,7 +239,7 @@ class FinishedSongs extends React.Component{
       return(
         <div>
           {this.state.sortByGenresList.map((song, i) => {
-            return <Song theSong={song} key={i}/>
+            return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
           })}
         </div>
       )
