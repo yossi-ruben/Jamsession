@@ -44,6 +44,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.1)
+    autoprefixer-rails (6.4.1)
+      execjs
     aws-sdk-v1 (1.66.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -56,6 +58,9 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.5)
     coderay (1.1.1)
@@ -224,6 +229,7 @@ DEPENDENCIES
   active_model_serializers
   aws-sdk-v1
   better_errors
+  bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.2)
   devise
