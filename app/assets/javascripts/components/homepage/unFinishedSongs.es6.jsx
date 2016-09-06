@@ -44,6 +44,7 @@ class UnFinishedSongs extends React.Component{
       this.setTalentsAndGenres()
       this.setState({forMeList: this.grabForMe()})
       this.setState({hotList: this.sortByHot()})
+
     });
   }
 
@@ -118,9 +119,9 @@ class UnFinishedSongs extends React.Component{
 // ill iterate over the json obj and create a moc
 
   grabForMe(){
-    debugger
-    var myGenres = ["country", "folk"]
-    var myTalents = ["Piano"]
+
+    var myGenres = this.props.user_genres
+    var myTalents = this.props.user_talents
     var mySongs = []
     var finalList = []
     // grabs songs that include my desired talents
@@ -282,6 +283,7 @@ songsToShow(){
 
 
   render(){
+
     return(
       <div className="UnfinishedSongs">
         <div className="Title"> Unfinished </div>

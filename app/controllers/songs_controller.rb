@@ -24,6 +24,7 @@ class SongsController < ApplicationController
       @user_talents = user.talents
       @logged_in = true if user_signed_in?
       @user_genres = user.genres.map(&:name)
+      @user_talents = user.talents.map(&:title)
     end
   end
 
