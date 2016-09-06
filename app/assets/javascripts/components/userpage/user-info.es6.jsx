@@ -87,14 +87,20 @@ class UserInfo extends React.Component{
             null
             :
           <div className="user-follow">
-            {connects.includes(this.props.currentUser.id) ?
-              <div>
-                <button onClick={this.stopFollowing}>Unfollow</button>
-              </div>
+            { this.props.currentUser.id !== 0 ?
+                <div>
+                  {connects.includes(this.props.currentUser.id) ?
+                    <div>
+                      <button onClick={this.stopFollowing}>Unfollow</button>
+                    </div>
+                    :
+                    <div>
+                      <button onClick={this.startFollowing}>Follow</button>
+                    </div> 
+                  }
+                </div>
               :
-              <div>
-                <button onClick={this.startFollowing}>Follow</button>
-              </div> 
+                null
             }
           </div>
           }

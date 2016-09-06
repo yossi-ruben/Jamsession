@@ -83,9 +83,14 @@ class UserPageView extends React.Component {
   }
 
   render(){
+    { this.props.currentUser === null ?
+        currentUser = {id: 0, username: ""}
+      :
+        currentUser = this.props.currentUser
+    }
     return(
         <div className="container">
-          < UserInfo genres={this.state.genres} talents={this.state.talents} removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={this.props.currentUser} following={this.state.following} followers={this.state.followers}/>
+          < UserInfo genres={this.state.genres} talents={this.state.talents} removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={currentUser} following={this.state.following} followers={this.state.followers}/>
           <div className="content-column">
             <ul className="tab">
               <li><a onClick={this.showUserProjects} href="#" className="tablinks">List of Projects</a></li>
@@ -111,5 +116,5 @@ class UserPageView extends React.Component {
               </div>
           </div>
         </div>
-);
+      );
 }}
