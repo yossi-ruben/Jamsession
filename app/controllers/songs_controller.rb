@@ -6,7 +6,7 @@ class SongsController < ApplicationController
 
   def unfinished_songs
     unfinished_songs = Song.where(finished: false)
-    render json: unfinished_songs.as_json(include: [:desired_talents, :genres, {master_tracks: {include: :likes}}])
+    render json: unfinished_songs.as_json(include: [:desired_talents, :genres, {master_tracks: {include: :likes}}, :user])
   end
 
   def home_page
