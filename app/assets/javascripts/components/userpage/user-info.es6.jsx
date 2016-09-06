@@ -82,18 +82,22 @@ class UserInfo extends React.Component{
     <aside className="navigation">
       <img src={userStats.profile_pic_file_path} />
       <h3>{userStats.username}</h3>
-        <div className="user-follow">
-          {connects.includes(this.props.currentUser.id) ?
-            <div>
-              <button onClick={this.stopFollowing}>Unfollow</button>
-            </div>
+        <div className="display-follow-button">
+          { this.props.userStats.id === this.props.currentUser.id ?
+            null
             :
-            <div>
-              <button onClick={this.startFollowing}>Follow</button>
-            </div> 
-
+          <div className="user-follow">
+            {connects.includes(this.props.currentUser.id) ?
+              <div>
+                <button onClick={this.stopFollowing}>Unfollow</button>
+              </div>
+              :
+              <div>
+                <button onClick={this.startFollowing}>Follow</button>
+              </div> 
+            }
+          </div>
           }
-
         </div>
 
         <div className="follow-view">
@@ -123,6 +127,24 @@ class UserInfo extends React.Component{
             :
             null
           }
+        </div>
+
+        <div>
+          <h5>Talents</h5>
+          {this.props.talents.map((tal, i) => {
+            return(
+              <p key={i}>{tal.title}</p>
+              )
+          })}
+        </div>
+
+        <div>
+        <h5>Genres</h5>
+        {this.props.genres.map((genre, i) => {
+          return(
+            <p key={i}>{genre.name}</p>
+            )
+        })}
         </div>
     </aside>
       );
