@@ -5,17 +5,8 @@ class SongsController < ApplicationController
   end
 
   def unfinished_songs
-    # user = User.find(current_user.id)
     unfinished_songs = Song.where(finished: false)
-    # @user_talents = user.talents
-    # @logged_in = true if user_signed_in?
-    # @user_genres = user.genres
-    # respond_to do |format|
-    #   format.html
-    #   format.xml {
-    render json: unfinished_songs.as_json(include: [:desired_talents, :genres, {master_tracks: {include: :likes}}, :user])
-      #     ])}
-      # end
+    render json: unfinished_songs.as_json(include: [:desired_talents, :genres, {master_tracks: {include: :likes}}])
   end
 
   def home_page
@@ -39,16 +30,7 @@ class SongsController < ApplicationController
 
   def info
     song = Song.find(params[:id])
-    render json: song.as_json(include:
-      [{master_tracks: { include:
-        [{feature_tracks: { include: [:user, :talent]}},
-        {comments: { include: :user }},
-        :likes,
-        :fans]}},
-      :user,
-      :genres,
-      :desired_talents,
-      feature_tracks: { include: [:user, :talent]}])
+    song_as_json(song)
   end
 
   def create
@@ -110,22 +92,18 @@ class SongsController < ApplicationController
     song = Song.find(params[:id])
     song.finished = true
     song.save
-    render json: song.as_json(include:
-      [{master_tracks: { include:
-        [{feature_tracks: { include: [:user, :talent]}},
-        {comments: { include: :user }},
-        :likes,
-        :fans]}},
-      :user,
-      :genres,
-      :desired_talents,
-      feature_tracks: { include: [:user, :talent]}])
+    song_as_json(song)
   end
 
   def reopen
     song = Song.find(params[:id])
     song.finished = false
     song.save
+    song_as_json(song)
+  end
+
+  private
+  def song_as_json(song)
     render json: song.as_json(include:
       [{master_tracks: { include:
         [{feature_tracks: { include: [:user, :talent]}},

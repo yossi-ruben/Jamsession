@@ -117,7 +117,9 @@ class MasterSubmission extends React.Component {
                 { this.props.song.feature_tracks.map((feature, i) => {
                   return <span className="form-input" key={i}>
                            <input type="checkbox" name="includedFeature" value={feature.id} />
-                           {feature.talent.title} by {feature.user.username}
+                           {feature.talent.title} by {feature.user.username} <span className="small-text">
+                            ({feature.file_name})
+                           </span>
                          </span>
                   })
                 }
