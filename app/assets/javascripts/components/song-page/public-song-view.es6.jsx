@@ -18,7 +18,7 @@ class PublicSongView extends React.Component {
     <div>
         <div>
           <h1 className="song-header">{song.title}</h1>
-          <h3 className="song-originator">Originated by: {songOwner.username}</h3>
+          <h3 className="song-originator">Originated by: <a href={`/users/${songOwner.id}`}>{songOwner.username}</a></h3>
           { song.finished ?
               <h3>This song is marked as finished</h3>
             :
@@ -72,12 +72,18 @@ class PublicSongView extends React.Component {
           { song.finished ?
               null
             :
-              < FeatureSubmission
-                desiredTalents={this.props.desiredTalents}
-                currentUser={this.props.currentUser}
-                csrf={this.props.csrf} 
-                song={song}
-                updateAfterFeature={this.props.updateAfterFeature} />
+              <div>
+              { this.props.currentUser.id !== 0 ?
+                  < FeatureSubmission
+                    desiredTalents={this.props.desiredTalents}
+                    currentUser={this.props.currentUser}
+                    csrf={this.props.csrf} 
+                    song={song}
+                    updateAfterFeature={this.props.updateAfterFeature} />
+                :
+                  null
+              }
+              </div>
           }
         </div>
     </div>

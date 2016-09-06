@@ -98,6 +98,11 @@ class SongPage extends React.Component {
   }
 
   render() {
+    { this.props.currentUser === null ?
+        currentUser = {id: 0, username: ""}
+      :
+        currentUser = this.props.currentUser
+    }
     return (
       <div>
         { this.props.private_user_auth ?
@@ -116,7 +121,7 @@ class SongPage extends React.Component {
                 desiredTalents={this.state.desiredTalents}
                 masterTracks={this.state.masterTracks}
                 genres={this.state.genres}
-                currentUser={this.props.currentUser}
+                currentUser={currentUser}
                 csrf={this.state.csrf}
                 updateAfterFeature={this.updateAfterFeature} />
             :
