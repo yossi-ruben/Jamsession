@@ -196,6 +196,8 @@ class PrivateSongView extends React.Component {
           return < FeatureTrack
                    featureTrack={feature}
                    featureContributor={feature.user}
+                   removeFeature={this.props.removeFeature}
+                   csrf={this.props.csrf}
                    key={i} />
         })}
         <h1>All Features by Talent</h1>
@@ -210,6 +212,8 @@ class PrivateSongView extends React.Component {
               return < FeatureTrack
                        featureTrack={feature}
                        featureContributor={feature.user}
+                       removeFeature={this.props.removeFeature}
+                       csrf={this.props.csrf}
                        key={i} />
             })}
           </div>

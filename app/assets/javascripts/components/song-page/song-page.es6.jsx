@@ -18,6 +18,7 @@ class SongPage extends React.Component {
     this.updateAfterMaster = this.updateAfterMaster.bind(this);
     this.removeMaster = this.removeMaster.bind(this);
     this.updateSong = this.updateSong.bind(this);
+    this.removeFeature = this.removeFeature.bind(this);
   }
 
   componentWillMount() {
@@ -82,6 +83,12 @@ class SongPage extends React.Component {
     })
   }
 
+  removeFeature(json) {
+    this.setState({
+      featureTracks: json
+    })
+  }
+
   updateSong(json) {
     this.setState({
       song: json,
@@ -125,6 +132,7 @@ class SongPage extends React.Component {
                 updateSong={this.updateSong}
                 allGenres={this.props.allGenres}
                 allTalents={this.props.allTalents}
+                removeFeature={this.removeFeature}
                 csrf={this.state.csrf} />
             :
               null

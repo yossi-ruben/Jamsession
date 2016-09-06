@@ -5,11 +5,30 @@ class FeatureTrack extends React.Component {
       showFull: false
     }
     this.toggleShowFull = this.toggleShowFull.bind(this);
+    this.deleteFeature = this.deleteFeature.bind(this);
   }
 
   toggleShowFull() {
     this.setState({
       showFull: !this.state.showFull
+    })
+  }
+
+  deleteFeature() {
+    fetch(`/feature_tracks/${this.props.featureTrack.id}`, {
+      method: "delete",
+      dataType: "JSON",
+      headers: {
+        "X-CSRF-Token": this.props.csrf,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      this.props.removeFeature(json)
+      this.toggleShowFull()
     })
   }
 
@@ -33,6 +52,7 @@ class FeatureTrack extends React.Component {
             </audio>
             <p>{featureTrack.description}</p>
             <a href={featureTrack.file_path} download>Download</a>
+            <button onClick={this.deleteFeature}>Delete this Submission</button>
           </div>
         :
           null

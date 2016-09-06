@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   patch '/songs/:id/finish', to: 'songs#finish'
   patch '/songs/:id/reopen', to: 'songs#reopen'
 
-  resources :feature_tracks, only: :create
+  resources :feature_tracks, only: [:create, :destroy]
   resources :master_tracks, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :likes, only: :create

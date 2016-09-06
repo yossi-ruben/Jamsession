@@ -23,6 +23,14 @@ class FeatureTracksController < ApplicationController
     render json: new_feature_list.as_json(include: [:user, :talent])
   end
 
+  def destroy
+    feature_track = FeatureTrack.find(params[:id])
+    feature_track.destroy
+    song = feature_track.song
+    new_feature_list = song.feature_tracks
+    render json: new_feature_list.as_json(include: [:user, :talent])
+  end
+
   private
   def feature_track_params
     params.require(:feature_track).permit(:talent_id, :user_id, :description, :song_id)
