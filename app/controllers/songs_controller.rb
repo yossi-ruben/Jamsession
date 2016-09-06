@@ -76,6 +76,25 @@ class SongsController < ApplicationController
     redirect_to "/songs/#{song.id}"
   end
 
+  def update
+    song = Song.find(params[:id])
+    song.update(song_params)
+
+    # Resets the song's genres according to user's new choices
+    SongGenre.where(song_id: song.id).destroy_all
+    params[:songGenres].each do |genre_id|
+      song.genres << Genre.find(genre_id.to_i)
+    end
+
+    # Resets the song's desired talents according to user's new choices
+    SongTalent.where(song_id: song.id).destroy_all
+    params[:desiredTalents].each do |talent_id|
+      song.desired_talents << Talent.find(talent_id.to_i)
+    end
+
+    song_as_json(song)
+  end
+
   def destroy
     song = Song.find(params[:id])
     song.destroy
@@ -114,6 +133,10 @@ class SongsController < ApplicationController
       :genres,
       :desired_talents,
       feature_tracks: { include: [:user, :talent]}])
+  end
+
+  def song_params
+    params.require(:song).permit(:title, :bpm, :key, :background, :time_signature)
   end
 end
 

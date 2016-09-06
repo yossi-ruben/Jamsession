@@ -4,8 +4,57 @@ class EditSongForm extends React.Component {
     this.editSong = this.editSong.bind(this);
   }
 
-  editSong() {
+  findDesiredTalents() {
+    var checkedTalentIDs = [];
+    var allTalents = document.getElementsByName('desiredTalent');
+    for (var i = 0; i < allTalents.length; i++) {
+      if (allTalents[i].checked === true) {
+        checkedTalentIDs.push(allTalents[i].value)
+      }
+    }
+    return checkedTalentIDs
+  }
 
+  findSongGenres() {
+    var checkedGenreIDs = [];
+    var allGenres = document.getElementsByName('songGenre');
+    for (var i = 0; i < allGenres.length; i++) {
+      if (allGenres[i].checked === true) {
+        checkedGenreIDs.push(allGenres[i].value)
+      }
+    }
+    return checkedGenreIDs
+  }
+
+  editSong(e) {
+    e.preventDefault();
+
+    let data = {
+      songGenres: this.findSongGenres(),
+      desiredTalents: this.findDesiredTalents(),
+      title: this.refs.title.value,
+      bpm: this.refs.bpm.value,
+      key: this.refs.key.value,
+      time_signature: this.refs.timeSignature.value,
+      background: this.refs.background.value
+    }
+
+    fetch(`/songs/${this.props.song.id}`, {
+      method: "PATCH",
+      dataType: "JSON",
+      headers: {
+        "X-CSRF-Token": this.props.csrf,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      this.props.updateSong(json)
+      this.props.toggleEditForm()
+    })
   }
 
   render() {
@@ -24,7 +73,7 @@ class EditSongForm extends React.Component {
         <label htmlFor="song[key]" className="form-label">Key:</label>
         <input type="text" name="song[key]" ref="key" className="form-input" defaultValue={this.props.song.key} />
         <label htmlFor="song[time_signature]" className="form-label">Time Signature:</label>
-        <input type="text" name="song[time_signature]" ref="time_signature" className="form-input" defaultValue={this.props.song.time_signature} />
+        <input type="text" name="song[time_signature]" ref="timeSignature" className="form-input" defaultValue={this.props.song.time_signature} />
         <label htmlFor="song[background]" className="form-label">Background:</label>
         <textarea rows="5" cols="30" name="song[background]" ref="background" defaultValue={this.props.song.background}></textarea>
         <p>Please choose which genres you'd like this song to be labeled with:</p>
@@ -33,7 +82,8 @@ class EditSongForm extends React.Component {
             <span key={i}>
               <input
                 type="checkbox"
-                name={`genre${genre.id}`}
+                name="songGenre"
+                value={genre.id}
                 defaultChecked={ songGenreIDs.includes(genre.id) ? true : false }
               />
               {genre.name}
@@ -47,7 +97,8 @@ class EditSongForm extends React.Component {
             <span key={i}>
               <input
                 type="checkbox"
-                name={`talent${talent.id}`}
+                name="desiredTalent"
+                value={talent.id}
                 defaultChecked={ desiredTalentIDs.includes(talent.id) ? true : false }
               />
               {talent.title}

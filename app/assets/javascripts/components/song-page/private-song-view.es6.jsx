@@ -174,7 +174,10 @@ class PrivateSongView extends React.Component {
               allGenres={this.props.allGenres}
               allTalents={this.props.allTalents}
               songGenres={this.props.song.genres}
-              desiredTalents={this.props.song.desired_talents} />
+              desiredTalents={this.props.song.desired_talents}
+              updateSong={this.props.updateSong}
+              toggleEditForm={this.toggleEditForm}
+              csrf={this.props.csrf} />
           :
             null
         }

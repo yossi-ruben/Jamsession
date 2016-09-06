@@ -84,7 +84,9 @@ class SongPage extends React.Component {
 
   updateSong(json) {
     this.setState({
-      song: json
+      song: json,
+      desiredTalents: json.desired_talents,
+      genres: json.genres
     })
   }
 
