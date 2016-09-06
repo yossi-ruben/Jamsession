@@ -72,12 +72,18 @@ class PublicSongView extends React.Component {
           { song.finished ?
               null
             :
-              < FeatureSubmission
-                desiredTalents={this.props.desiredTalents}
-                currentUser={this.props.currentUser}
-                csrf={this.props.csrf} 
-                song={song}
-                updateAfterFeature={this.props.updateAfterFeature} />
+              <div>
+              { this.props.currentUser.id !== 0 ?
+                  < FeatureSubmission
+                    desiredTalents={this.props.desiredTalents}
+                    currentUser={this.props.currentUser}
+                    csrf={this.props.csrf} 
+                    song={song}
+                    updateAfterFeature={this.props.updateAfterFeature} />
+                :
+                  null
+              }
+              </div>
           }
         </div>
     </div>

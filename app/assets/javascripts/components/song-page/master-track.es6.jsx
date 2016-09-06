@@ -125,12 +125,18 @@ class MasterTrack extends React.Component {
                   <span> Likes</span>
               }
             </p>
-            { fans.includes(this.props.currentUser.id) ?
-                <button onClick={this.removeLike}>Unlike</button>
+            { this.props.currentUser.id !== 0 ?
+                <div>
+                  { fans.includes(this.props.currentUser.id) ?
+                      <button onClick={this.removeLike}>Unlike</button>
+                    :
+                      <button onClick={this.addLike}>Like</button>
+                  }
+                  <a href={masterTrack.file_path} download>Download</a>
+                </div>
               :
-                <button onClick={this.addLike}>Like</button>
+                null
             }
-            <a href={masterTrack.file_path} download>Download</a>
             <button onClick={this.toggleCommentView}>
               { this.state.displayComments ?
                   <p>Hide Comments</p>

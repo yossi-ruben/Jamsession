@@ -85,13 +85,17 @@ class CommentDisplay extends React.Component {
               )})}
             </ul>
         }
-        <button onClick={this.toggleAddCommentForm}>
-          { this.state.viewForm ?
-              <p>Hide Comment Submission Form</p>
-            :
-              <p>Add Comment</p>
-          }
-        </button>
+        { this.props.currentUser.id !== 0 ?
+            <button onClick={this.toggleAddCommentForm}>
+              { this.state.viewForm ?
+                  <p>Hide Comment Submission Form</p>
+                :
+                  <p>Add Comment</p>
+              }
+            </button>
+          :
+            null
+        }
         { this.state.viewForm ?
             <form onSubmit={this.submitComment}>
               <input type="hidden" name="comment[user_id]" ref="userID" value={this.props.currentUser.id} />

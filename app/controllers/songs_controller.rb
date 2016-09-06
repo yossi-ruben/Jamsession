@@ -23,7 +23,7 @@ class SongsController < ApplicationController
     song = Song.find(params[:id])
     user = User.find(song.owner_id)
     @private_user_auth = false
-    if song.owner_id == current_user.id
+    if current_user && song.owner_id == current_user.id
       @private_user_auth = true
     end
   end
