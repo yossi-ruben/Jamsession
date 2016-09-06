@@ -4,7 +4,7 @@ class MasterTrack < ApplicationRecord
   has_one :song_owner, through: :song, source: :user
 
   # Connects master track to feature tracks
-  has_many :master_features
+  has_many :master_features, dependent: :destroy
   has_many :feature_tracks, through: :master_features
 
   # Connects master track to users who submitted feature tracks and the talents involved
@@ -12,9 +12,9 @@ class MasterTrack < ApplicationRecord
   has_many :talents, through: :feature_tracks
 
   # Connects master track to comments
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   # Connects master track to people who liked it
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :fans, through: :likes, source: :user
 end

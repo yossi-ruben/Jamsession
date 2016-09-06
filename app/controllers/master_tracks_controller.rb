@@ -11,6 +11,8 @@ class MasterTracksController < ApplicationController
 
     song = Song.find_by(id: params[:master_track][:song_id])
 
+    song.finished = true if params[:songFinished] == "true"
+
     master_track = song.master_tracks.new(master_track_params)
 
     master_track.file_name = obj.key
@@ -28,6 +30,25 @@ class MasterTracksController < ApplicationController
         {comments: { include: :user }},
         :likes,
         :fans]}},
+      :user,
+      :genres,
+      :desired_talents,
+      feature_tracks: { include: [:user, :talent]}])
+  end
+
+  def destroy
+    master_track = MasterTrack.find(params[:id])
+    master_track.destroy
+    song = master_track.song
+    render json: song.as_json(include:
+      [{master_tracks: { include: 
+        [{feature_tracks: {include: [:user, :talent]}},
+        {comments: { include: :user }},
+        :likes,
+        :fans]}},
+      :user,
+      :genres,
+      :desired_talents,
       feature_tracks: { include: [:user, :talent]}])
   end
 

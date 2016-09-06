@@ -14,10 +14,12 @@ Rails.application.routes.draw do
   get 'songs/:id/info', to: 'songs#info'
   get '/unfinished_songs', to: 'songs#unfinished_songs'
   get '/finished_songs', to: 'songs#finished_songs'
+  patch '/songs/:id/finish', to: 'songs#finish'
+  patch '/songs/:id/reopen', to: 'songs#reopen'
 
-  resources :feature_tracks, only: :create
-  resources :master_tracks, only: :create
-  resources :comments, only: :create
+  resources :feature_tracks, only: [:create, :destroy]
+  resources :master_tracks, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   resources :likes, only: :create
   delete '/likes', to: 'likes#destroy'
   resources :connections, only: :create

@@ -5,17 +5,8 @@ class SongsController < ApplicationController
   end
 
   def unfinished_songs
-    # user = User.find(current_user.id)
     unfinished_songs = Song.where(finished: false)
-    # @user_talents = user.talents
-    # @logged_in = true if user_signed_in?
-    # @user_genres = user.genres
-    # respond_to do |format|
-    #   format.html
-    #   format.xml {
-    render json: unfinished_songs.as_json(include: [:desired_talents, :genres, {master_tracks: {include: :likes}}, :user])
-      #     ])}
-      # end
+    render json: unfinished_songs.as_json(include: [:desired_talents, :genres, {master_tracks: {include: :likes}}])
   end
 
   def home_page
@@ -39,16 +30,7 @@ class SongsController < ApplicationController
 
   def info
     song = Song.find(params[:id])
-    render json: song.as_json(include:
-      [{master_tracks: { include:
-        [{feature_tracks: { include: [:user, :talent]}},
-        {comments: { include: :user }},
-        :likes,
-        :fans]}},
-      :user,
-      :genres,
-      :desired_talents,
-      feature_tracks: { include: [:user, :talent]}])
+    song_as_json(song)
   end
 
   def create
@@ -94,10 +76,67 @@ class SongsController < ApplicationController
     redirect_to "/songs/#{song.id}"
   end
 
+  def update
+    song = Song.find(params[:id])
+    song.update(song_params)
+
+    # Resets the song's genres according to user's new choices
+    SongGenre.where(song_id: song.id).destroy_all
+    params[:songGenres].each do |genre_id|
+      song.genres << Genre.find(genre_id.to_i)
+    end
+
+    # Resets the song's desired talents according to user's new choices
+    SongTalent.where(song_id: song.id).destroy_all
+    params[:desiredTalents].each do |talent_id|
+      song.desired_talents << Talent.find(talent_id.to_i)
+    end
+
+    song_as_json(song)
+  end
+
+  def destroy
+    song = Song.find(params[:id])
+    song.destroy
+    redirect_to root_path, status: 303
+  end
+
   def new
     @genres = Genre.all.order(:name)
     @talents = Talent.all.order(:title)
     @current_user = current_user
+  end
+
+  def finish
+    song = Song.find(params[:id])
+    song.finished = true
+    song.save
+    song_as_json(song)
+  end
+
+  def reopen
+    song = Song.find(params[:id])
+    song.finished = false
+    song.save
+    song_as_json(song)
+  end
+
+  private
+  def song_as_json(song)
+    render json: song.as_json(include:
+      [{master_tracks: { include:
+        [{feature_tracks: { include: [:user, :talent]}},
+        {comments: { include: :user }},
+        :likes,
+        :fans]}},
+      :user,
+      :genres,
+      :desired_talents,
+      feature_tracks: { include: [:user, :talent]}])
+  end
+
+  def song_params
+    params.require(:song).permit(:title, :bpm, :key, :background, :time_signature)
   end
 end
 
