@@ -6,7 +6,7 @@ class UserCollaborated extends React.Component {
             {this.props.collaborated.map((song, i) => {
 
               return(
-                <UserCollaboratedSongs info={song} key={i} />
+                <UserCollaboratedSongs playSong={this.props.playSong} info={song} key={i} />
                 )
             })}
       </div>

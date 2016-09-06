@@ -1,4 +1,13 @@
 class UserLikedSongs extends React.Component {
+  constructor() {
+    super();
+    this.sendSongToParent = this.sendSongToParent.bind(this);
+  }
+
+  sendSongToParent() {
+    this.props.playSong(this.props.info.master.file_path)
+  }
+
   render(){
     let info = this.props.info
     let dateObj = new Date(this.props.info.master.updated_at)
@@ -23,6 +32,7 @@ class UserLikedSongs extends React.Component {
               <a href={'/users/' + info.user.id}>User: {info.user.username}</a>               
               <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <p>Description: {info.master.description}</p>
+              <button onClick={this.sendSongToParent}>Play</button>
             </div>
           </div>
         </div>   

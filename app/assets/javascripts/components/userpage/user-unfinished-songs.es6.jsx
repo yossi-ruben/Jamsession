@@ -5,7 +5,7 @@ class UserUnfinishedSongs extends React.Component {
           <h3>Unfinished</h3>
             {this.props.unfinished.map((song, i) => {
               return(
-                <UserSongs info={song} key={i} />
+                <UserSongs info={song} playSong={this.props.playSong} key={i} />
                 )
             })}
       </div>

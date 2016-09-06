@@ -5,7 +5,7 @@ render() {
           <h3>Liked</h3>
             {this.props.likedSongs.map((song, i) => {
               return(
-                <UserLikedSongs info={song} key={i} />
+                <UserLikedSongs info={song} playSong={this.props.playSong} key={i} />
                 )
             })}
       </div>
