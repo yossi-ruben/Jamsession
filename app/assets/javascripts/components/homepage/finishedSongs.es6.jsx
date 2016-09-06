@@ -150,8 +150,8 @@ class FinishedSongs extends React.Component{
 
   // used to grab recommeded songs
   grabRecommended(){
-    var myGenres = ["country", "folk"]
-    var myTalents = ["Piano"]
+    var myGenres = this.props.user_genres
+    var myTalents = this.props.user_talents
     var mySongs = []
     var finalList = []
     // grabs songs that include my desired talents
@@ -168,6 +168,7 @@ class FinishedSongs extends React.Component{
       for (i in mySongs[n].genres){
         if (myGenres.includes(mySongs[n].genres[i].name)){
           finalList.push(mySongs[n])
+          break;
         }
       }
     }
@@ -208,13 +209,22 @@ class FinishedSongs extends React.Component{
       )
     }
     else if (this.state.recommended){
-      return (
-        <div>
-          {this.state.recommendedList.map((song, i) =>{
-            return <Song theSong={song} key={i}/>
-          })}
-        </div>
-      )
+      if (this.state.recommendedList.lengt === 0){
+        return (
+          <div>
+            <p> No songs to Display</p>
+          </div>
+        )
+      }
+      else {
+        return (
+          <div>
+            {this.state.recommendedList.map((song, i) =>{
+              return <Song theSong={song} key={i}/>
+            })}
+          </div>
+        )
+      }
     }
     else if(this.state.random){
       return(
