@@ -30,14 +30,13 @@ class UsersController < ApplicationController
     features_contributed = FeatureTrack.where(user_id: user.id)
     masters_contributed_to = []
     features_contributed.each do |feature|
-      # binding.pry
       if feature.master_tracks.length > 0
         masters_contributed_to << feature.master_tracks[feature.master_tracks.length - 1]
       end
     end
     @collaborated_songs = []
     masters_contributed_to.each do |master|
-      @collaborated_songs << {song: master.song, master: master, user: master.song.user}
+      @collaborated_songs << {song: master.song, master: master, user: master.song.user, talent: master.feature_tracks.find_by(user_id: user.id).talent.title}
     end
     return @collaborated_songs
   end
