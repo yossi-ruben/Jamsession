@@ -1,4 +1,6 @@
-
+* {
+  /*background-color: #FF69B4;*/
+}
 
 .navigation {
   float: left;
@@ -10,10 +12,7 @@
   border-radius: 10px;
 }
 
-.song_image {
-  background-color: yellow;
-  margin-right: 40px;
-}
+
 
 .follower_border, .talent_border {
   border-bottom: 1px solid black;
@@ -24,8 +23,7 @@
 }
 
 .collab_song, .liked_song, .project_song {
-  /*border-bottom: 1px solid gray;*/
-  border: 1px solid #F0F8FF;
+  border-bottom: 1px solid gray;
   padding: 10px;
 }
 
@@ -33,6 +31,14 @@
 
 }
 
+#sign_out {
+  margin-left: 90%;
+}
+
+.song_img {
+  max-width: 200px;
+  height: auto;
+}
 
 .navigation img {
   width: 230px;
@@ -69,7 +75,8 @@ ul.tab {
     padding-top: 30px;
     overflow: hidden;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
+    background-color:#ff5500;
     width:73%;
 }
 
@@ -87,17 +94,16 @@ p, h5 {
 
 
 ul.tab li a {
-    background: #d3d3d3;
-    display: inline-block;
-    color: black;
+  /*  background-color:#ff5500;*/
+    display: inline-blck;
+    color: white;
     text-align: center;
     text-decoration: none;
     transition: 0.3s;
     font-size: 20px;
     padding: 6px 12px;
-    border: 1px solid #ccc;
     margin-left: 40px;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 5px;
 }
 
 /* Change background color of links on hover */
