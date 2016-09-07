@@ -6,7 +6,17 @@ class UsersController < ApplicationController
     @collaborated_songs = find_collaborated_songs(user)
     @user_unfinished_songs = find_unfinished_songs(user)
     @user_finished_songs = find_finished_songs(user)
-    
+  end
+
+  def index
+    user = User.find_by(username: params[:search])
+ 
+    if user
+      redirect_to "/users/#{user.id}/" 
+    else
+      flash[:notice] = "User Not Found"
+      redirect_to :back
+    end
   end
 
   def info

@@ -1,1 +1,7 @@
 <%= react_component('DisplayedSong', user_genres: @user_genres, user_talents: @user_talents) %>
+
+
+   <% form_tag(users_path, :method => "get", id: "search-form", :class => "navbar-brand top_margin") do %>
+          <%= text_field :search, params[:search], placeholder: "Search Users" %>
+          <%= submit_tag "Search"%>
+        <% end %>
