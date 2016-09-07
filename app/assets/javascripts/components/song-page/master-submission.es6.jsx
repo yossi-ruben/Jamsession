@@ -5,7 +5,9 @@ class MasterSubmission extends React.Component {
       showSubmissionForm: false,
       masterFile: null,
       currentlyUploading: false,
-      uploadComplete: false
+      uploadComplete: false,
+      errorsPresent: false,
+      errors: []
     }
     this.toggleFormView = this.toggleFormView.bind(this);
     this.submitMaster = this.submitMaster.bind(this);
@@ -76,13 +78,22 @@ class MasterSubmission extends React.Component {
     })
     .then((response) => response.json())
     .then((json) => {
-      this.setState({
-        currentlyUploading: false,
-        uploadComplete: true,
-        showSubmissionForm: false
-      })
-      this.props.updateAfterMaster(json);
-      description.value = "";
+      if (json.errors) {
+        this.setState({
+          currentlyUploading: false,
+          errorsPresent: true,
+          errors: json.errors
+        })
+      } else {
+        this.setState({
+          errorsPresent: false,
+          currentlyUploading: false,
+          uploadComplete: true,
+          showSubmissionForm: false
+        })
+        this.props.updateAfterMaster(json);
+        description.value = "";
+      }
     })
   }
 
@@ -109,6 +120,11 @@ class MasterSubmission extends React.Component {
         { this.state.showSubmissionForm ?
             <div className="form-holder">
               <h4>Upload a New Master Track</h4>
+              { this.state.errorsPresent ?
+                  < ErrorDisplay errors={this.state.errors} />
+                :
+                  null
+              }
               <form encType="multipart/form-data" onSubmit={this.submitMaster}>
                 <input type="hidden" name="master_track[song_id]" ref="trackSong" value={this.props.song.id} />
                 <label htmlFor="master_track[description]" className="form-label">Track Description:</label>

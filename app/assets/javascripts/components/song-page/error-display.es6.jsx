@@ -3,7 +3,7 @@ class ErrorDisplay extends React.Component {
     return (
       <ul>
         {this.props.errors.map((error, i) => {
-          return <li key={i}>{error}</li>
+          return <li key={i} className="error-text">{error}</li>
         })}
       </ul>
     )
