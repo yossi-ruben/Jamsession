@@ -1,3 +1,6 @@
+
+<br>
+<div class="border-form-div new_project">
 <h1>Begin a New Project</h1>
 
 <% if @errors %>
@@ -35,7 +38,7 @@
   <h3>Choose all desired talents for this song</h3>
   <% @talents.each do |talent| %>
     <%= check_box_tag "talent#{talent.id}", 1, @song.desired_talents.include?(talent) ? true : false %>
-    <%= label_tag :talent, "#{talent.title}" %><br> 
+    <%= label_tag :talent, "#{talent.title}" %><br>
   <% end %>
 
   <!-- Initial master track here -->
@@ -46,5 +49,7 @@
   <%= file_field_tag :file %><br>
 
   <!-- Submit button -->
-  <%= submit_tag value="Start Project" %>
+  <%= submit_tag value="Start Project",:class=>'btn btn-primary' %>
 <% end %>
+</div>
+<br>

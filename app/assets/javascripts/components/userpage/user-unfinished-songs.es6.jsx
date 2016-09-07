@@ -2,12 +2,13 @@ class UserUnfinishedSongs extends React.Component {
   render() {
     return (
       <div className="song">
-          <h3>Unfinished</h3>
+          <h3 className="finhead">In Progress</h3>
             {this.props.unfinished.map((song, i) => {
               return(
                 <UserSongs info={song} playSong={this.props.playSong} key={i} />
                 )
             })}
+
       </div>
     )
   }

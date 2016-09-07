@@ -1,40 +1,60 @@
-div {
-  background: #eeeeee;
-}
-
 .navigation {
   float: left;
-  margin-left: 40px;
+  margin-left: 20px;
   margin-top: 30px;
-  background: white;
-  height: 350px;
-  width: 200px;
+  margin-right: 20px;
   text-align: left;
-  padding-top: 20px;
-  padding-left: 20px;
-  border-radius: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.collab_song, .liked_song, .project_song {
+  background-color: white;
+  border-bottom: 1px solid gray;
+  padding: 10px;
+}
+
+.play {
+  background-image: url('../../../public/play.png');
+  color: black;
+  background-color: transparent;
+  border-radius: 6px;
 }
 
 .navigation img {
-  width: 150px;
+  width: 230px;
+  border-radius: 45%;
   height:auto;
+  margin-bottom: 10px;
+  float: left;
+  border: 1px solid black;
 }
 
-.container {
-  margin-bottom: 100px;
+
+.song_container {
+  background-color: white;
 }
+
 
 .content-column{
   margin-left:300px;
 }
 
+.finhead {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #006400;
+  color: black;
+
+}
+
 ul.tab {
     list-style-type: none;
-    margin: 100px;
+    margin: 50px;
     margin-top:30px;
     padding-top: 30px;
     overflow: hidden;
-
     text-align: center;
     border-radius: 5px;
     width:73%;
@@ -43,6 +63,15 @@ ul.tab {
 ul.tab li {
   float: left;
 }
+
+p, h5 {
+  color:black;
+}
+.new_project {
+  padding: 40px;
+  width: 50%;
+}
+
 
 ul.tab li a {
     background: #d3d3d3;
@@ -64,26 +93,7 @@ ul.tab li a:hover {background-color: #bdbdbd;}
 /* Create an active/current tablink class */
 ul.tab li a:focus, .active {background-color: #939393;}
 
-.user-song-view {
-  border-top: 1px solid #ccc;
-  display:inline-block;
-  text-align: center;
-  margin-top: -100px;
-  margin-left:100px;
-  width: 77%;
 
-}
-
-.song {
-  background: white;
-  border-radius: 15px;
-  border:solid;
-  border-color:white;
-}
-
-.carousel-caption {
-  background: white;
-}
 
 .audio-player-holder {
   position: fixed;
