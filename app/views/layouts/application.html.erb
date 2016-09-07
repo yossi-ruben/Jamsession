@@ -18,16 +18,18 @@
   </head>
 
   <body>
-    <div class="nav">
-      <a href="/">Home</a>
-      <% if user_signed_in? %>
-        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-        <%= link_to "New Project", new_song_path %>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %>
-        <%= link_to "Register", new_user_registration_path %>
-      <% end %>
-    </div>
+    <nav class="navbar navbar-inverse">
+        <a class= "navbar-brand top_margin" href="/">Home</a>
+
+        <% if user_signed_in? %>
+          <%= link_to current_user.username, user_path(current_user), :class => "navbar-brand top_margin" %>
+          <%= link_to "New Project", new_song_path, :class => "navbar-brand top_margin" %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "navbar-brand top_margin rightboy" %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path, :class => "navbar-brand top_margin" %>
+          <%= link_to "Register", new_user_registration_path, :class => "navbar-brand top_margin" %>
+        <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>

@@ -28,10 +28,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-
+gem 'bootstrap'
 gem 'faker'
 gem 'better_errors'
-
+gem 'bootstrap-sass-rails'
 # Allow for connection to S3 Storage
 gem 'aws-sdk-v1'
 gem 'dotenv-rails'
