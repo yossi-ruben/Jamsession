@@ -12,6 +12,10 @@ div#open-edit-delete {
   margin-bottom: 0px;
 }
 
+div#title-and-origin {
+  padding-left: 0px;
+}
+
 textarea#comment-textarea {
   height: 100px;
   width: 600px;
@@ -44,6 +48,7 @@ p#button-label {
 
 p#new-master-submission-button {
   margin-top: 15px;
+  color: gray;
 }
 
 p#are-you-sure {
@@ -63,10 +68,35 @@ button#button-submit-feature {
   margin-top: 50px;
 }
 
+button#badge {
+  float: right;
+}
+
 h4#upload-feature-track {
   margin-bottom: 0px;
 }
 
 input#yes-im-sure {
   width: 250px;
+}
+
+div#edit-class-container {
+  margin-left: 50px;
+}
+
+div.container-fluid {
+  height: 100px;
+  padding-top: 30px;
+}
+
+div#final-jumbo {
+  margin-bottom: 200px;
+}
+
+span.glyphicon.glyphicon-download-alt {
+    font-size: 30px;
+}
+
+span#trash {
+    font-size: 30px;
 }

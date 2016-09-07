@@ -160,7 +160,7 @@ class PrivateSongView extends React.Component {
             :
             <div>
               <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <button type="button" className="btn btn-default btn-block" onClick={this.closeSong}>Mark this Song as Finished</button>
+                <button type="button" className="btn btn-default btn-block" onClick={this.closeSong}><span className="glyphicon glyphicon-ok"></span>  Mark this Song as Finished</button>
               </div>
               <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
               </div>
@@ -186,7 +186,7 @@ class PrivateSongView extends React.Component {
             :
             <div>
               <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <button type="button" className="btn btn-default btn-block" onClick={this.initiateDelete}>Delete This Song</button>
+                <button type="button" className="btn btn-default btn-block" onClick={this.initiateDelete}><span className="glyphicon glyphicon-trash"></span>  Delete This Song</button>
               </div>
               <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
               </div>
@@ -258,7 +258,7 @@ class PrivateSongView extends React.Component {
           })}
         </div>
 
-        <div className="jumbotron">
+        <div id="final-jumbo" className="jumbotron">
           <h3>All Features by Talent</h3>
           {this.state.talentArray.map((talent, i) => {
             let featuresWithTalent = featureTracks.filter((feature) => {

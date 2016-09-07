@@ -50,9 +50,11 @@ class FeatureTrack extends React.Component {
             <audio controls className="audio-player">
               <source src={featureTrack.file_path} type="audio/mpeg" />
             </audio>
-            <p>{featureTrack.description}</p>
-            <a href={featureTrack.file_path} download>Download</a>
-            <button id="normal-button" className="btn btn-default" onClick={this.deleteFeature}>Delete this Submission</button>
+            <a href={featureTrack.file_path} download><span className="glyphicon glyphicon-download-alt">  </span>  </a>
+            <a href="#" id="normal-button" onClick={this.deleteFeature}><span id="trash" className="glyphicon glyphicon-trash">  </span></a>
+            <br/>
+            <span>{featureTrack.description}</span>
+            <br/>
           </div>
         :
           null
