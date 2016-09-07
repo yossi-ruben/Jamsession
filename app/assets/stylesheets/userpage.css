@@ -28,9 +28,16 @@ div {
   margin-left:300px;
 }
 
+.finhead {
+  padding: 10px;
+  background-color: gray;
+  color: black;
+
+}
+
 ul.tab {
     list-style-type: none;
-    margin: 100px;
+    margin: 50px;
     margin-top:30px;
     padding-top: 30px;
     overflow: hidden;
@@ -43,6 +50,11 @@ ul.tab {
 ul.tab li {
   float: left;
 }
+
+p, h5 {
+  color:black;
+}
+
 
 ul.tab li a {
     background: #d3d3d3;
@@ -64,26 +76,7 @@ ul.tab li a:hover {background-color: #bdbdbd;}
 /* Create an active/current tablink class */
 ul.tab li a:focus, .active {background-color: #939393;}
 
-.user-song-view {
-  border-top: 1px solid #ccc;
-  display:inline-block;
-  text-align: center;
-  margin-top: -100px;
-  margin-left:100px;
-  width: 77%;
 
-}
-
-.song {
-  background: white;
-  border-radius: 15px;
-  border:solid;
-  border-color:white;
-}
-
-.carousel-caption {
-  background: white;
-}
 
 .audio-player-holder {
   position: fixed;
