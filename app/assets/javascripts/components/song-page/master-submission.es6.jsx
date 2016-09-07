@@ -16,7 +16,8 @@ class MasterSubmission extends React.Component {
 
   toggleFormView() {
     this.setState({
-      showSubmissionForm: !this.state.showSubmissionForm
+      showSubmissionForm: !this.state.showSubmissionForm,
+      errorsPresent: false
     })
   }
 

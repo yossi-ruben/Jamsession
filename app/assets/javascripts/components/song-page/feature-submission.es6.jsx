@@ -5,7 +5,9 @@ class FeatureSubmission extends React.Component {
       showSubmissionForm: false,
       featureFile: null,
       currentlyUploading: false,
-      uploadComplete: false
+      uploadComplete: false,
+      errorsPresent: false,
+      errors: []
     }
     this.toggleFormView = this.toggleFormView.bind(this);
     this.submitFeature = this.submitFeature.bind(this);
@@ -14,7 +16,8 @@ class FeatureSubmission extends React.Component {
 
   toggleFormView() {
     this.setState({
-      showSubmissionForm: !this.state.showSubmissionForm
+      showSubmissionForm: !this.state.showSubmissionForm,
+      errorsPresent: false
     })
   }
 
@@ -65,13 +68,22 @@ class FeatureSubmission extends React.Component {
     })
     .then((response) => response.json())
     .then((json) => {
-      this.setState({
-        currentlyUploading: false,
-        uploadComplete: true,
-        showSubmissionForm: false
-      })
-      this.props.updateAfterFeature(json)
-      description.value = "";
+      if (json.errors) {
+        this.setState({
+          currentlyUploading: false,
+          errorsPresent: true,
+          errors: json.errors
+        })
+      } else {
+        this.setState({
+          errorsPresent: false,
+          currentlyUploading: false,
+          uploadComplete: true,
+          showSubmissionForm: false
+        })
+        this.props.updateAfterFeature(json)
+        description.value = "";
+      }
     })
   }
 
@@ -92,6 +104,11 @@ class FeatureSubmission extends React.Component {
         }
         { this.state.uploadComplete ?
             <p>Upload Complete!</p>
+          :
+            null
+        }
+        { this.state.errorsPresent ?
+            < ErrorDisplay errors={this.state.errors} />
           :
             null
         }
