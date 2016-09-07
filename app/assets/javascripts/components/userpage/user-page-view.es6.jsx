@@ -100,6 +100,7 @@ class UserPageView extends React.Component {
   }
 
   render(){
+    debugger;
     { this.props.currentUser === null ?
         currentUser = {id: 0, username: ""}
       :
