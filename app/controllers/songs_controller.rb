@@ -120,6 +120,7 @@ class SongsController < ApplicationController
     else
       @errors << @song.errors.full_messages
       @errors = @errors.flatten
+      @description = params[:description]
       @current_user = current_user
       @genres = Genre.all.order(:name)
       @talents = Talent.all.order(:title)
