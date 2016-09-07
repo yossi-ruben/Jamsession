@@ -21,6 +21,18 @@
 
   <body>
     <nav id="navigation-bar-top"class="navbar navbar-inverse">
+
+      <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search For User" %>
+        <%= submit_tag "Search" %>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <div class="alert alert-warning"> 
+          <%= flash[:notice]%>
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        </div>
+      <% end %>
         <a class= "navbar-brand top_margin" href="/">Home</a>
 
         <% if user_signed_in? %>
@@ -31,6 +43,10 @@
           <%= link_to "Sign In", new_user_session_path, :class => "navbar-brand top_margin" %>
           <%= link_to "Register", new_user_registration_path, :class => "navbar-brand top_margin" %>
         <% end %>
+
+     
+
+
     </nav>
     <%= yield %>
   </body>
