@@ -1,71 +1,25 @@
-/*Song view pages*/
-.song-view {
-  width: 800px;
-  border: 1px solid black;
-  margin: auto;
+div#master-view {
+  height: auto;
+  padding-top: 10px;
 }
 
-.song-view-tab {
-  margin: 0px 20px;
+div#comment-button {
+  padding:0px;
 }
 
-#song-view-tabs {
-  margin: auto;
-  width: 800px;
-  text-align: center;
-}
-
-.song-header {
-  text-align: center;
+textarea#comment-textarea {
+  height: 100px;
+  width: 600px;
   margin-bottom: 0px;
 }
 
-.song-originator {
-  text-align: center;
+li {
+  list-style-type: none;
+}
+
+h2.text-left{
   margin-top: 0px;
 }
 
-.current-master-view {
-  width: 500px;
-  margin: auto;
-  border: 1px solid black;
-}
-
-.master-track-holder {
-  border: 1px solid black;
-  padding: 5px;
-  width: 400px;
-  margin: 10px auto;
-}
-
-.feature-track-holder {
-  border: 1px solid black;
-  padding: 5px;
-  width: 400px;
-  margin: 10px auto;
-}
-
-.submission-form-holder {
-  text-align: center; 
-}
-
-.form-label, .form-input {
-  display: block;
-  padding: 10px;
-}
-
-.form-holder {
-  margin: 10px auto;
-  padding: 10px;
-  width: 300px;
-  border: 1px solid black;
-}
-
-.small-text {
-  font-size: .7em;
-  font-style: italic;
-}
-
-audio {
-  width: 400px;
+div#song-info {
 }

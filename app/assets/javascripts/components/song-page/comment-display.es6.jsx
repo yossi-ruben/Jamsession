@@ -72,7 +72,7 @@ class CommentDisplay extends React.Component {
     return (
       <div>
         { this.state.comments.length === 0 ?
-            <p>No comments have been added to this track yet.</p>
+            <h6>No comments have been added to this track yet.</h6>
           :
             <ul>
               {this.state.comments.map((comment, i) => {
@@ -86,11 +86,11 @@ class CommentDisplay extends React.Component {
             </ul>
         }
         { this.props.currentUser.id !== 0 ?
-            <button onClick={this.toggleAddCommentForm}>
+            <button type="button" className="btn btn-default btn-sm" onClick={this.toggleAddCommentForm}>
               { this.state.viewForm ?
-                  <p>Hide Comment Submission Form</p>
+                  <span>Hide Comment Submission Form</span>
                 :
-                  <p>Add Comment</p>
+                  <span>Add Comment</span>
               }
             </button>
           :
@@ -100,7 +100,8 @@ class CommentDisplay extends React.Component {
             <form onSubmit={this.submitComment}>
               <input type="hidden" name="comment[user_id]" ref="userID" value={this.props.currentUser.id} />
               <input type="hidden" name="comment[master_track_id]" ref="masterTrackID" value={masterTrack.id} />
-              <textarea name="comment[body]" ref="body" className="form-input"></textarea>
+              <textarea id="comment-textarea" name="comment[body]" ref="body" className="form-input"></textarea>
+              <br/>
               <input type="submit" value="Add Comment" />
             </form>
           :

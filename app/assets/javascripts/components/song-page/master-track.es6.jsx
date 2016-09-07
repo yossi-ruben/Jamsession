@@ -118,46 +118,67 @@ class MasterTrack extends React.Component {
             <audio controls>
               <source src={masterTrack.file_path} type="audio/mpeg" />
             </audio>
-            <p> {likeCount}
-              { likeCount === 1 ?
-                  <span> Like</span>
-                :
-                  <span> Likes</span>
-              }
-            </p>
-            { this.props.currentUser.id !== 0 ?
-                <div>
-                  { fans.includes(this.props.currentUser.id) ?
-                      <button onClick={this.removeLike}>Unlike</button>
+            <br/>
+                <small> {likeCount}
+                  { likeCount === 1 ?
+                      <span> Like</span>
                     :
-                      <button onClick={this.addLike}>Like</button>
+                      <span> Likes</span>
                   }
-                  <a href={masterTrack.file_path} download>Download</a>
-                </div>
-              :
-                null
-            }
-            <button onClick={this.toggleCommentView}>
-              { this.state.displayComments ?
-                  <p>Hide Comments</p>
-                :
-                  <p>Show Comments</p>
-              }
-            </button>
-            <button onClick={this.toggleDescriptionView}>
-              { this.state.displayDescription ?
-                  <p>Hide Description</p>
-                :
-                  <p>Show Description</p>
-              }
-            </button>
-            <button onClick={this.toggleCollaboratorView}>
-              { this.state.displayCollaborators ?
-                  <p>Hide Collaborators</p>
-                :
-                  <p>Show Collaborators</p>
-              }
-            </button>
+                </small>
+                { this.props.currentUser.id !== 0 ?
+                    <div>
+                      { fans.includes(this.props.currentUser.id) ?
+                          <button type="button" className="btn btn-default btn-sm" onClick={this.removeLike}>
+                            <span className="glyphicon glyphicon-thumbs-down"></span> Unike
+                          </button>
+                        :
+                          <button type="button" className="btn btn-default btn-sm" onClick={this.addLike}>
+                            <span className="glyphicon glyphicon-thumbs-up"></span> Like
+                          </button>
+                      }
+                      <a href={masterTrack.file_path} download>Download</a>
+                    </div>
+                  :
+                    null
+                }
+
+
+            <div>
+              <div id="comment-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <button type="button" className="btn btn-default btn-block" onClick={this.toggleCommentView}>
+                  <span className="glyphicon glyphicon-comment"></span>
+                  { this.state.displayComments ?
+                      <span>  Hide Comments</span>
+                    :
+                      <span>  Show Comments</span>
+                  }
+                </button>
+              </div>
+
+              <div id="comment-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <button type="button" className="btn btn-default btn-block" onClick={this.toggleDescriptionView}>
+                  <span className="glyphicon glyphicon-list"></span>
+                  { this.state.displayDescription ?
+                      <span>  Hide Description</span>
+                    :
+                      <span>  Show Description</span>
+                  }
+                </button>
+              </div>
+
+              <div id="comment-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <button type="button" className="btn btn-default btn-block" onClick={this.toggleCollaboratorView}>
+                  <span className="glyphicon glyphicon-cd"></span>
+                  { this.state.displayCollaborators ?
+                      <span>  Hide Collaborators</span>
+                    :
+                      <span>  Show Collaborators</span>
+                  }
+                </button>
+              </div>
+            </div>
+
             <div>
               { this.state.displayComments ?
                   < CommentDisplay
@@ -167,8 +188,10 @@ class MasterTrack extends React.Component {
                 :
                   null
               }
-              { this.state.displayDescription ? 
-                  <p>{masterTrack.description}</p>
+              { this.state.displayDescription ?
+                  <ul>
+                    <li>{masterTrack.description}</li>
+                  </ul>  
                 :
                   null
               }

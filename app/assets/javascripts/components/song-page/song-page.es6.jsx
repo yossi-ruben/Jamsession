@@ -106,9 +106,14 @@ class SongPage extends React.Component {
     return (
       <div>
         { this.props.private_user_auth ?
-            <div id="song-view-tabs">
-              <button onClick={this.showPublic} className="song-view-tab">Public View</button>
-              <button onClick={this.showPrivate} className="song-view-tab">Private View</button>
+            <div className="jumbotron" id="song-view-tabs">
+              <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <button onClick={this.showPublic} type="button" className="btn btn-primary btn-block">Public View</button>
+              </div>
+              
+              <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <button onClick={this.showPrivate} type="button" className="btn btn-primary btn-block">Private View</button>
+              </div>
             </div>
           :
             null

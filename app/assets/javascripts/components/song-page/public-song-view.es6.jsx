@@ -16,26 +16,29 @@ class PublicSongView extends React.Component {
     }).slice(1, this.props.masterTracks.length)
     return (
     <div>
-        <div>
-          <h1 className="song-header">{song.title}</h1>
-          <h3 className="song-originator">Originated by: <a href={`/users/${songOwner.id}`}>{songOwner.username}</a></h3>
+      <div className="container">
+        <div id="master-view" className="table-bordered, jumbotron">
+          <h2 className="text-left">{song.title}</h2>
+          <h4 className="text-left">Originated by: <a href={`/users/${songOwner.id}`}>{songOwner.username}</a></h4>
           { song.finished ?
-              <h3>This song is marked as finished</h3>
+              <h3 className="text-left"><small>This song is marked as finished</small></h3>
             :
-              <h3>This song is open for submissions</h3>
+              <h3 className="text-left"><small>This song is open for submissions</small></h3>
           }
           { currentMasterTrack === undefined ?
               null
             :
               <div className="current-master-view">
-                <h2>Current Master:</h2>
+                <h4>Current Master:</h4>
                   < MasterTrack
                     masterTrack={currentMasterTrack} 
                     csrf={this.props.csrf}
                     currentUser={this.props.currentUser} />
               </div>
           }
-          <div className="song-info">
+        </div>
+
+          <div id="song-info" className="col-lg-3 col-md-3 col-sm-4 col-xs-6">
             <h4>Song Info</h4>
             <ul>
               <li>BPM: {song.bpm}</li>
@@ -57,18 +60,22 @@ class PublicSongView extends React.Component {
             <h4>Background</h4>
             <p>{song.background}</p>
           </div>
-          <div>
-            <h1>Master History</h1>
-            {masterHistory.map((master, i) => {
-              return (
-                < MasterTrack 
-                  masterTrack={master}
-                  currentUser={this.props.currentUser}
-                  csrf={this.props.csrf}
-                  key={i} />
-              )
-            })}
+
+          <div className="col-lg-9 col-md-9 col-sm-8 col-xs-6">
+            <h3 className="text-center">Master History</h3>
+            <div>
+              {masterHistory.map((master, i) => {
+                return (
+                  < MasterTrack 
+                    masterTrack={master}
+                    currentUser={this.props.currentUser}
+                    csrf={this.props.csrf}
+                    key={i} />
+                )
+              })}
+            </div>
           </div>
+
           { song.finished ?
               null
             :
@@ -85,7 +92,7 @@ class PublicSongView extends React.Component {
               }
               </div>
           }
-        </div>
+      </div>
     </div>
     )
   }
