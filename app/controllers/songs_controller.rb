@@ -153,6 +153,7 @@ class SongsController < ApplicationController
   end
 
   def new
+    @song = Song.new
     @genres = Genre.all.order(:name)
     @talents = Talent.all.order(:title)
     @current_user = current_user
