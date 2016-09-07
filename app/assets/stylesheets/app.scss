@@ -4,6 +4,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
 .displayedSongs{
   border: 2px solid black;
   height: 1000;
@@ -37,4 +38,19 @@
   margin-left: 350px;
 }
 
+.UnFinNav{
+  border: 2px solid black;
+  height: 50px;
+  text-align: center;
+
+}
+
+.UnFinNav li{
+  display: inline;
+  text-align: center;
+  color: orange;
+  border: 2px solid black;
+  margin: 5px;
+  padding:5px ;
+}
 

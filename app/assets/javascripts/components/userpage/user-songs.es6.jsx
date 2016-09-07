@@ -24,7 +24,7 @@ class UserSongs extends React.Component {
       <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
         <div className="carousel-inner" role="listbox">
-          <div className="item active">
+          <div >
             <a href={'/songs/' + info.id}><img src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
             <div className="carousel-caption">
               <a href={'/songs/' + info.id}>Song Title: {info.title}</a>
