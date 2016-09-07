@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  GENERIC_SONG_IMAGES = []
+  GENERIC_SONG_IMAGES = ["https://jamsession-app.s3.amazonaws.com/Pearl1.jpg", "https://jamsession-app.s3.amazonaws.com/Pearl2.jpg", "https://jamsession-app.s3.amazonaws.com/Pearl3.jpg", "https://jamsession-app.s3.amazonaws.com/Pearl4.jpg", "https://jamsession-app.s3.amazonaws.com/Pearl5.jpg","https://jamsession-app.s3.amazonaws.com/Pearl6.jpg"]
 
   def finished_songs
     finished_songs = Song.where(finished: true)
@@ -108,10 +108,11 @@ class SongsController < ApplicationController
         @song.img_file_name = img.key
         @song.img_file_path = img.public_url
       else
-
+        @song.img_file_name = "default"
+        @song.img_file_path = GENERIC_SONG_IMAGES.sample
       end
 
-      # Save song with genres, talents, and file
+      # Save song with file and image
       @song.save
 
       # Redirect user to new song page
