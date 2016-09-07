@@ -22,7 +22,7 @@ class UserSongs extends React.Component {
         null
         :
 
-            <div className="song_container">
+            <div className="project_song">
             <a href={'/songs/' + info.id}><img src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
               <a href={'/songs/' + info.id}>Song Title: {info.title}</a>
               <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>

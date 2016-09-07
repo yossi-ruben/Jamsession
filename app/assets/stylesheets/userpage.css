@@ -14,6 +14,12 @@
   background-color: white;
 }
 
+.collab_song, .liked_song, .project_song {
+  background-color: white;
+  border-bottom: 1px solid gray;
+  padding: 10px;
+}
+
 .navigation img {
   width: 150px;
   border-radius: 45%;
@@ -33,7 +39,7 @@
 }
 
 .finhead {
-  padding: 10px;
+  padding: 15px;
   background-color: gray;
   color: black;
 

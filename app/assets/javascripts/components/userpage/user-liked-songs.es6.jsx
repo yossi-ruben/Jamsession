@@ -21,7 +21,7 @@ class UserLikedSongs extends React.Component {
       { info === undefined ?
         null
         :
-          <div className="item active">
+          <div className="liked_song">
             <a href={'/songs/' + info.song.id}><img src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
               <a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a>
               <br/>
