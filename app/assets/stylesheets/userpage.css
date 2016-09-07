@@ -1,4 +1,4 @@
-.userpage, html {
+.userpage {
   background: #eeeeee;
 }
 
@@ -49,6 +49,10 @@ ul.tab li {
 
 p, h5 {
   color:black;
+}
+.new_project {
+  padding: 40px;
+  width: 50%;
 }
 
 
