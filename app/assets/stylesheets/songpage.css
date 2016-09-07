@@ -48,6 +48,7 @@ p#button-label {
 
 p#new-master-submission-button {
   margin-top: 15px;
+  color: gray;
 }
 
 p#are-you-sure {
@@ -87,4 +88,15 @@ div.container-fluid {
   height: 100px;
   padding-top: 30px;
 }
-    
+
+div#final-jumbo {
+  margin-bottom: 200px;
+}
+
+span.glyphicon.glyphicon-download-alt {
+    font-size: 30px;
+}
+
+span#trash {
+    font-size: 30px;
+}

@@ -118,6 +118,13 @@ class MasterTrack extends React.Component {
             <audio controls>
               <source src={masterTrack.file_path} type="audio/mpeg" />
             </audio>
+
+            { this.props.currentUser.id !== 0 ?
+              <a id="download-icon" href={masterTrack.file_path} download><span className="glyphicon glyphicon-download-alt">  </span>  </a>
+              :
+              null
+            }
+
             <br/>
                 <small> {likeCount}
                   { likeCount === 1 ?
@@ -137,7 +144,6 @@ class MasterTrack extends React.Component {
                             <span className="glyphicon glyphicon-thumbs-up"></span> Like
                           </button>
                       }
-                      <a href={masterTrack.file_path} download>Download</a>
                     </div>
                   :
                     null

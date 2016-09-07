@@ -258,7 +258,7 @@ class PrivateSongView extends React.Component {
           })}
         </div>
 
-        <div className="jumbotron">
+        <div id="final-jumbo" className="jumbotron">
           <h3>All Features by Talent</h3>
           {this.state.talentArray.map((talent, i) => {
             let featuresWithTalent = featureTracks.filter((feature) => {

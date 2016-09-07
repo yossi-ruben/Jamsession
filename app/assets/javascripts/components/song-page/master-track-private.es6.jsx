@@ -48,8 +48,8 @@ class MasterTrackPrivate extends React.Component {
             <audio controls className="audio-player">
               <source src={masterTrack.file_path} type="audio/mpeg" />
             </audio>
-            <a href={masterTrack.file_path} download>Download</a>
-            <button onClick={this.deleteMaster}>Delete this Master Track</button>
+            <a href={masterTrack.file_path} download><span className="glyphicon glyphicon-download-alt">  </span>  </a>
+            <a href="#" onClick={this.deleteMaster}><span id="trash" className="glyphicon glyphicon-trash">  </span>  </a>
           </div>
         :
           null
