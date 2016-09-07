@@ -139,8 +139,8 @@ class UserInfo extends React.Component{
           }
         </div>
 
-        <div>
-          <h5>Talents</h5>
+        <h5><a href="#col1Content" data-toggle="collapse">Talents</a></h5>
+        <div id="col1Content" className="collapse in">
           {this.props.talents.map((tal, i) => {
             return(
               <p key={i}>{tal.title}</p>
@@ -148,8 +148,8 @@ class UserInfo extends React.Component{
           })}
         </div>
 
-        <div>
-        <h5>Genres</h5>
+        <h5><a href="#col2Content" data-toggle="collapse">Genres</a></h5>
+        <div id="col2Content" className="collapse in">
         {this.props.genres.map((genre, i) => {
           return(
             <p key={i}>{genre.name}</p>

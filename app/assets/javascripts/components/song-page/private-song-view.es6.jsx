@@ -143,8 +143,9 @@ class PrivateSongView extends React.Component {
     })
     let featureTracks = this.props.featureTracks
     return (
-      <div>
-        <h1>{this.props.song.title}</h1>
+      <div className="container">
+        <div className="jumbotron">
+        <h2>{this.props.song.title}</h2>
         { this.props.song.finished ?
             <button onClick={this.reopenSong}>Re-Open this Song for Submissions</button>
           :
@@ -181,44 +182,56 @@ class PrivateSongView extends React.Component {
           :
             null
         }
-        <h1>Masters</h1>
-        {masterTracks.map((master, i) => {
-          return (
-            < MasterTrackPrivate
-              masterTrack={master}
-              removeMaster={this.props.removeMaster}
-              csrf={this.props.csrf}
-              key={i} />
-          )
-        })}
-        <h1>Features Included in Most Recent Master</h1>
-        {currentMasterTrack.feature_tracks.map((feature, i) => {
-          return < FeatureTrack
-                   featureTrack={feature}
-                   featureContributor={feature.user}
-                   removeFeature={this.props.removeFeature}
-                   csrf={this.props.csrf}
-                   key={i} />
-        })}
-        <h1>All Features by Talent</h1>
-        {this.state.talentArray.map((talent, i) => {
-          let featuresWithTalent = featureTracks.filter((feature) => {
-              return feature.talent.title === talent
-            })
-          return (
-          <div key={i}>
-            <h3>{talent}</h3>
-            {featuresWithTalent.map((feature, i) => {
-              return < FeatureTrack
-                       featureTrack={feature}
-                       featureContributor={feature.user}
-                       removeFeature={this.props.removeFeature}
-                       csrf={this.props.csrf}
-                       key={i} />
-            })}
-          </div>
-          )
-        })}
+        </div>
+
+
+        <div className="jumbotron">
+          <h2 className="text-center">Masters</h2>
+          {masterTracks.map((master, i) => {
+            return (
+              < MasterTrackPrivate
+                masterTrack={master}
+                removeMaster={this.props.removeMaster}
+                csrf={this.props.csrf}
+                key={i} />
+            )
+          })}
+        </div>
+
+        <div className="jumbotron">
+          <h3 className="text-center">Features Included in Most Recent Master</h3>
+          {currentMasterTrack.feature_tracks.map((feature, i) => {
+            return < FeatureTrack
+                     featureTrack={feature}
+                     featureContributor={feature.user}
+                     removeFeature={this.props.removeFeature}
+                     csrf={this.props.csrf}
+                     key={i} />
+          })}
+        </div>
+
+        <div className="jumbotron">
+          <h3 className="text-center">All Features by Talent</h3>
+          {this.state.talentArray.map((talent, i) => {
+            let featuresWithTalent = featureTracks.filter((feature) => {
+                return feature.talent.title === talent
+              })
+            return (
+            <div key={i}>
+              <h3>{talent}</h3>
+              {featuresWithTalent.map((feature, i) => {
+                return < FeatureTrack
+                         featureTrack={feature}
+                         featureContributor={feature.user}
+                         removeFeature={this.props.removeFeature}
+                         csrf={this.props.csrf}
+                         key={i} />
+              })}
+            </div>
+            )
+          })}
+        </div>
+
         <div className="global-audio-controls">
           { this.state.playAll ?
             <button onClick={this.pauseAllSelected}>Pause All</button>
