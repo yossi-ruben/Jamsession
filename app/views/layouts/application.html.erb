@@ -10,16 +10,20 @@
   </head>
 
   <body>
-    <div class="nav">
-      <a href="/">Home</a>
-      <% if user_signed_in? %>
-        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-        <%= link_to "New Project", new_song_path %>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %>
-        <%= link_to "Register", new_user_registration_path %>
-      <% end %>
-    </div>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <a class= "navar-brand top_margin" href="/">Home</a>
+
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <%= link_to "New Project", new_song_path %>
+          <%= link_to current_user.username, user_path(current_user) %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path %>
+          <%= link_to "Register", new_user_registration_path %>
+        <% end %>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

@@ -1,4 +1,4 @@
-
+@import 'bootstrap';
 // Place all the styles related to the App controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -30,11 +30,6 @@
   padding: 15px;
 }
 
-.Title{
-  color: darkgrey;
-  border: 2px solid grey;
-  display: inline-block;
-}
 
 .FinishedSongs h1{
   color: darkgrey;
@@ -43,19 +38,3 @@
 }
 
 
-
-.UnFinNav{
-  border: 2px solid black;
-  height: 50px;
-  text-align: center;
-
-}
-
-.UnFinNav li{
-  display: inline;
-  text-align: center;
-  color: orange;
-  border: 2px solid black;
-  margin: 5px;
-  padding:5px ;
-}
