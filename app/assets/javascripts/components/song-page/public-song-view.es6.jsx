@@ -18,10 +18,23 @@ class PublicSongView extends React.Component {
     <div>
       <div className="container">
         <div id="master-view" className="table-bordered, jumbotron">
-          <h2 className="text-left">{song.title}</h2>
-          <h4 className="text-left">Originated by: <a href={`/users/${songOwner.id}`}>{songOwner.username}</a></h4>
+        <div>
+          <div id="title-and-origin" className="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+            <h2 className="text-left">{song.title}</h2>
+            <h4 className="text-left">Originated by: <a href={`/users/${songOwner.id}`}>{songOwner.username}</a></h4>
+          </div>
+          <div className="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+            { song.finished ?
+              <button id="badge" type="button" className="btn btn-success">Complete <span className="badge"></span></button>
+              :
+              <button id="badge" type="button" className="btn btn-danger">In Progress <span className="badge"></span></button>
+            }
+          </div>
+          <br/>
+
+        </div>
           { song.finished ?
-              <h3 className="text-left"><small>This song is marked as finished</small></h3>
+              <h3 className="text-right"><small>This song is marked as finished</small></h3>
             :
               <h3 className="text-left"><small>This song is open for submissions</small></h3>
           }

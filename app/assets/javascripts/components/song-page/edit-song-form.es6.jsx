@@ -65,6 +65,7 @@ class EditSongForm extends React.Component {
       return talent.id
     })
     return (
+      <div id="edit-class-container"className="container">
       <form onSubmit={this.editSong}>
         <br/>
         <label htmlFor="song[title]" className="form-label">Title:</label>
@@ -118,6 +119,7 @@ class EditSongForm extends React.Component {
         })}
         <input type="submit" value="Edit Song" />
       </form>
+      </div>
     )
   }
 }

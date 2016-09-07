@@ -12,6 +12,10 @@ div#open-edit-delete {
   margin-bottom: 0px;
 }
 
+div#title-and-origin {
+  padding-left: 0px;
+}
+
 textarea#comment-textarea {
   height: 100px;
   width: 600px;
@@ -63,6 +67,10 @@ button#button-submit-feature {
   margin-top: 50px;
 }
 
+button#badge {
+  float: right;
+}
+
 h4#upload-feature-track {
   margin-bottom: 0px;
 }
@@ -70,3 +78,13 @@ h4#upload-feature-track {
 input#yes-im-sure {
   width: 250px;
 }
+
+div#edit-class-container {
+  margin-left: 50px;
+}
+
+div.container-fluid {
+  height: 100px;
+  padding-top: 30px;
+}
+    
