@@ -1,29 +1,15 @@
-* {
-  /*background-color: #FF69B4;*/
-}
-
-.navigation {
-  float: left;
-  margin-left: 20px;
-  margin-top: 30px;
-  margin-right: 20px;
-  text-align: left;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-
 
 .follower_border, .talent_border {
   border-bottom: 1px solid black;
 }
 
 .date {
-  color: #9ebc71;
+  color: black;
 }
 
 .collab_song, .liked_song, .project_song {
   border-bottom: 1px solid gray;
+/*  float: left;*/
   padding: 10px;
 }
 
@@ -37,7 +23,26 @@
 
 .song_img {
   max-width: 200px;
+/*  float: left;*/
+  display: inline-block;
+  margin-right: 10px;
   height: auto;
+}
+
+.song_details {
+  margin-left: 20px;
+  display: inline-block;
+  vertical-align: center;
+}
+
+.navigation {
+  float: left;
+  margin-left: 20px;
+  margin-top: 30px;
+  margin-right: 20px;
+  text-align: left;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .navigation img {
@@ -76,12 +81,12 @@ ul.tab {
     overflow: hidden;
     text-align: center;
     border-radius: 10px;
-    background-color:#ff5500;
     width:73%;
 }
 
 ul.tab li {
   float: left;
+  border-bottom: 1px solid #C0C0C0;
 }
 
 p, h5 {
@@ -94,16 +99,14 @@ p, h5 {
 
 
 ul.tab li a {
-  /*  background-color:#ff5500;*/
-    display: inline-blck;
-    color: white;
+    display: inline-block;
+    color: black;
     text-align: center;
+    font-family: Georgia;
     text-decoration: none;
-    transition: 0.3s;
     font-size: 20px;
     padding: 6px 12px;
     margin-left: 40px;
-    border-radius: 5px;
 }
 
 /* Change background color of links on hover */

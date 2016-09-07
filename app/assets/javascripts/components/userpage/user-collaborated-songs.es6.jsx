@@ -22,7 +22,8 @@ class UserCollaboratedSongs extends React.Component {
         null
         :
           <div className="collab_song">
-            <a href={'/songs/' + info.song.id}><img src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
+            <a  href={'/songs/' + info.song.id}><img className="song_img" src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
+            <div className="song_details">
               <a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a>
               <br/>
               <a href={'/users/' + info.user.id}>User: {info.user.username}</a>
@@ -31,6 +32,7 @@ class UserCollaboratedSongs extends React.Component {
               <p>Played {info.talent}</p>
               <button className="glyphicon glyphicon-play" onClick={this.sendSongToParent}></button>
             </div>
+          </div>
     }
       </div>
   );

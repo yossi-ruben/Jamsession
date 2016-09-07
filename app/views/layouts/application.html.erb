@@ -26,18 +26,20 @@
         <%= text_field_tag :search, params[:search], placeholder: "Search For User" %>
         <%= submit_tag "Search" %>
       <% end %>
-
       <% if flash[:notice] %>
-        <div class="alert alert-warning"> 
+        <div class="alert alert-warning">
           <%= flash[:notice]%>
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         </div>
       <% end %>
+        <div class="home_button">
         <a class= "navbar-brand top_margin" href="/">Home</a>
-
+      </div>
         <% if user_signed_in? %>
+          <div class="left_nav">
           <%= link_to current_user.username, user_path(current_user), :class => "navbar-brand top_margin" %>
           <%= link_to "New Project", new_song_path, :class => "navbar-brand top_margin" %>
+          </div>
           <div id="sign_out">
           <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "navbar-brand top_margin rightboy" %>
         </div>
@@ -46,7 +48,7 @@
           <%= link_to "Register", new_user_registration_path, :class => "navbar-brand top_margin" %>
         <% end %>
 
-     
+
 
 
     </nav>

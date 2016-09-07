@@ -81,10 +81,23 @@
   padding: 7px 9px;
 }
 
+.left_nav {
+  margin-left: 50%;
+}
+
+.home_button {
+  margin-left: 10%;
+}
+
 .error-text {
   color: red;
 }
 nav#navigation-bar-top {
-  background-color:#2f2f2f;
+  background-color: #333333;
   margin-bottom: 0px;
+}
+
+nav#navigation-bar-top a {
+  color: white;
+  background-color: #ff5500;
 }
