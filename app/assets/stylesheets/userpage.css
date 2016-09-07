@@ -1,4 +1,4 @@
-div {
+.userpage, html {
   background: #eeeeee;
 }
 
@@ -6,13 +6,10 @@ div {
   float: left;
   margin-left: 40px;
   margin-top: 30px;
-  background: white;
-  height: 350px;
-  width: 200px;
   text-align: left;
-  padding-top: 20px;
-  padding-left: 20px;
-  border-radius: 15px;
+  padding: 20px;
+  border: 2px solid gray;
+  background-color: white;
 }
 
 .navigation img {
@@ -41,7 +38,6 @@ ul.tab {
     margin-top:30px;
     padding-top: 30px;
     overflow: hidden;
-
     text-align: center;
     border-radius: 5px;
     width:73%;
