@@ -39,45 +39,39 @@ class CommentDisplay extends React.Component {
 
     let body = this.refs.body
 
-    let data = {
-      master_track_id: this.refs.masterTrackID.value,
-      user_id: this.refs.userID.value,
-      body: body.value
-    }
+    if (body.value !== "") {
+      let data = {
+        master_track_id: this.refs.masterTrackID.value,
+        user_id: this.refs.userID.value,
+        body: body.value
+      }
 
-    fetch('/comments', {
-      method: "post",
-      dataType: "JSON",
-      headers: {
-        "X-CSRF-Token": this.props.csrf,
-        "Accept": "application/json",
-        "Content-Type": "application/json"  
-      },
-      credentials: "include",
-      body: JSON.stringify(data)
-    })
-    .then(function(response) 
-      { debugger;
-        checkStatus(response)})
-    .then((response) => response.json())
-    .then((json) => {
-      this.setState({
-        errorsPresent: false,
-        comments: this.state.comments.concat([json]),
-        viewForm: false
+      fetch('/comments', {
+        method: "post",
+        dataType: "JSON",
+        headers: {
+          "X-CSRF-Token": this.props.csrf,
+          "Accept": "application/json",
+          "Content-Type": "application/json"  
+        },
+        credentials: "include",
+        body: JSON.stringify(data)
       })
-      body.value="";
-    })
-    .catch(function(response) {
-      debugger;
-      response.json()
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          errorsPresent: false,
+          comments: this.state.comments.concat([json]),
+          viewForm: false
+        })
+        body.value="";
       })
-    .then((errors) => {
+    } else {
       this.setState({
         errorsPresent: true,
-        errors: errors
+        errors: ["Cannot submit a blank comment"]
       })
-    })
+    }
   }
 
   removeComment(comment) {
