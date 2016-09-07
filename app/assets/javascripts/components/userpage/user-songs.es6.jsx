@@ -23,11 +23,10 @@ class UserSongs extends React.Component {
         :
 
             <div className="project_song">
-            <a href={'/songs/' + info.id}><img src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
+            <a href={'/songs/' + info.id}><img  src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
               <a href={'/songs/' + info.id}>Song Title: {info.title}</a>
-              <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
-              <p>Description of Song {info.background}</p>
-              <button className="play" onClick={this.sendSongToParent}>Play</button>
+              <h5 className="date">{useMonth + " " + day.toString() + " " + year.toString()}</h5>
+              <button className="glyphicon glyphicon-play" onClick={this.sendSongToParent}></button>
             </div>
     }
       </div>

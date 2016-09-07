@@ -1,3 +1,8 @@
+* {
+  background-color: #242424;
+  color: white;
+}
+
 .navigation {
   float: left;
   margin-left: 20px;
@@ -6,21 +11,34 @@
   text-align: left;
   padding: 20px;
   border-radius: 10px;
-  background-color: white;
+}
+
+.song_image {
+  background-color: yellow;
+  margin-right: 40px;
+}
+
+.follower_border, .talent_border {
+  border-bottom: 1px solid white;
+}
+
+.date {
+  color: #9ebc71;
 }
 
 .collab_song, .liked_song, .project_song {
-  background-color: white;
-  border-bottom: 1px solid gray;
+  /*border-bottom: 1px solid gray;*/
+  border: 1px solid #F0F8FF;
   padding: 10px;
 }
 
 .play {
   background-image: url('../../../public/play.png');
-  color: black;
+  color: white;
   background-color: transparent;
   border-radius: 6px;
 }
+
 
 .navigation img {
   width: 230px;
@@ -29,6 +47,7 @@
   margin-bottom: 10px;
   float: left;
   border: 1px solid black;
+  background: radial-gradient(#f9e48c, #4ba044);
 }
 
 
@@ -44,7 +63,7 @@
 .finhead {
   padding: 15px;
   border-radius: 5px;
-  background-color: #006400;
+  background-color: white;
   color: black;
 
 }

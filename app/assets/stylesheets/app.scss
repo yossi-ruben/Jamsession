@@ -55,7 +55,7 @@
 }
 
 .rightboy {
-  margin-left: 75%;
+  padding-left: 75%;
 }
 
 .border-form-div {
@@ -84,9 +84,15 @@
   padding: 7px 9px;
 }
 
+.navbar-brand .top_margin {
+  color: white;
+}
+
 .error-text {
   color: red;
 }
 nav#navigation-bar-top {
+  background-color:#3a3a3a;
+  border-bottom: solid 4px #9ebc71;
   margin-bottom: 0px;
 }

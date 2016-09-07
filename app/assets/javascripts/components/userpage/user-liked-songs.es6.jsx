@@ -26,9 +26,9 @@ class UserLikedSongs extends React.Component {
               <a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a>
               <br/>
               <a href={'/users/' + info.user.id}>User: {info.user.username}</a>
-              <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
+              <h5 class="date">Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <p>Description: {info.master.description}</p>
-              <button className="play" onClick={this.sendSongToParent}>Play</button>
+              <button className="glyphicon glyphicon-play" onClick={this.sendSongToParent}></button>
           </div>
 
     }
