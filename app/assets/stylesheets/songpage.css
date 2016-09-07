@@ -7,6 +7,11 @@ div#normal-button {
   padding:0px;
 }
 
+div#open-edit-delete {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 textarea#comment-textarea {
   height: 100px;
   width: 600px;
@@ -22,6 +27,11 @@ h2.text-left{
 }
 
 div#song-info {
+  border:solid;
+}
+
+div#master-history {
+  border:solid;
 }
 
 div.jumbotron {
@@ -38,8 +48,25 @@ p#new-master-submission-button {
 
 p#are-you-sure {
   font-size: 14px;
+  margin-left: 30px;
 }
 
 p#normal14 {
   font-size: 14px;
+}
+
+form#feature-submit-form {
+  border: solid;
+}
+
+button#button-submit-feature {
+  margin-top: 50px;
+}
+
+h4#upload-feature-track {
+  margin-bottom: 0px;
+}
+
+input#yes-im-sure {
+  width: 250px;
 }

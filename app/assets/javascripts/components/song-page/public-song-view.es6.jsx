@@ -61,7 +61,7 @@ class PublicSongView extends React.Component {
             <p>{song.background}</p>
           </div>
 
-          <div className="col-lg-9 col-md-9 col-sm-8 col-xs-6">
+          <div id="master-history"className="col-lg-9 col-md-9 col-sm-8 col-xs-6">
             <h3 className="text-center">Master History</h3>
             <div>
               {masterHistory.map((master, i) => {

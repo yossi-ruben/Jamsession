@@ -89,21 +89,24 @@ class FeatureSubmission extends React.Component {
 
   render() {
     return (
-      <div className="submission-form-holder">
-        <button onClick={this.toggleFormView}>
+      <div>
+      <div className="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+      </div>
+      <div className="col-lg-9 col-md-9 col-sm-8 col-xs-6">
+        <button id="button-submit-feature" className="btn btn-default" onClick={this.toggleFormView}>
           { this.state.showSubmissionForm ?
-              <p>Hide Submission Form</p>
+              <span>Hide Submission Form</span>
             :
-              <p>Submit Feature Track</p>
+              <span>Submit Feature Track</span>
           }
         </button>
         { this.state.currentlyUploading ?
-            <p>Uploading File...</p>
+            <span>Uploading File...</span>
           :
             null
         }
         { this.state.uploadComplete ?
-            <p>Upload Complete!</p>
+            <span>Upload Complete!</span>
           :
             null
         }
@@ -114,25 +117,34 @@ class FeatureSubmission extends React.Component {
         }
         { this.state.showSubmissionForm ?
             <div className="form-holder">
-              <h3>Upload a Feature Track</h3>
-              <form encType="multipart/form-data" onSubmit={this.submitFeature}>
+              <h4 id="upload-feature-track">Upload a Feature Track</h4>
+              <form id="feature-submit-form" encType="multipart/form-data" onSubmit={this.submitFeature}>
                 <input type="hidden" name="feature_track[user_id]" ref="trackUser" value={this.props.currentUser.id} />
+                <br/>
                 <input type="hidden" name="feature_track[song_id]" ref="trackSong" value={this.props.song.id} />
+                <br/>
                 <label htmlFor="feature_track[description]" className="form-label">Track Description:</label>
+                <br/>
                 <textarea rows="5" cols="30" name="feature_track[description]" ref="trackDescription"></textarea>
+                <br/>
                 <label htmlFor="feature_track[talent_id]" className="form-label">What talent does this track correspond with?</label>
+                <br/>
                 <select ref="trackTalent">
                   {this.props.desiredTalents.map((talent, i) => {
                     return <option value={talent.id} key={i}>{talent.title}</option>
                   })}
+                  <br/>
                 </select>
+                <br/>
                 <input type="file" name="feature_track[file]" className="form-input" ref="trackFile" onChange={this.changeFile}/>
+                <br/>
                 <input type="submit" value="Submit Track" className="form-input"/>
               </form>
             </div>
           :
             null
         }
+      </div>
       </div>
     )
   }

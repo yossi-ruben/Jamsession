@@ -146,29 +146,77 @@ class PrivateSongView extends React.Component {
       <div className="container">
         <div className="jumbotron">
         <h2>{this.props.song.title}</h2>
-        { this.props.song.finished ?
-            <button onClick={this.reopenSong}>Re-Open this Song for Submissions</button>
-          :
-            <button onClick={this.closeSong}>Mark this Song as Finished</button>
-        }
-        { this.state.deleteInitiated ?
+
+        <div>
+          <div id="open-edit-delete" className="container">
+          { this.props.song.finished ?
             <div>
-              <p id="are-you-sure">Are you sure?</p>
-              <form action={`/songs/${this.props.song.id}`} method="post">
-                <input type="hidden" name="_method" value="delete" />
-                <input type="hidden" name="authenticity_token" value={this.props.csrf} />
-                <input type="submit" value="Yes" />
-              </form>
-              <button onClick={this.changeMind}>No, I changed my mind</button>
+              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <button type="button" className="btn btn-default btn-block" onClick={this.reopenSong}>Re-Open this Song for Submissions</button>
+              </div>
+              <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+              </div>
             </div>
-          :
-            <button onClick={this.initiateDelete}>Delete This Song</button>
-        }
-        { this.state.editFormVisible ?
-            <button onClick={this.toggleEditForm}>Hide Edit Form</button>
-          :
-            <button onClick={this.toggleEditForm}>Edit Song Information</button>
-        }
+            :
+            <div>
+              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <button type="button" className="btn btn-default btn-block" onClick={this.closeSong}>Mark this Song as Finished</button>
+              </div>
+              <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+              </div>
+            </div>
+          }
+          </div>
+
+          <div id="open-edit-delete"className="container">
+          { this.state.deleteInitiated ?
+              <div>
+                <p id="are-you-sure">Are you sure?</p>
+                <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                  <button className="btn btn-default btn-block" onClick={this.changeMind}>No, I changed my mind</button>
+                </div>
+                <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                </div>                
+                <form action={`/songs/${this.props.song.id}`} method="post">
+                  <input type="hidden" name="_method" value="delete" />
+                  <input type="hidden" name="authenticity_token" value={this.props.csrf} />
+                  <input id="yes-im-sure" className="btn btn-default" type="submit" value="Yes" />
+                </form>
+              </div>
+            :
+            <div>
+              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <button type="button" className="btn btn-default btn-block" onClick={this.initiateDelete}>Delete This Song</button>
+              </div>
+              <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+              </div>
+            </div>
+          }
+          </div>
+
+          <div id="open-edit-delete"className="container">
+          { this.state.editFormVisible ?
+            <div>
+            <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <button type="button" className="btn btn-default btn-block" onClick={this.toggleEditForm}>Hide Edit Form</button>
+            </div>
+            <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            </div>
+            </div>
+            :
+            <div>
+            <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <button type="button" className="btn btn-default btn-block" onClick={this.toggleEditForm}><span className="glyphicon glyphicon-wrench"></span>  Edit Song Information</button>
+            </div>
+            <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            </div>
+            </div>
+          }
+          </div>
+          </div>
+
+
+
         { this.state.editFormVisible ?
             < EditSongForm 
               song={this.props.song}
@@ -186,7 +234,7 @@ class PrivateSongView extends React.Component {
 
 
         <div className="jumbotron">
-          <h2 className="text-center">Masters</h2>
+          <h2>Masters</h2>
           {masterTracks.map((master, i) => {
             return (
               < MasterTrackPrivate
@@ -199,7 +247,7 @@ class PrivateSongView extends React.Component {
         </div>
 
         <div className="jumbotron">
-          <h3 className="text-center">Features Included in Most Recent Master</h3>
+          <h3 >Features Included in Most Recent Master</h3>
           {currentMasterTrack.feature_tracks.map((feature, i) => {
             return < FeatureTrack
                      featureTrack={feature}
@@ -211,7 +259,7 @@ class PrivateSongView extends React.Component {
         </div>
 
         <div className="jumbotron">
-          <h3 className="text-center">All Features by Talent</h3>
+          <h3>All Features by Talent</h3>
           {this.state.talentArray.map((talent, i) => {
             let featuresWithTalent = featureTracks.filter((feature) => {
                 return feature.talent.title === talent
