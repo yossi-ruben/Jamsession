@@ -3,23 +3,29 @@
 }
 
 .navigation {
-  float: left;
+  position:fixed;
   margin-left: 40px;
   margin-top: 30px;
   text-align: left;
   padding: 20px;
   border: 2px solid gray;
+  border-radius: 10px;
   background-color: white;
 }
 
 .navigation img {
   width: 150px;
+  border-radius: 45%;
   height:auto;
+  float: left;
+  border: 1px solid black;
 }
 
-.container {
-  margin-bottom: 100px;
+
+.song_container {
+  background-color: white;
 }
+
 
 .content-column{
   margin-left:300px;

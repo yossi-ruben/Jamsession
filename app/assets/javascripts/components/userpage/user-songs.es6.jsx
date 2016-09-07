@@ -24,15 +24,13 @@ class UserSongs extends React.Component {
       <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
         <div className="carousel-inner" role="listbox">
-          <div >
+            <div className="song_container">
             <a href={'/songs/' + info.id}><img src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
-            <div className="">
               <a href={'/songs/' + info.id}>Song Title: {info.title}</a>
               <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <p>Description of Song {info.background}</p>
               <button onClick={this.sendSongToParent}>Play</button>
             </div>
-          </div>
         </div>
 
       </div>
