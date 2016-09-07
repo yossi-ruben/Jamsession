@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  GENERIC_SONG_IMAGES = []
+
   def finished_songs
     finished_songs = Song.where(finished: true)
     render json: finished_songs.as_json(include: [ :genres, :desired_talents, {master_tracks: {include: :likes}}, :user])
@@ -71,16 +73,20 @@ class SongsController < ApplicationController
 
     master_track.save
 
-    # Create song image
-    img = s3.buckets[ENV['S3_BUCKET']].objects[params[:img_file].original_filename]
+    # Create song image or give a random picture
+    if params[:img_file]  
+      img = s3.buckets[ENV['S3_BUCKET']].objects[params[:img_file].original_filename]
 
-    img.write(
-      file: params[:img_file],
-      acl: :public_read
-    )
+      img.write(
+        file: params[:img_file],
+        acl: :public_read
+      )
 
-    song.img_file_name = img.key
-    song.img_file_path = img.public_url
+      song.img_file_name = img.key
+      song.img_file_path = img.public_url
+    else
+
+    end
 
     # Save song
     song.save
