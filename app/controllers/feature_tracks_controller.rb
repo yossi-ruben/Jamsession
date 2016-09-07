@@ -1,26 +1,36 @@
 class FeatureTracksController < ApplicationController
   def create
-    s3 = AWS::S3.new(:access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY'])
+    errors = []
 
-    obj = s3.buckets[ENV['S3_BUCKET']].objects[params[:feature_track][:file].original_filename]
+    if params[:feature_track][:file] != "null"  
+      s3 = AWS::S3.new(:access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY'])
 
-    obj.write(
-      file: params[:feature_track][:file],
-      acl: :public_read
-    )
+      obj = s3.buckets[ENV['S3_BUCKET']].objects[params[:feature_track][:file].original_filename]
 
-    song = Song.find_by(id: params[:feature_track][:song_id])
+      obj.write(
+        file: params[:feature_track][:file],
+        acl: :public_read
+      )
 
-    feature_track = song.feature_tracks.new(feature_track_params)
+      song = Song.find_by(id: params[:feature_track][:song_id])
 
-    feature_track.file_name = obj.key
-    feature_track.file_path = obj.public_url
+      feature_track = song.feature_tracks.new(feature_track_params)
 
-    feature_track.save
+      feature_track.file_name = obj.key
+      feature_track.file_path = obj.public_url
 
-    new_feature_list = song.feature_tracks
+      feature_track.save
 
-    render json: new_feature_list.as_json(include: [:user, :talent])
+      new_feature_list = song.feature_tracks
+    else
+      errors << "Each feature track submission must have an attached audio file"
+    end
+
+    if errors.length > 0
+      render json: { errors: errors }, status: 400
+    else
+      render json: new_feature_list.as_json(include: [:user, :talent])
+    end
   end
 
   def destroy

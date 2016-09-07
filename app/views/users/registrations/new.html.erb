@@ -3,9 +3,11 @@
 
 <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name)) do |f| %>
   <% if @errors %>
-    <%= @errors.each do |error| %>
-      <%= error %>
-    <% end %>
+    <ul>
+      <% @errors.each do |error| %>
+        <li class="error-text"><%= error %></li>
+      <% end %>
+    </ul>
   <% end %>
 
   <div class="field">

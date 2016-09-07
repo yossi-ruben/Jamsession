@@ -3,7 +3,9 @@ class CommentDisplay extends React.Component {
     super();
     this.state = {
       viewForm: false,
-      comments: []
+      comments: [],
+      errorsPresent: false,
+      errors: []
     }
     this.toggleAddCommentForm = this.toggleAddCommentForm.bind(this);
     this.submitComment = this.submitComment.bind(this);
@@ -18,7 +20,8 @@ class CommentDisplay extends React.Component {
 
   toggleAddCommentForm() {
     this.setState({
-      viewForm: !this.state.viewForm
+      viewForm: !this.state.viewForm,
+      errorsPresent: false
     })
   }
 
@@ -46,11 +49,19 @@ class CommentDisplay extends React.Component {
     })
     .then((response) => response.json())
     .then((json) => {
-      this.setState({
-        comments: this.state.comments.concat([json]),
-        viewForm: false
-      })
-      body.value="";
+      if (json.errors) {
+        this.setState({
+          errorsPresent: true,
+          errors: json.errors
+        })
+      } else {
+        this.setState({
+          errorsPresent: false,
+          comments: this.state.comments.concat([json]),
+          viewForm: false
+        })
+        body.value="";
+      }
     })
   }
 
@@ -93,6 +104,11 @@ class CommentDisplay extends React.Component {
                   <span>Add Comment</span>
               }
             </button>
+          :
+            null
+        }
+        { this.state.errorsPresent ?
+            < ErrorDisplay errors={this.state.errors} />
           :
             null
         }

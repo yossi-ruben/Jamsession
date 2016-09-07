@@ -34,4 +34,7 @@ class User < ApplicationRecord
   has_many :master_features, through: :feature_tracks
   has_many :master_tracks, through: :master_features
   has_many :collaborated_songs, through: :master_tracks, source: :song
+
+  validates :email, format: { with: /\A\w+@\w+[.]\w+\z/, message: "must be a valid e-mail address" }
+  validates :username, length: { maximum: 18, minimum: 6 }
 end

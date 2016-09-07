@@ -18,4 +18,7 @@ class Song < ApplicationRecord
   # Connects song to desired talents
   has_many :song_talents, dependent: :destroy
   has_many :desired_talents, through: :song_talents, source: :talent
+
+  validates :bpm, :key, :time_signature, :title, presence: true
+  validates :time_signature, format: { with: /\d\/\d/, message: "must include at least one time signature with beats per bar over note value per beat, e.g.: 3/4 or 4/4" }
 end
