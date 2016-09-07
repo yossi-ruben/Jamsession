@@ -3,7 +3,7 @@ div#master-view {
   padding-top: 10px;
 }
 
-div#comment-button {
+div#normal-button {
   padding:0px;
 }
 
@@ -22,4 +22,24 @@ h2.text-left{
 }
 
 div#song-info {
+}
+
+div.jumbotron {
+  border:solid;
+}
+
+p#button-label {
+  font-size: 14px;
+}
+
+p#new-master-submission-button {
+  margin-top: 15px;
+}
+
+p#are-you-sure {
+  font-size: 14px;
+}
+
+p#normal14 {
+  font-size: 14px;
 }

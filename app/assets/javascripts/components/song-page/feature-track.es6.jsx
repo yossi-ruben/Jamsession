@@ -37,12 +37,12 @@ class FeatureTrack extends React.Component {
     let featureContributor = this.props.featureContributor
     return (
       <div className="feature-track-holder">
-        <p>Contributed by <a href={`/users/${featureContributor.id}`}>{featureContributor.username}</a> <span className="small-text">{featureTrack.file_name}</span></p>
-        <button onClick={this.toggleShowFull}>
+        <li>Contributed by <a href={`/users/${featureContributor.id}`}>{featureContributor.username}</a> <span className="small-text">{featureTrack.file_name}</span></li>
+        <button id="normal-button" className="btn btn-default" onClick={this.toggleShowFull}>
           { this.state.showFull ?
-            <p>Hide Audio Player</p>
+            <span>Hide Audio Player</span>
           :
-            <p>Show Audio Player</p>
+            <span>Show Audio Player</span>
           }
         </button>
         { this.state.showFull ?
@@ -52,7 +52,7 @@ class FeatureTrack extends React.Component {
             </audio>
             <p>{featureTrack.description}</p>
             <a href={featureTrack.file_path} download>Download</a>
-            <button onClick={this.deleteFeature}>Delete this Submission</button>
+            <button id="normal-button" className="btn btn-default" onClick={this.deleteFeature}>Delete this Submission</button>
           </div>
         :
           null

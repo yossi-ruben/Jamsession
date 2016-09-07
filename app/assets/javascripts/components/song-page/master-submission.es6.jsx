@@ -89,13 +89,13 @@ class MasterSubmission extends React.Component {
   render() {
     return(
       <div className="submission-form-holder">
-        <button onClick={this.toggleFormView}>
+        <a href="#" onClick={this.toggleFormView}>
           { this.state.showSubmissionForm ?
-              <p>Hide Submission Form</p>
+              <p id="new-master-submission-button">Hide Submission Form</p>
             :
-              <p>Submit New Master Track</p>
+              <p id="new-master-submission-button">Submit New Master Track</p>
           }
-        </button>
+        </a>
         { this.state.currentlyUploading ?
             <p>Uploading File...</p>
           :
@@ -108,18 +108,22 @@ class MasterSubmission extends React.Component {
         }
         { this.state.showSubmissionForm ?
             <div className="form-holder">
-              <h3>Upload a New Master Track</h3>
+              <h4>Upload a New Master Track</h4>
               <form encType="multipart/form-data" onSubmit={this.submitMaster}>
                 <input type="hidden" name="master_track[song_id]" ref="trackSong" value={this.props.song.id} />
                 <label htmlFor="master_track[description]" className="form-label">Track Description:</label>
-                <textarea rows="5" cols="30" name="feature_track[description]" ref="trackDescription"></textarea>
+                <br/>
+                <textarea rows="4" cols="60" name="feature_track[description]" ref="trackDescription"></textarea>
+                <br/>
                 <label className="form-label">What feature tracks are included in this master? <span className="small-text">Please check all that apply</span></label>
+                <br/>
                 { this.props.song.feature_tracks.map((feature, i) => {
                   return <span className="form-input" key={i}>
                            <input type="checkbox" name="includedFeature" value={feature.id} />
                            {feature.talent.title} by {feature.user.username} <span className="small-text">
                             ({feature.file_name})
                            </span>
+                           <br/>
                          </span>
                   })
                 }
@@ -129,8 +133,11 @@ class MasterSubmission extends React.Component {
                   <option value="false">No</option>
                   <option value="true">Yes</option>
                 </select>
+                <br/>
                 <input type="submit" value="Upload Track" className="form-input" />
               </form>
+              <br/>
+              <br/>
             </div>
           :
             null
