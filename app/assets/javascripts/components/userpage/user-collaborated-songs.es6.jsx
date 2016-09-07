@@ -22,15 +22,17 @@ class UserCollaboratedSongs extends React.Component {
         null
         :
           <div className="collab_song">
-            <a href={'/songs/' + info.song.id}><img src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
+            <a  href={'/songs/' + info.song.id}><img className="song_img" src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
+            <div className="song_details">
               <a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a>
               <br/>
               <a href={'/users/' + info.user.id}>User: {info.user.username}</a>
-              <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
+              <h5 class="date">Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <p>Description: {info.master.description}</p>
               <p>Played {info.talent}</p>
-              <button className="play" onClick={this.sendSongToParent}>Play</button>
+              <button className="glyphicon glyphicon-play" onClick={this.sendSongToParent}></button>
             </div>
+          </div>
     }
       </div>
   );

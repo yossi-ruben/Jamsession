@@ -100,7 +100,7 @@ class UserInfo extends React.Component{
                     :
                     <div>
                       <button onClick={this.startFollowing}>Follow</button>
-                    </div> 
+                    </div>
                   }
                 </div>
               :
@@ -110,7 +110,7 @@ class UserInfo extends React.Component{
           }
         </div>
 
-        <div className="follow-view">
+        <div className="follow-view follower_border">
           <p><a onClick={this.showFollowing} href="#" className="userlinks">Following {following.length}</a></p>
 
           { this.state.showFollowing ?
@@ -140,7 +140,7 @@ class UserInfo extends React.Component{
         </div>
 
         <h5><a href="#col1Content" data-toggle="collapse">Talents</a></h5>
-        <div id="col1Content" className="collapse in">
+        <div id="col1Content" className="collapse in talent_border">
           {this.props.talents.map((tal, i) => {
             return(
               <p key={i}>{tal.title}</p>

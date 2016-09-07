@@ -54,9 +54,6 @@
   padding:5px ;
 }
 
-.rightboy {
-  margin-left: 75%;
-}
 
 .border-form-div {
   max-width: 600px;
@@ -84,9 +81,21 @@
   padding: 7px 9px;
 }
 
+.left_nav {
+  margin-left: 50%;
+}
+
+
+
 .error-text {
   color: red;
 }
 nav#navigation-bar-top {
+  background-color: #333333;
   margin-bottom: 0px;
+}
+
+nav#navigation-bar-top a {
+  color: white;
+  background-color: #ff5500;
 }

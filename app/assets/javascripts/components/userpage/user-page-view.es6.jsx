@@ -115,7 +115,7 @@ class UserPageView extends React.Component {
           <div className="content-column">
             <ul className="tab">
               <li><a onClick={this.showUserProjects} href="#" className="tablinks"> {this.state.userStats.username}'s Projects</a></li>
-              <li><a onClick={this.showUserLiked} href="#" className="tablinks">Liked</a></li>
+              <li><a onClick={this.showUserLiked} href="#" className="tablinks">Favorites</a></li>
               <li><a onClick={this.showUserCollaborated} href="#" className="tablinks">Collaborated</a></li>
             </ul>
               <div className="user-song-view">

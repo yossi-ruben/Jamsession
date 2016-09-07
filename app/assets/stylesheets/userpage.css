@@ -1,3 +1,40 @@
+
+.follower_border, .talent_border {
+  border-bottom: 1px solid black;
+}
+
+.date {
+  color: black;
+}
+
+.collab_song, .liked_song, .project_song {
+  border-bottom: 1px solid gray;
+/*  float: left;*/
+  padding: 10px;
+}
+
+.play {
+
+}
+
+#sign_out {
+  margin-left: 90%;
+}
+
+.song_img {
+  max-width: 200px;
+/*  float: left;*/
+  display: inline-block;
+  margin-right: 10px;
+  height: auto;
+}
+
+.song_details {
+  margin-left: 20px;
+  display: inline-block;
+  vertical-align: center;
+}
+
 .navigation {
   float: left;
   margin-left: 20px;
@@ -6,20 +43,6 @@
   text-align: left;
   padding: 20px;
   border-radius: 10px;
-  background-color: white;
-}
-
-.collab_song, .liked_song, .project_song {
-  background-color: white;
-  border-bottom: 1px solid gray;
-  padding: 10px;
-}
-
-.play {
-  background-image: url('../../../public/play.png');
-  color: black;
-  background-color: transparent;
-  border-radius: 6px;
 }
 
 .navigation img {
@@ -29,6 +52,7 @@
   margin-bottom: 10px;
   float: left;
   border: 1px solid black;
+  background: radial-gradient(#f9e48c, #4ba044);
 }
 
 
@@ -44,7 +68,7 @@
 .finhead {
   padding: 15px;
   border-radius: 5px;
-  background-color: #006400;
+  background-color: #4ba044;
   color: black;
 
 }
@@ -55,13 +79,14 @@ ul.tab {
     margin-top:30px;
     padding-top: 30px;
     overflow: hidden;
-    text-align: center;
-    border-radius: 5px;
+    /*text-align: center;*/
+    border-radius: 10px;
     width:73%;
 }
 
-ul.tab li {
+ul.tab li, .search_butt {
   float: left;
+  border-bottom: 1px solid #C0C0C0;
 }
 
 p, h5 {
@@ -72,19 +97,31 @@ p, h5 {
   width: 50%;
 }
 
+#search-form {
+  margin-top: 11px;
+  position: absolute;
+  margin-left: 20%;
+
+}
+
+input#search {
+  width: 400px;
+}
+
+.home_button {
+  position: relative;
+  margin-left: 10%;
+}
 
 ul.tab li a {
-    background: #d3d3d3;
     display: inline-block;
     color: black;
     text-align: center;
+    font-family: Georgia;
     text-decoration: none;
-    transition: 0.3s;
     font-size: 20px;
     padding: 6px 12px;
-    border: 1px solid #ccc;
     margin-left: 40px;
-    border-radius: 10px 10px 0px 0px;
 }
 
 /* Change background color of links on hover */
