@@ -79,12 +79,12 @@ ul.tab {
     margin-top:30px;
     padding-top: 30px;
     overflow: hidden;
-    text-align: center;
+    /*text-align: center;*/
     border-radius: 10px;
     width:73%;
 }
 
-ul.tab li {
+ul.tab li, .search_butt {
   float: left;
   border-bottom: 1px solid #C0C0C0;
 }
@@ -97,6 +97,21 @@ p, h5 {
   width: 50%;
 }
 
+#search-form {
+  margin-top: 11px;
+  position: absolute;
+  margin-left: 20%;
+
+}
+
+input#search {
+  width: 400px;
+}
+
+.home_button {
+  position: relative;
+  margin-left: 10%;
+}
 
 ul.tab li a {
     display: inline-block;

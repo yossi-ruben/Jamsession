@@ -114,13 +114,8 @@ class UserPageView extends React.Component {
           < UserInfo genres={this.state.genres} talents={this.state.talents} removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={currentUser} following={this.state.following} followers={this.state.followers}/>
           <div className="content-column">
             <ul className="tab">
-<<<<<<< 1814b357d8f16ce6d658bb2dadaef209e39f4fe1
               <li><a onClick={this.showUserProjects} href="#" className="tablinks"> {this.state.userStats.username}'s Projects</a></li>
-              <li><a onClick={this.showUserLiked} href="#" className="tablinks">Liked</a></li>
-=======
-              <li><a onClick={this.showUserProjects} href="#" className="tablinks"> His/Her Projects</a></li>
               <li><a onClick={this.showUserLiked} href="#" className="tablinks">Favorites</a></li>
->>>>>>> soundcloud v 1
               <li><a onClick={this.showUserCollaborated} href="#" className="tablinks">Collaborated</a></li>
             </ul>
               <div className="user-song-view">
