@@ -27,7 +27,7 @@ class UserSongs extends React.Component {
               <a href={'/songs/' + info.id}>Song Title: {info.title}</a>
               <h5>Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <p>Description of Song {info.background}</p>
-              <button onClick={this.sendSongToParent}>Play</button>
+              <button className="play" onClick={this.sendSongToParent}>Play</button>
             </div>
     }
       </div>

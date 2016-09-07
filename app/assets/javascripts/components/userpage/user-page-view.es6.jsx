@@ -79,7 +79,7 @@ class UserPageView extends React.Component {
     this.setState({
       showUserProjects: true,
       showUserLiked: false,
-      showUserCollaborated: false 
+      showUserCollaborated: false
     })
   }
 
@@ -87,7 +87,7 @@ class UserPageView extends React.Component {
     this.setState({
       showUserProjects: false,
       showUserLiked: true,
-      showUserCollaborated: false 
+      showUserCollaborated: false
     })
   }
 
@@ -95,7 +95,7 @@ class UserPageView extends React.Component {
     this.setState({
       showUserProjects: false,
       showUserLiked: false,
-      showUserCollaborated: true 
+      showUserCollaborated: true
     })
   }
 
@@ -110,7 +110,7 @@ class UserPageView extends React.Component {
           < UserInfo genres={this.state.genres} talents={this.state.talents} removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={currentUser} following={this.state.following} followers={this.state.followers}/>
           <div className="content-column">
             <ul className="tab">
-              <li><a onClick={this.showUserProjects} href="#" className="tablinks">List of Projects</a></li>
+              <li><a onClick={this.showUserProjects} href="#" className="tablinks"> His/Her Projects</a></li>
               <li><a onClick={this.showUserLiked} href="#" className="tablinks">Liked</a></li>
               <li><a onClick={this.showUserCollaborated} href="#" className="tablinks">Collaborated</a></li>
             </ul>
@@ -133,8 +133,8 @@ class UserPageView extends React.Component {
               </div>
           </div>
           <div className="audio-player-holder">
-              < AudioPlayer 
-                songPlaying={this.state.songPlaying} 
+              < AudioPlayer
+                songPlaying={this.state.songPlaying}
                 key={this.state.playingKey} />
           </div>
         </div>

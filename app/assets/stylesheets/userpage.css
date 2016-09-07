@@ -1,15 +1,10 @@
-.userpage {
-  background: #eeeeee;
-}
-
 .navigation {
   float: left;
   margin-left: 20px;
   margin-top: 30px;
-  margin-right: 40px;
+  margin-right: 20px;
   text-align: left;
   padding: 20px;
-  border: 2px solid gray;
   border-radius: 10px;
   background-color: white;
 }
@@ -20,10 +15,18 @@
   padding: 10px;
 }
 
+.play {
+  background-image: url('../../../public/play.png');
+  color: black;
+  background-color: transparent;
+  border-radius: 6px;
+}
+
 .navigation img {
-  width: 150px;
+  width: 230px;
   border-radius: 45%;
   height:auto;
+  margin-bottom: 10px;
   float: left;
   border: 1px solid black;
 }
@@ -40,7 +43,8 @@
 
 .finhead {
   padding: 15px;
-  background-color: gray;
+  border-radius: 5px;
+  background-color: #006400;
   color: black;
 
 }
