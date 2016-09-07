@@ -20,18 +20,9 @@ class CommentDisplay extends React.Component {
 
   toggleAddCommentForm() {
     this.setState({
-      viewForm: !this.state.viewForm
+      viewForm: !this.state.viewForm,
+      errorsPresent: false
     })
-  }
-
-  checkStatus(response) {
-    if (response.status >= 200 && response.status < 300) {
-      return response
-    } else {
-      var error = new Error(response.statusText)
-      error.response = response
-      throw error
-    }
   }
 
   submitComment(e) {
@@ -39,39 +30,39 @@ class CommentDisplay extends React.Component {
 
     let body = this.refs.body
 
-    if (body.value !== "") {
-      let data = {
-        master_track_id: this.refs.masterTrackID.value,
-        user_id: this.refs.userID.value,
-        body: body.value
-      }
+    let data = {
+      master_track_id: this.refs.masterTrackID.value,
+      user_id: this.refs.userID.value,
+      body: body.value
+    }
 
-      fetch('/comments', {
-        method: "post",
-        dataType: "JSON",
-        headers: {
-          "X-CSRF-Token": this.props.csrf,
-          "Accept": "application/json",
-          "Content-Type": "application/json"  
-        },
-        credentials: "include",
-        body: JSON.stringify(data)
-      })
-      .then((response) => response.json())
-      .then((json) => {
+    fetch('/comments', {
+      method: "post",
+      dataType: "JSON",
+      headers: {
+        "X-CSRF-Token": this.props.csrf,
+        "Accept": "application/json",
+        "Content-Type": "application/json"  
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      if (json.errors) {
+        this.setState({
+          errorsPresent: true,
+          errors: json.errors
+        })
+      } else {
         this.setState({
           errorsPresent: false,
           comments: this.state.comments.concat([json]),
           viewForm: false
         })
         body.value="";
-      })
-    } else {
-      this.setState({
-        errorsPresent: true,
-        errors: ["Cannot submit a blank comment"]
-      })
-    }
+      }
+    })
   }
 
   removeComment(comment) {
@@ -91,11 +82,6 @@ class CommentDisplay extends React.Component {
     let masterTrack = this.props.masterTrack;
     return (
       <div>
-        { this.state.errorsPresent ?
-            < ErrorDisplay errors={this.state.errors} />
-          :
-            null
-        }
         { this.state.comments.length === 0 ?
             <h6>No comments have been added to this track yet.</h6>
           :
@@ -118,6 +104,11 @@ class CommentDisplay extends React.Component {
                   <span>Add Comment</span>
               }
             </button>
+          :
+            null
+        }
+        { this.state.errorsPresent ?
+            < ErrorDisplay errors={this.state.errors} />
           :
             null
         }
