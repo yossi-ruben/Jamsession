@@ -36,16 +36,25 @@ class SongsController < ApplicationController
   end
 
   def create
+    # Create error array
+    @errors = []
+
     # Create a new song
-    song = Song.new(title: params[:title], owner_id: params[:owner_id], bpm: params[:bpm], key: params[:key], time_signature: params[:time_signature], background: params[:background])
-    song.finished = false
+    @song = Song.new(title: params[:title], owner_id: params[:owner_id], bpm: params[:bpm], key: params[:key], time_signature: params[:time_signature], background: params[:background])
+    @song.finished = false
 
     # Add genres to song
     genre_params = params.keys.select { |param| param =~ /genre/ }
     genre_ids = genre_params.map { |name| name.gsub(/genre/, "").to_i }
     genres_to_add = genre_ids.map { |id| Genre.find(id) }
     genres_to_add.each do |genre|
-      song.genres << genre
+      @song.genres << genre
+    end
+
+    if @song.genres.length > 0
+      song_has_genres = true
+    else
+      @errors << "Song must have at least one genre"
     end
 
     # Add talents to song
@@ -53,46 +62,68 @@ class SongsController < ApplicationController
     talent_ids = talent_params.map { |name| name.gsub(/talent/, "").to_i }
     talents_to_add = talent_ids.map { |id| Talent.find(id) }
     talents_to_add.each do |talent|
-      song.desired_talents << talent
+      @song.desired_talents << talent
     end
 
-    # Create initial master track
-    s3 = AWS::S3.new(:access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY'])
+    if @song.desired_talents.length > 0
+      song_has_talents = true
+    else
+      @errors << "Song must have at least one desired talent"
+    end
 
-    obj = s3.buckets[ENV['S3_BUCKET']].objects[params[:file].original_filename]
+    # Check for file
+    if params[:file]
+      song_has_file = true
+    else
+      @errors << "Song must have an initial master track"
+    end
 
-    obj.write(
-      file: params[:file],
-      acl: :public_read
-    )
+    if @song.save && song_has_talents && song_has_genres && song_has_file
+      # Create initial master track
+      s3 = AWS::S3.new(:access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY'])
 
-    master_track = song.master_tracks.new(description: params[:description])
+      obj = s3.buckets[ENV['S3_BUCKET']].objects[params[:file].original_filename]
 
-    master_track.file_name = obj.key
-    master_track.file_path = obj.public_url
-
-    master_track.save
-
-    # Create song image or give a random picture
-    if params[:img_file]  
-      img = s3.buckets[ENV['S3_BUCKET']].objects[params[:img_file].original_filename]
-
-      img.write(
-        file: params[:img_file],
+      obj.write(
+        file: params[:file],
         acl: :public_read
       )
 
-      song.img_file_name = img.key
-      song.img_file_path = img.public_url
+      master_track = @song.master_tracks.new(description: params[:description])
+
+      master_track.file_name = obj.key
+      master_track.file_path = obj.public_url
+
+      master_track.save
+
+      # Create song image or give a random picture
+      if params[:img_file]  
+        img = s3.buckets[ENV['S3_BUCKET']].objects[params[:img_file].original_filename]
+
+        img.write(
+          file: params[:img_file],
+          acl: :public_read
+        )
+
+        @song.img_file_name = img.key
+        @song.img_file_path = img.public_url
+      else
+
+      end
+
+      # Save song with genres, talents, and file
+      @song.save
+
+      # Redirect user to new song page
+      redirect_to "/songs/#{@song.id}"
     else
-
+      @errors << @song.errors.full_messages
+      @errors = @errors.flatten
+      @current_user = current_user
+      @genres = Genre.all.order(:name)
+      @talents = Talent.all.order(:title)
+      render 'songs/new'
     end
-
-    # Save song
-    song.save
-
-    # Redirect user to new song page
-    redirect_to "/songs/#{song.id}"
   end
 
   def update

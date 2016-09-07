@@ -1,5 +1,13 @@
 <h1>Begin a New Project</h1>
 
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_tag songs_path, enctype: 'multipart/form-data' do %>
   <!-- Song information here -->
   <%= hidden_field_tag :owner_id, @current_user.id %>
