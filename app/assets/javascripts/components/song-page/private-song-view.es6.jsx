@@ -153,7 +153,7 @@ class PrivateSongView extends React.Component {
         }
         { this.state.deleteInitiated ?
             <div>
-              <p>Are you sure?</p>
+              <p id="are-you-sure">Are you sure?</p>
               <form action={`/songs/${this.props.song.id}`} method="post">
                 <input type="hidden" name="_method" value="delete" />
                 <input type="hidden" name="authenticity_token" value={this.props.csrf} />
@@ -218,7 +218,7 @@ class PrivateSongView extends React.Component {
               })
             return (
             <div key={i}>
-              <h3>{talent}</h3>
+              <h4>{talent}</h4>
               {featuresWithTalent.map((feature, i) => {
                 return < FeatureTrack
                          featureTrack={feature}
@@ -232,24 +232,33 @@ class PrivateSongView extends React.Component {
           })}
         </div>
 
-        <div className="global-audio-controls">
-          { this.state.playAll ?
-            <button onClick={this.pauseAllSelected}>Pause All</button>
-          :
-            <button onClick={this.playAllSelected}>Play All</button>
+        <nav className="navbar navbar-inverse navbar-fixed-bottom">
+        <div className="container-fluid">
+          <ul className="nav navbar-nav">
+            { this.state.playAll ?
+              <li><a href="#" onClick={this.pauseAllSelected}>Pause All</a></li>
+            :
+              <li><a href="#" onClick={this.playAllSelected}>Play All</a></li>
+            }
+            <li><a href="#" onClick={this.resetAllToZero}>Reset Selected Tracks</a></li>
+            <li><a href="#" onClick={this.rewindAll}> &lt;&lt; </a></li>
+            <li><a href="#" onClick={this.fastForwardAll}> &gt;&gt; </a></li>
+
+          { this.props.song.finished ?
+              null
+            :
+              <li>< MasterSubmission 
+                song={this.props.song}
+                updateAfterMaster={this.props.updateAfterMaster} 
+                csrf={this.props.csrf} /></li>
           }
-          <button onClick={this.resetAllToZero}>Reset Selected Tracks</button>
-          <button onClick={this.rewindAll}> &lt;&lt; </button>
-          <button onClick={this.fastForwardAll}> &gt;&gt; </button>
+          </ul>
+
         </div>
-        { this.props.song.finished ?
-            null
-          :
-            < MasterSubmission 
-              song={this.props.song}
-              updateAfterMaster={this.props.updateAfterMaster} 
-              csrf={this.props.csrf} />
-        }
+        </nav>
+
+
+
       </div>
     )
   }

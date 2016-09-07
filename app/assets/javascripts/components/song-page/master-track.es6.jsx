@@ -145,7 +145,7 @@ class MasterTrack extends React.Component {
 
 
             <div>
-              <div id="comment-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <div id="normal-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <button type="button" className="btn btn-default btn-block" onClick={this.toggleCommentView}>
                   <span className="glyphicon glyphicon-comment"></span>
                   { this.state.displayComments ?

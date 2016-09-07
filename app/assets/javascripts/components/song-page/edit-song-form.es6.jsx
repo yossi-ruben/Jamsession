@@ -66,17 +66,27 @@ class EditSongForm extends React.Component {
     })
     return (
       <form onSubmit={this.editSong}>
+        <br/>
         <label htmlFor="song[title]" className="form-label">Title:</label>
+        <br/>
         <input type="text" name="song[title]" ref="title" className="form-input" defaultValue={this.props.song.title} />
+        <br/>
         <label htmlFor="song[bpm]" className="form-label">BPM:</label>
+        <br/>
         <input type="text" name="song[bpm]" ref="bpm" className="form-input" defaultValue={this.props.song.bpm} />
+        <br/>
         <label htmlFor="song[key]" className="form-label">Key:</label>
+        <br/>
         <input type="text" name="song[key]" ref="key" className="form-input" defaultValue={this.props.song.key} />
+        <br/>
         <label htmlFor="song[time_signature]" className="form-label">Time Signature:</label>
+        <br/>
         <input type="text" name="song[time_signature]" ref="timeSignature" className="form-input" defaultValue={this.props.song.time_signature} />
+        <br/>
         <label htmlFor="song[background]" className="form-label">Background:</label>
+        <br/>
         <textarea rows="5" cols="30" name="song[background]" ref="background" defaultValue={this.props.song.background}></textarea>
-        <p>Please choose which genres you'd like this song to be labeled with:</p>
+        <p id="normal-14">Please choose which genres you'd like this song to be labeled with:</p>
         {this.props.allGenres.map((genre, i) => {
           return (
             <span key={i}>
@@ -91,7 +101,7 @@ class EditSongForm extends React.Component {
             </span>
           )
         })}
-        <p>Please choose which talents you still desire for this song:</p>
+        <p id="normal-14">Please choose which talents you still desire for this song:</p>
         {this.props.allTalents.map((talent, i) => {
           return (
             <span key={i}>

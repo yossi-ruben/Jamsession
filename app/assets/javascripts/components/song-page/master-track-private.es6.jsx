@@ -35,12 +35,12 @@ class MasterTrackPrivate extends React.Component {
     let masterTrack = this.props.masterTrack
     return (
       <div className="feature-track-holder">
-        <p>{masterTrack.description}</p>
-        <button onClick={this.toggleShowFull}>
+        <li>{masterTrack.description}</li>
+        <button id="normal-button" className="btn btn-default"onClick={this.toggleShowFull}>
           { this.state.showFull ?
-            <p>Hide Audio Player</p>
+            <span> Hide Audio Player</span>
           :
-            <p>Show Audio Player</p>
+            <span> Show Audio Player</span>
           }
         </button>
         { this.state.showAudioPlayer ?
