@@ -3,7 +3,9 @@ class CommentDisplay extends React.Component {
     super();
     this.state = {
       viewForm: false,
-      comments: []
+      comments: [],
+      errorsPresent: false,
+      errors: []
     }
     this.toggleAddCommentForm = this.toggleAddCommentForm.bind(this);
     this.submitComment = this.submitComment.bind(this);
@@ -20,6 +22,16 @@ class CommentDisplay extends React.Component {
     this.setState({
       viewForm: !this.state.viewForm
     })
+  }
+
+  checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return response
+    } else {
+      var error = new Error(response.statusText)
+      error.response = response
+      throw error
+    }
   }
 
   submitComment(e) {
@@ -44,13 +56,27 @@ class CommentDisplay extends React.Component {
       credentials: "include",
       body: JSON.stringify(data)
     })
+    .then(function(response) 
+      { debugger;
+        checkStatus(response)})
     .then((response) => response.json())
     .then((json) => {
       this.setState({
+        errorsPresent: false,
         comments: this.state.comments.concat([json]),
         viewForm: false
       })
       body.value="";
+    })
+    .catch(function(response) {
+      debugger;
+      response.json()
+      })
+    .then((errors) => {
+      this.setState({
+        errorsPresent: true,
+        errors: errors
+      })
     })
   }
 
@@ -71,6 +97,11 @@ class CommentDisplay extends React.Component {
     let masterTrack = this.props.masterTrack;
     return (
       <div>
+        { this.state.errorsPresent ?
+            < ErrorDisplay errors={this.state.errors} />
+          :
+            null
+        }
         { this.state.comments.length === 0 ?
             <h6>No comments have been added to this track yet.</h6>
           :

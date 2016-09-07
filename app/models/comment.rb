@@ -6,4 +6,6 @@ class Comment < ApplicationRecord
 
   # Connects comment to master track
   belongs_to :master_track
+
+  validates :body, presence: true
 end

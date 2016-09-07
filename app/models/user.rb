@@ -37,5 +37,4 @@ class User < ApplicationRecord
 
   validates :email, format: { with: /\A\w+@\w+[.]\w+\z/, message: "must be a valid e-mail address" }
   validates :username, length: { maximum: 18, minimum: 6 }
-  validates :password, length: { maximum: 18, minimum: 6 }
 end

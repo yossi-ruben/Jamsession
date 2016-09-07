@@ -1,8 +1,11 @@
 class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
-    comment.save
-    render json: comment.as_json(include: :user)
+    if comment.save
+      render json: comment.as_json(include: :user)
+    else
+      render json: {errors: comment.errors.full_messages}, status: 400
+    end
   end
 
   def destroy
