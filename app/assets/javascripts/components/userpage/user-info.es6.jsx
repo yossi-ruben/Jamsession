@@ -85,7 +85,7 @@ class UserInfo extends React.Component{
     return(
     <aside className="navigation">
       <img src={userStats.profile_pic_file_path} />
-      <h3>{userStats.username}</h3>
+      <h3 id="userpage-info">{userStats.username}</h3>
         <div className="display-follow-button">
           { this.props.userStats.id === this.props.currentUser.id ?
             null
@@ -111,7 +111,7 @@ class UserInfo extends React.Component{
         </div>
 
         <div className="follow-view follower_border">
-          <p><a onClick={this.showFollowing} href="#" className="userlinks">Following {following.length}</a></p>
+          <p id="userpage-info"><a onClick={this.showFollowing} href="#" className="userlinks">Following {following.length}</a></p>
 
           { this.state.showFollowing ?
             <div>
@@ -124,7 +124,7 @@ class UserInfo extends React.Component{
             :
             null
           }
-          <p><a onClick={this.showFollowers} href="#" className="userlinks">Followers {followers.length}</a></p>
+          <p id="userpage-info"><a onClick={this.showFollowers} href="#" className="userlinks">Followers {followers.length}</a></p>
 
           { this.state.showFollowers ?
             <div>
@@ -139,20 +139,20 @@ class UserInfo extends React.Component{
           }
         </div>
 
-        <h5><a href="#col1Content" data-toggle="collapse">Talents</a></h5>
+        <h5 id="userpage-info"><a href="#col1Content" data-toggle="collapse">Talents</a></h5>
         <div id="col1Content" className="collapse in talent_border">
           {this.props.talents.map((tal, i) => {
             return(
-              <p key={i}>{tal.title}</p>
+              <p id="userpage-info-sub" key={i}>{tal.title}</p>
               )
           })}
         </div>
 
-        <h5><a href="#col2Content" data-toggle="collapse">Genres</a></h5>
+        <h5 id="userpage-info"><a href="#col2Content" data-toggle="collapse">Genres</a></h5>
         <div id="col2Content" className="collapse in">
         {this.props.genres.map((genre, i) => {
           return(
-            <p key={i}>{genre.name}</p>
+            <p id="userpage-info-sub" key={i}>{genre.name}</p>
             )
         })}
         </div>

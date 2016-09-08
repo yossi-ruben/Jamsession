@@ -16,7 +16,6 @@ class UserCollaboratedSongs extends React.Component {
     let year = dateObj.getUTCFullYear();
     let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let useMonth = monthNames[month]
-    debugger;
     return(
       <div>
       { info === undefined ?
