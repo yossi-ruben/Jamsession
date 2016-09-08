@@ -3,7 +3,7 @@ render() {
   let stat = this.props.stat
     return (
       <div>
-        <a href={'/users/' + stat.id}>{stat.username}</a>
+        <a  className="follow-list" href={'/users/' + stat.id}>{stat.username}</a>
       </div>
 
       )
