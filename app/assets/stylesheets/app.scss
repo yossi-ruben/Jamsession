@@ -230,7 +230,7 @@ nav#navigation-bar-top a {
 }
 
 .nav-ul li {
-  margin: 0px 10px;
+  margin: 0px;
   font-size: 18px;
   border-radius: 2px;
 }
@@ -252,4 +252,21 @@ nav#navigation-bar-top a {
   width: 65px;
   display: inline-block;
   position: absolute;
+}
+
+input#search_area{
+  width: 300px;
+  height: 45px;
+  position: relative;
+  top:-11px;
+}
+
+input#search_button {
+  margin-left: 5px;
+  background: #ff5500;
+  color: white;
+  font-size: 18px;
+  padding: 10.5px;
+  position: relative;
+  top: -11px;
 }
