@@ -2,7 +2,7 @@ class UserFinishedSongs extends React.Component {
   render() {
     return (
       <div className="song">
-          <h3 className="finhead">Finished</h3>
+          <h3 className="finhead">Complete</h3>
 
             {this.props.finished.map((song, i) => {
               return(
