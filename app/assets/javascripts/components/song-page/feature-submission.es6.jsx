@@ -93,7 +93,7 @@ class FeatureSubmission extends React.Component {
       <div className="col-lg-3 col-md-3 col-sm-4 col-xs-6">
       </div>
       <div className="col-lg-9 col-md-9 col-sm-8 col-xs-6">
-        <button id="button-submit-feature" className="btn btn-default" onClick={this.toggleFormView}>
+        <button id="button-submit-feature" className="btn btn-success" onClick={this.toggleFormView}>
           { this.state.showSubmissionForm ?
               <span>Hide Submission Form</span>
             :
@@ -116,9 +116,9 @@ class FeatureSubmission extends React.Component {
             null
         }
         { this.state.showSubmissionForm ?
-            <div className="form-holder">
+            <div className="form-holder border-form-div">
               <h4 id="upload-feature-track">Upload a Feature Track</h4>
-              <form id="feature-submit-form" encType="multipart/form-data" onSubmit={this.submitFeature}>
+              <form  id="feature-submit-form" encType="multipart/form-data" onSubmit={this.submitFeature}>
                 <input type="hidden" name="feature_track[user_id]" ref="trackUser" value={this.props.currentUser.id} />
                 <br/>
                 <input type="hidden" name="feature_track[song_id]" ref="trackSong" value={this.props.song.id} />
@@ -138,7 +138,7 @@ class FeatureSubmission extends React.Component {
                 <br/>
                 <input type="file" name="feature_track[file]" className="form-input" ref="trackFile" onChange={this.changeFile}/>
                 <br/>
-                <input type="submit" value="Submit Track" className="form-input"/>
+                <input type="submit" value="Submit Track" className="form-input btn btn-primary"/>
               </form>
             </div>
           :
