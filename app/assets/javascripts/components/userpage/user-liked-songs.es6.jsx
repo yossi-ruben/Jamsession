@@ -22,12 +22,12 @@ class UserLikedSongs extends React.Component {
         null
         :
           <div className="liked_song">
-            <a href={'/songs/' + info.song.id}><img className="song_img" src="https://image.freepik.com/free-icon/music-note_318-102209.png" alt="Chania" /></a>
+            <a href={'/songs/' + info.song.id}><img className="song_img" src={info.song.img_file_path} alt="Chania" /></a>
               <div className="song_details">
               <a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a>
               <br/>
               <a href={'/users/' + info.user.id}>User: {info.user.username}</a>
-              <h5 class="date">Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
+              <h5 className="date">Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button>
               </div>
           </div>
