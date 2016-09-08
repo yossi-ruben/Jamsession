@@ -253,7 +253,7 @@ class FinishedSongs extends React.Component{
 
     return(
       <div className="FinishedSongs">
-        <div className="Title"> Finished </div>
+        <h2 id="home-finished-status"> Completed </h2>
 
         <div className="UnFinNav">
           <ul>

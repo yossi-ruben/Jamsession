@@ -28,7 +28,7 @@ class Song extends React.Component{
         <p id="song-username"><a id="song-username" href={`/users/${this.props.theSong.owner_id}`}> {this.props.theSong.user.username}</a></p>
         <p id="song-date">{useMonth + " " + day.toString() + " " + year.toString()}</p>
 
-        <p onClick={this.changeSong}> Play Me! </p>
+        <button className="round-btn glyphicon glyphicon-play-circle" onClick={this.changeSong}></button>
         </div>
       </div>
 

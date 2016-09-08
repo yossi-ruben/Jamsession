@@ -4,7 +4,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div#home-outtermost {
-  border: solid;
+  margin-bottom: 100px;
 }
 
 div#home-splash {
@@ -22,7 +22,7 @@ img#home-pic {
 }
 
 p#front-title {
-  color: white;
+  color: #fff;
   font-family: georgia;
   font-size: 55px;
   text-align: center;
@@ -39,7 +39,7 @@ p#front-phrase {
 }
 
 div#song{
-  border: 3px solid pink;
+  border-bottom: 3px solid #fff;
   height: 250px;
   padding: 10px;
 }
@@ -59,7 +59,8 @@ img#song-pic {
 }
 
 p#song-title {
-  color: white;
+  color: #fff;
+  text-shadow:1px 1px #000;
   font-family: georgia;
   font-size: 18px;
   position: relative;
@@ -68,57 +69,66 @@ p#song-title {
 }
 
 a#song-title {
-  color: white;
+  color: #fff;
+  text-shadow:1px 1px #000;
 }
 
 p#song-description {
-  color: #fff;
-  text-shadow:2px 2px #000;
-  font-size: 12px;
+  color: #e5e5e5;
+  text-shadow:1px 1px #000;
+  font-size: 14px;
   position: relative;
   top: -170px;
   margin-left: 20px;
 }
 
 p#song-username {
-  color: silver;
-  font-size: 10px;
+  color: #e5e5e5;
+  text-shadow:2px 2px #000;
+  font-size: 12px;
   position: absolute;
   bottom: 0;
   left: 35px;
 }
 
+a#song-username {
+  color: #e5e5e5;
+  text-shadow:2px 2px #000;
+}
+
 #song-date {
-  color: silver;
-  font-size: 10px;
+  color: #e5e5e5;
+  text-shadow:2px 2px #000;
+  font-size: 12px;
   position: absolute;
   right: 30px;
   bottom: 0;
 }
 
-a#song-username {
-  color: silver
+button.round-btn.glyphicon.glyphicon-play-circle {
+  font-size:40px;
+  color: #fff;
+  text-shadow:2px 2px #000;
+  position: absolute;
+  top: 160px;
+  left: 25px;
+}
+
+h2#home-finished-status {
+  font-size: 30px;
+  font-family: impact;
+  text-align: center;
 }
 
 
 
-.songToggle{
-  border: 2px solid lightblue;
-  display: inline;
-}
-
-.songToggle:hover{
-  background: lightgrey;
-}
 
 
 
 
-.FinishedSongs h1{
-  color: darkgrey;
-  border-bottom: 2px solid grey;
-  margin-left: 350px;
-}
+
+
+
 
 .UnFinNav{
   border: 2px solid black;
@@ -199,7 +209,7 @@ nav#navigation-bar-top {
 }
 
 nav#navigation-bar-top a {
-  color: white;
+  color: #fff;
   background-color: #ff5500;
 }
 
