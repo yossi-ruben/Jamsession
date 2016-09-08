@@ -110,38 +110,40 @@ class UserPageView extends React.Component {
         { this.state.userStats === undefined ?
           null
         :
-        <div className="container">
-          < UserInfo genres={this.state.genres} talents={this.state.talents} removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={currentUser} following={this.state.following} followers={this.state.followers}/>
-          <div className="content-column">
-            <ul className="tab">
-              <li><a onClick={this.showUserProjects} href="#" className="tablinks"> {this.state.userStats.username}'s Projects</a></li>
-              <li><a onClick={this.showUserLiked} href="#" className="tablinks">Favorites</a></li>
-              <li><a onClick={this.showUserCollaborated} href="#" className="tablinks">Collaborated</a></li>
-            </ul>
-              <div className="user-song-view">
-                { this.state.showUserProjects ?
-                    < UserProjects finished={this.props.finished_songs} unfinished={this.props.unfinished_songs} playSong={this.playSong} />
-                  :
-                    null
-                }
-                { this.state.showUserLiked ?
-                    < UserLiked likedSongs={this.props.liked_songs} playSong={this.playSong}/>
-                  :
-                    null
-                }
-                { this.state.showUserCollaborated ?
-                   < UserCollaborated collaborated={this.props.collaborated_songs} playSong={this.playSong} />
-                  :
-                    null
-                }
-              </div>
+        <div>
+          <div className="container">
+            < UserInfo genres={this.state.genres} talents={this.state.talents} removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={currentUser} following={this.state.following} followers={this.state.followers}/>
+            <div className="content-column">
+              <ul className="tab">
+                <li><a onClick={this.showUserProjects} href="#" className="tablinks"> {this.state.userStats.username}'s Projects</a></li>
+                <li><a onClick={this.showUserLiked} href="#" className="tablinks">Favorites</a></li>
+                <li><a onClick={this.showUserCollaborated} href="#" className="tablinks">Collaborated</a></li>
+              </ul>
+                <div className="user-song-view">
+                  { this.state.showUserProjects ?
+                      < UserProjects finished={this.props.finished_songs} unfinished={this.props.unfinished_songs} playSong={this.playSong} />
+                    :
+                      null
+                  }
+                  { this.state.showUserLiked ?
+                      < UserLiked likedSongs={this.props.liked_songs} playSong={this.playSong}/>
+                    :
+                      null
+                  }
+                  { this.state.showUserCollaborated ?
+                     < UserCollaborated collaborated={this.props.collaborated_songs} playSong={this.playSong} />
+                    :
+                      null
+                  }
+                </div>
+            </div>
           </div>
-          <div className="audio-player-holder">
-              < AudioPlayer
-                songPlaying={this.state.songPlaying}
-                key={this.state.playingKey} />
-          </div>
+        <div className="audio-player-holder">
+            < AudioPlayer
+              songPlaying={this.state.songPlaying}
+              key={this.state.playingKey} />
         </div>
+      </div>
       }
       </div>
       );
