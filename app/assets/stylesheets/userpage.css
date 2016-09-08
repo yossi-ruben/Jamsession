@@ -21,6 +21,11 @@
   margin-left: 90%;
 }
 
+.right_nav {
+  float: right;
+  margin-left: 80%;
+}
+
 .song_img {
   max-width: 200px;
 /*  float: left;*/
@@ -101,17 +106,27 @@ p, h5 {
   margin-top: 11px;
   position: absolute;
   margin-left: 20%;
+  max-width: auto;
+  float: left;
 
-}
-
-input#search {
-  width: 400px;
 }
 
 .home_button {
-  position: relative;
+  float: left;
+  position: absolute;
   margin-left: 10%;
 }
+
+.left_nav {
+  position: absolute;
+  margin-left: 50%;
+}
+
+
+input#search {
+  width: 300px;
+}
+
 
 ul.tab li a {
     display: inline-block;
