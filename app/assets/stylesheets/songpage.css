@@ -99,3 +99,9 @@ span.glyphicon.glyphicon-download-alt {
 span#trash {
     font-size: 30px;
 }
+
+div#master-history {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #C0C0C0;
+}
