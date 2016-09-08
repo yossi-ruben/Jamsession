@@ -14,7 +14,7 @@ class AudioFile extends React.Component{
   render(){
     return (
 
-      <div className="PlayerComponent">
+      <div className="audio-player-holder">
         <audio ref="player" controls className="audio-player" key={this.props.theKey}>
           <source src={this.props.theSrc} type="audio/mpeg" />
         </audio>

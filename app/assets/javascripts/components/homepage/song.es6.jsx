@@ -19,7 +19,6 @@ class Song extends React.Component{
     let year = dateObj.getUTCFullYear();
     let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let useMonth = monthNames[month]
-
     return (
       <div id="song" className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div id="song-container">
@@ -29,7 +28,7 @@ class Song extends React.Component{
         <p id="song-username"><a id="song-username" href={`/users/${this.props.theSong.owner_id}`}> {this.props.theSong.user.username}</a></p>
         <p id="song-date">{useMonth + " " + day.toString() + " " + year.toString()}</p>
 
-        <p onClick={this.changeSong}> Play Me! </p>
+        <button className="round-btn glyphicon glyphicon-play-circle" onClick={this.changeSong}></button>
         </div>
       </div>
 

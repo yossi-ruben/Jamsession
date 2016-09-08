@@ -295,7 +295,7 @@ class UnFinishedSongs extends React.Component{
 
     return(
       <div className="UnfinishedSongs">
-        <div className="Title"> Unfinished </div>
+        <h2 id="home-finished-status"> In Progress </h2>
 
         <div className="UnFinNav">
           <ul>

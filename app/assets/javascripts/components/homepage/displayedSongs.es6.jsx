@@ -37,7 +37,6 @@ class DisplayedSong extends React.Component {
 
 
     setSongSrc(arg){
-      console.log("new source" + arg)
       this.setState({songSrc: arg})
       if (this.state.srcKey === 1){
         this.setState({srcKey: 2})
@@ -68,12 +67,12 @@ class DisplayedSong extends React.Component {
         </div>
 
         <div id="home-outtermost" className="container">
-          <p className="songToggle" onClick={this.setSongList}> Switch PlayList</p>
+          <button type="button" className="btn btn-primary" onClick={this.setSongList}> Switch PlayList</button>
           {this.songList()}
 
-          {this.inputOfSongSrc()}
 
         </div>
+          {this.inputOfSongSrc()}
 
       </div>
 
