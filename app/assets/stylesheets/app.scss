@@ -3,15 +3,104 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-.displayedSongs{
-  border: 2px solid black;
-  height: 1000;
-  width:900px;
-  margin: auto;
-  overflow: scroll;
+div#home-outtermost {
+  border: solid;
 }
+
+div#home-splash {
+  border: none;
+  height: 300px;
+  color: transparent;
+  margin: none;
+  padding: 0px;
+}
+
+img#home-pic {
+  padding-top: 0px;
+  width: 100%;
+  height: 300px;
+}
+
+p#front-title {
+  color: white;
+  font-family: georgia;
+  font-size: 55px;
+  text-align: center;
+  position: relative;
+  top: -170px;
+}
+
+p#front-phrase {
+  color: #c0c0c0;
+  font-size: 15px;
+  text-align: center;
+  position: relative;
+  top: -200px;
+}
+
+div#song{
+  border: 3px solid pink;
+  height: 250px;
+  padding: 10px;
+}
+
+div#song-container {
+  border: solid;
+  background: black;
+  height: 235px;
+}
+
+img#song-pic {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  horizontal-algin: center;
+  margin: auto;
+}
+
+p#song-title {
+  color: white;
+  font-family: georgia;
+  font-size: 18px;
+  position: relative;
+  top: -170px;
+  margin-left: 20px;
+}
+
+a#song-title {
+  color: white;
+}
+
+p#song-description {
+  color: #fff;
+  text-shadow:2px 2px #000;
+  font-size: 12px;
+  position: relative;
+  top: -170px;
+  margin-left: 20px;
+}
+
+p#song-username {
+  color: silver;
+  font-size: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 35px;
+}
+
+#song-date {
+  color: silver;
+  font-size: 10px;
+  position: absolute;
+  right: 30px;
+  bottom: 0;
+}
+
+a#song-username {
+  color: silver
+}
+
+
 
 .songToggle{
   border: 2px solid lightblue;
@@ -22,14 +111,7 @@
   background: lightgrey;
 }
 
-.Song{
-  height: 200px;
-  width: 350px;
-  display: inline-block;
-  border: 3px solid pink;
-  margin: 25px;
-  padding: 15px;
-}
+
 
 
 .FinishedSongs h1{
@@ -53,6 +135,28 @@
   margin: 5px;
   padding:5px ;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .border-form-div {
