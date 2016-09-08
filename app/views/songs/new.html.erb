@@ -44,7 +44,7 @@
   <!-- Initial master track here -->
   <h3>Fill out initial master track information here</h3>
   <%= label_tag :description, "Enter master track's description here" %><br>
-  <%= text_area_tag :description, @description if @description %><br>
+  <%= text_area_tag :description, @description ? @description : "" %><br>
   <%= label_tag :file, "Upload initial master file" %><br>
   <%= file_field_tag :file %><br>
 
