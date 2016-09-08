@@ -255,9 +255,9 @@ class FinishedSongs extends React.Component{
       <div className="FinishedSongs">
         <h2 id="home-finished-status"> Completed </h2>
 
-        <div className="UnFinNav">
-          <ul>
-            <li>Genres:
+        <div id="UnFinNav">
+          <ul id="home-tab">
+            <li id="home-tab" type="button" className="btn btn-default">Genres:
               <select ref="genre" onChange={this.displayGenresList}>
               {this.state.genres.map((genre, i) =>
                 <option key={i}>{genre}</option>
@@ -265,10 +265,10 @@ class FinishedSongs extends React.Component{
               </select>
             </li>
 
-            <li onClick={this.setToHot}>Hot</li>
-            <li onClick={this.setToRecentlyFinished}>Recently Finished</li>
-            <li onClick={this.setToRandom}>Random</li>
-            <li onClick={this.setToRecommended}>Recommended</li>
+            <li id="home-tab" type="button" className="btn btn-default" onClick={this.setToHot}>Hot</li>
+            <li id="home-tab" type="button" className="btn btn-default" onClick={this.setToRecentlyFinished}>Recently Finished</li>
+            <li id="home-tab" type="button" className="btn btn-default" onClick={this.setToRandom}>Random</li>
+            <li id="home-tab" type="button" className="btn btn-default" onClick={this.setToRecommended}>Recommended</li>
           </ul>
         </div>
 

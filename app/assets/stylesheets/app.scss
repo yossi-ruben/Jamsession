@@ -120,31 +120,21 @@ h2#home-finished-status {
   text-align: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-.UnFinNav{
-  border: 2px solid black;
-  height: 50px;
+div#UnFinNav {
   text-align: center;
-
 }
 
-.UnFinNav li{
-  display: inline;
-  text-align: center;
-  color: orange;
-  border: 2px solid black;
-  margin: 5px;
-  padding:5px ;
+li#home-tab {
+  width: 200px;
+  font-weight: bold;
 }
+
+ul#home-tab {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+
 
 
 
