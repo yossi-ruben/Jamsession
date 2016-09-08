@@ -20,11 +20,11 @@
   </head>
 
   <body>
-    <nav id="navigation-bar-top"class="navbar navbar-inverse">
+    <nav id="navigation-bar-top" class="navbar navbar-inverse no-border">
       <div id= "search-form">
       <%= form_tag(users_path, :method => "get") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search For User" %>
-        <%= submit_tag  "Search", :class => "glyphicon glyphicon-search" %>
+        <%= submit_tag  "Search", :class => "btn btn-success" %>
       <% end %>
     </div>
 
@@ -34,17 +34,15 @@
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         </div>
       <% end %>
-        <div class="home_button">
-        <a class= "navbar-brand top_margin" href="/">Home</a>
-      </div>
+        <a class="no-margin" href="/"><img class="site-logo" src="https://jamsession-app.s3.amazonaws.com/JamSessionLogo.png"><span class="site-name">JAMSession</span></a>
         <% if user_signed_in? %>
-          <div class="left_nav">
-          <%= link_to current_user.username, user_path(current_user), :class => "navbar-brand top_margin" %>
-          <%= link_to "New Project", new_song_path, :class => "navbar-brand top_margin" %>
+          <div class="nav-ul-holder">
+            <ul class="nav-ul">
+              <li><%= link_to current_user.username, user_path(current_user) %></li>
+              <li><%= link_to "New Project", new_song_path %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+            </ul>
           </div>
-          <div id="sign_out">
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "navbar-brand top_margin rightboy" %>
-        </div>
         <% else %>
           <div class = "right_nav">
           <%= link_to "Sign In", new_user_session_path, :class => "navbar-brand top_margin" %>

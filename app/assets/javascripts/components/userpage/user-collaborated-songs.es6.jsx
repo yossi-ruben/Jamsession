@@ -30,7 +30,7 @@ class UserCollaboratedSongs extends React.Component {
               <h5 class="date">Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
               <p>Description: {info.master.description}</p>
               <p>Played {info.talent}</p>
-              <button className="glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button>
+              <button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button>
             </div>
           </div>
     }
