@@ -114,11 +114,13 @@ class UserPageView extends React.Component {
           <div className="container">
             < UserInfo genres={this.state.genres} talents={this.state.talents} removeConnects={this.removeConnects} updateConnects={this.updateConnects}connects={this.state.connects}csrf={this.state.csrf} userStats={this.state.userStats} currentUser={currentUser} following={this.state.following} followers={this.state.followers}/>
             <div className="content-column">
-              <ul className="tab">
-                <li><a onClick={this.showUserProjects} href="#" className="tablinks"> {this.state.userStats.username}'s Projects</a></li>
-                <li><a onClick={this.showUserLiked} href="#" className="tablinks">Favorites</a></li>
-                <li><a onClick={this.showUserCollaborated} href="#" className="tablinks">Collaborated</a></li>
+              <div id="user-tab">
+              <ul id="user-tab">
+                <li id="home-tab" type="button" className="btn btn-default" onClick={this.showUserProjects}> {this.state.userStats.username}'s Projects</li>
+                <li id="home-tab" type="button" className="btn btn-default" onClick={this.showUserLiked}>Favorites</li>
+                <li id="home-tab" type="button" className="btn btn-default" onClick={this.showUserCollaborated}>Collaborated</li>
               </ul>
+              </div>
                 <div className="user-song-view">
                   { this.state.showUserProjects ?
                       < UserProjects finished={this.props.finished_songs} unfinished={this.props.unfinished_songs} playSong={this.playSong} />

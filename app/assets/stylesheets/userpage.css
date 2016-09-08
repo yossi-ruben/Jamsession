@@ -64,7 +64,6 @@ nav {
   background-color: white;
 }
 
-
 .content-column{
   margin-left:300px;
   min-width: 840px;
@@ -75,8 +74,8 @@ nav {
   border-radius: 5px;
   background-color: #4ba044;
   color: black;
-  box-shadow: 4px 4px 5px black  ;
-
+  box-shadow: 4px 4px 5px black;
+  padding-left: 50px;
 }
 
 ul.tab {
@@ -173,4 +172,25 @@ ul.tab li a:focus, .active {background-color: #939393;}
 
 .user-song-view {
   margin-bottom: 80px;
+}
+
+ul#user-tab {
+  margin-left: 0px;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  margin-top: 50px;
+
+}
+
+div#user-tab {
+  text-align: center;
+  border-bottom: 1px solid #C0C0C0;
+}
+
+#userpage-info {
+  margin-left: 15px;
+}
+
+p#userpage-info-sub {
+  margin-left: 25px;
 }
