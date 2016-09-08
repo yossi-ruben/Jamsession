@@ -48,7 +48,8 @@ p#button-label {
 
 p#new-master-submission-button {
   margin-top: 15px;
-  color: gray;
+  color: #989898;
+  background: #202020;
 }
 
 p#are-you-sure {
@@ -100,8 +101,15 @@ span#trash {
     font-size: 30px;
 }
 
-div#master-history {
-  padding-bottom: 15px;
-  margin-bottom: 15px;
+div.master-track-holder {
+  padding-bottom: 40px;
   border-bottom: 1px solid #C0C0C0;
+}
+
+div.master-track-holder:last-child {
+  border-bottom: none;
+}
+
+div.submission-form-holder {
+  background: white;
 }
