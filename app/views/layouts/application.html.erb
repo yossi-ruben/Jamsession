@@ -9,25 +9,39 @@
     <%= javascript_include_tag 'application' %>
     <!-- Latest compiled and minified CSS -->
 
-<!-- jQuery library -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- -->
-<!-- Latest compiled JavaScript -->
-<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
-<link rel="stylesheet" href="http://www.atlasestateagents.co.uk/css/tether.min.css">
-<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     -->
+    <!-- Latest compiled JavaScript -->
+    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+    <link rel="stylesheet" href="http://www.atlasestateagents.co.uk/css/tether.min.css">
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- used for search-bar autofill grabbing jedWatson react-select -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="https://unpkg.com/classnames/index.js"></script>
+    <script src="https://unpkg.com/react-input-autosize/dist/react-input-autosize.js"></script>
+    <script src="https://unpkg.com/react-select/dist/react-select.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css"> -->
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.min.js"></script> -->
+
+    <!-- jquery-ui -->
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <!-- may need to remove -->
   </head>
 
   <body>
-    <nav id="navigation-bar-top" class="navbar navbar-inverse no-border">
-      <div id= "search-form">
-      <%= form_tag(users_path, :method => "get") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search For User" %>
-        <%= submit_tag  "Search", :class => "btn btn-success" %>
-      <% end %>
-    </div>
 
+    <nav id="navigation-bar-top" class="navbar navbar-inverse no-border">
+      <%= react_component "SearchBar" %>
       <% if flash[:notice] %>
         <div class="alert alert-warning">
           <%= flash[:notice]%>
@@ -45,14 +59,10 @@
           </div>
         <% else %>
           <div class = "right_nav">
-          <%= link_to "Sign In", new_user_session_path, :class => "navbar-brand top_margin" %>
-          <%= link_to "Register", new_user_registration_path, :class => "navbar-brand top_margin" %>
-        </div>
+            <%= link_to "Sign In", new_user_session_path, :class => "navbar-brand top_margin" %>
+            <%= link_to "Register", new_user_registration_path, :class => "navbar-brand top_margin" %>
+          </div>
         <% end %>
-
-
-
-
     </nav>
     <%= yield %>
   </body>

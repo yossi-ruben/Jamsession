@@ -51,7 +51,7 @@ class DisplayedSong extends React.Component {
     inputOfSongSrc(){
       return(
         <div>
-          <AudioFile theSrc={this.state.songSrc} theKey={this.state.srcKey}/>
+          <AudioFile theSrc={this.state.songSrc} theKey={this.state.srcKey} />
         </div>
       )
     }
