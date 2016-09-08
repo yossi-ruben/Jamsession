@@ -5,7 +5,10 @@ div#master-view {
 
 div#normal-button {
   padding:0px;
+  padding-right: 15px;
 }
+
+
 
 div#open-edit-delete {
   margin-top: 0px;

@@ -152,7 +152,7 @@ class MasterTrack extends React.Component {
 
             <div>
               <div id="normal-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <button type="button" className="btn btn-default btn-block" onClick={this.toggleCommentView}>
+                <button id="normal-button" type="button" className="btn btn-default btn-block" onClick={this.toggleCommentView}>
                   <span className="glyphicon glyphicon-comment"></span>
                   { this.state.displayComments ?
                       <span>  Hide Comments</span>
@@ -162,8 +162,8 @@ class MasterTrack extends React.Component {
                 </button>
               </div>
 
-              <div id="comment-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <button type="button" className="btn btn-default btn-block" onClick={this.toggleDescriptionView}>
+              <div id="normal-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <button id="normal-button" type="button" className="btn btn-default btn-block" onClick={this.toggleDescriptionView}>
                   <span className="glyphicon glyphicon-list"></span>
                   { this.state.displayDescription ?
                       <span>  Hide Description</span>
@@ -173,8 +173,8 @@ class MasterTrack extends React.Component {
                 </button>
               </div>
 
-              <div id="comment-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <button type="button" className="btn btn-default btn-block" onClick={this.toggleCollaboratorView}>
+              <div id="normal-button" className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <button id="normal-button" type="button" className="btn btn-default btn-block" onClick={this.toggleCollaboratorView}>
                   <span className="glyphicon glyphicon-cd"></span>
                   { this.state.displayCollaborators ?
                       <span>  Hide Collaborators</span>
