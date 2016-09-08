@@ -35,22 +35,21 @@ nav {
 
 .details_list li {
   display: inline-block;
-  padding: 25px;
-  /*height: 150%;*/
-  /*width: 150%;*/
+  padding: 15px;
+  vertical-align: center;
 }
 
 .song_img {
   max-width: 200px;
-/*  float: left;*/
   display: inline-block;
   margin-right: 10px;
   height: auto;
 }
 
 .song_details {
+  width: 500px;
   margin-left: 20px;
-  display: inline-block;
+  display: inline;
   vertical-align: center;
 }
 
