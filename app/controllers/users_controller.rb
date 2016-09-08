@@ -8,11 +8,16 @@ class UsersController < ApplicationController
     @user_finished_songs = find_finished_songs(user)
   end
 
+  def all_users
+    all_users = User.select("username")
+    all_users = all_users.map{|a| a.username}
+    render json: all_users
+  end
+
   def index
     user = User.find_by(username: params[:search])
- 
     if user
-      redirect_to "/users/#{user.id}/" 
+      redirect_to "/users/#{user.id}/"
     else
       flash[:notice] = "User Not Found"
       redirect_to :back
@@ -60,12 +65,12 @@ class UsersController < ApplicationController
     finished_songs_and_masters
   end
 
-  def find_unfinished_songs(user) 
+  def find_unfinished_songs(user)
     unfinished_songs = user.songs.where(finished: false)
     unfinished_songs_and_masters = []
     unfinished_songs.each do |song|
       unfinished_songs_and_masters << {song: song, master: song.master_tracks.last }
     end
-    unfinished_songs_and_masters 
+    unfinished_songs_and_masters
   end
 end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users
   get 'users/:id/info', to: 'users#info'
-
+  get '/all_users', to: 'users#all_users'
 
   resources :songs
   get 'songs/:id/info', to: 'songs#info'

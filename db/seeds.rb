@@ -1,5 +1,5 @@
 # Generate users
-# 10.times do 
+# 10.times do
 #   User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: "password", profile_pic_file_path: Faker::Avatar.image)
 # end
 
@@ -35,7 +35,7 @@ Talent.create(title: "Up For Anything")
 # 10.times do |num|
 #   user = User.find(num + 1)
 #   2.times do
-#     user.talents << Talent.find((1 + rand(5))) 
+#     user.talents << Talent.find((1 + rand(5)))
 #   end
 # end
 
@@ -43,7 +43,7 @@ Talent.create(title: "Up For Anything")
 # 20.times do |num|
 #   song = Song.find(num + 1)
 #   2.times do
-#     song.desired_talents << Talent.find((1 + rand(5))) 
+#     song.desired_talents << Talent.find((1 + rand(5)))
 #   end
 # end
 
@@ -102,7 +102,7 @@ Genre.create(name: "Pop")
 # A song might end up with the same genre twice, a feature that won't be available on the site.
 # 20.times do |num|
 #   song = Song.find(num + 1)
-#   2.times do 
+#   2.times do
 #     song.genres << Genre.find(1 + rand(5))
 #   end
 # end
