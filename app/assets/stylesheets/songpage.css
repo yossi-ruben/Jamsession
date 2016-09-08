@@ -35,7 +35,9 @@ div#song-info {
 }
 
 div#master-history {
-  border:solid;
+  border-right:solid;
+  border-bottom:solid;
+  border-top:solid;
 }
 
 div.jumbotron {

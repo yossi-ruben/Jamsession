@@ -1,10 +1,11 @@
+.container {
+  /*background-color: gray;*/
+}
+
 nav {
   min-width: 1200px;
 }
 
-.userpage {
-  background-image: url("/user_back.jpeg")
-}
 .follower_border, .talent_border {
   border-bottom: 1px solid black;
 }
@@ -23,6 +24,24 @@ nav {
 .right_nav {
   float: right;
   margin-left: 80%;
+}
+
+.song_title {
+  width: 200px;
+  height: auto;
+}
+
+.details_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.details_list li {
+  display: inline-block;
+  padding: 15px;
+  /*height: 150%;*/
+  /*width: 150%;*/
 }
 
 .song_img {

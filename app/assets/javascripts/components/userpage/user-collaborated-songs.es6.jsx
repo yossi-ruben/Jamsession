@@ -22,16 +22,17 @@ class UserCollaboratedSongs extends React.Component {
         null
         :
           <div className="collab_song">
-            <a  href={'/songs/' + info.song.id}><img className="song_img" src={info.song.img_file_path} alt="Chania" /></a>
+          <ul className="details_list">
+            <li><a href={'/songs/' + info.song.id}><img className="song_img" src={info.song.img_file_path} alt="Chania" /></a></li>
             <div className="song_details">
-              <a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a>
+              <li><a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a></li>
               <br/>
-              <a href={'/users/' + info.user.id}>User: {info.user.username}</a>
-              <h5 className="date">Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
-              <p>Description: {info.master.description}</p>
-              <p>Played {info.talent}</p>
-              <button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button>
+              <li><a href={'/users/' + info.user.id}>User: {info.user.username}</a></li>
+              <li><h5 className="date">Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5></li>
+              <li><p>Played {info.talent}</p></li>
+              <li><button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button></li>
             </div>
+            </ul>
           </div>
     }
       </div>
