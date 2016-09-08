@@ -297,10 +297,10 @@ class UnFinishedSongs extends React.Component{
       <div className="UnfinishedSongs">
         <h2 id="home-finished-status"> In Progress </h2>
 
-        <div className="UnFinNav">
-          <ul>
+        <div id="UnFinNav">
+          <ul id="home-tab">
 
-            <li>Talents:
+            <li id="home-tab" type="button" className="btn btn-default">Talents:
               <select ref="talent" onChange={this.setSortByTalentsList}>
                 {this.state.talents.map((talent, i) =>
                    <option  key={i} >{talent}</option>
@@ -308,7 +308,7 @@ class UnFinishedSongs extends React.Component{
               </select>
             </li>
 
-            <li>Genres:
+            <li id="home-tab" type="button" className="btn btn-default">Genres:
               <select ref="genre" onChange={this.setSortByGenresList}>
                 {this.state.genres.map((genre, i) =>
                    <option value={genre.id} key={i} >{genre}</option>
@@ -316,9 +316,9 @@ class UnFinishedSongs extends React.Component{
               </select>
             </li>
 
-            <li onClick={this.setToHot}>Hot</li>
-            <li onClick={this.setToAll}>New</li>
-            <li onClick={this.setForMe}>Recommended</li>
+            <li id="home-tab" type="button" className="btn btn-default" onClick={this.setToHot}>Hot</li>
+            <li id="home-tab" type="button" className="btn btn-default" onClick={this.setToAll}>New</li>
+            <li id="home-tab" type="button" className="btn btn-default" onClick={this.setForMe}>Recommended</li>
 
 
           </ul>
