@@ -19,7 +19,6 @@ class Song extends React.Component{
     let year = dateObj.getUTCFullYear();
     let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let useMonth = monthNames[month]
-
     return (
       <div id="song" className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div id="song-container">
