@@ -17,7 +17,7 @@ class MasterTrack extends React.Component {
 
   componentDidMount() {
     this.setState({
-      likeCount: this.props.masterTrack.likes.length, 
+      likeCount: this.props.masterTrack.likes.length,
       fans: this.props.masterTrack.fans.map((fan) => {
         return fan.id
       })
@@ -197,7 +197,7 @@ class MasterTrack extends React.Component {
               { this.state.displayDescription ?
                   <ul>
                     <li>{masterTrack.description}</li>
-                  </ul>  
+                  </ul>
                 :
                   null
               }

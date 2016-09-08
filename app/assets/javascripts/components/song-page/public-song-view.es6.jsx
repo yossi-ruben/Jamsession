@@ -44,7 +44,7 @@ class PublicSongView extends React.Component {
               <div className="current-master-view">
                 <h4>Current Master:</h4>
                   < MasterTrack
-                    masterTrack={currentMasterTrack} 
+                    masterTrack={currentMasterTrack}
                     csrf={this.props.csrf}
                     currentUser={this.props.currentUser} />
               </div>
@@ -79,7 +79,7 @@ class PublicSongView extends React.Component {
             <div>
               {masterHistory.map((master, i) => {
                 return (
-                  < MasterTrack 
+                  < MasterTrack
                     masterTrack={master}
                     currentUser={this.props.currentUser}
                     csrf={this.props.csrf}
@@ -97,7 +97,7 @@ class PublicSongView extends React.Component {
                   < FeatureSubmission
                     desiredTalents={this.props.desiredTalents}
                     currentUser={this.props.currentUser}
-                    csrf={this.props.csrf} 
+                    csrf={this.props.csrf}
                     song={song}
                     updateAfterFeature={this.props.updateAfterFeature} />
                 :
