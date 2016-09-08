@@ -88,6 +88,7 @@
 .error-text {
   color: red;
 }
+
 nav#navigation-bar-top {
   background-color: #333333;
   margin-bottom: 0px;
@@ -96,4 +97,49 @@ nav#navigation-bar-top {
 nav#navigation-bar-top a {
   color: white;
   background-color: #ff5500;
+}
+
+.nav-ul {
+  float: right;
+  list-style-type: none;
+  height: 50px;
+  margin: 0px;
+}
+
+.nav-ul-holder {
+  display: inline-block;
+  float: right;
+  width: 700px;
+}
+
+.nav-ul li, .site-name {
+  display: inline-block;
+  font-size: 18px;
+  padding: 11.5px;
+  background-color: #ff5500;
+}
+
+.nav-ul li {
+  margin: 0px 10px;
+  font-size: 18px;
+  border-radius: 2px;
+}
+
+.nav-ul li:last-child {
+  margin: 0px;
+}
+
+
+.site-name {
+  margin-left: 65px;
+  padding: 8px 15px;
+  font-size: 24px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.site-logo {
+  height: 50px;
+  width: 65px;
+  display: inline-block;
+  position: absolute;
 }
