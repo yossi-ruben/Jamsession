@@ -11,6 +11,7 @@ class UnFinishedSongs extends React.Component{
       sortByGenreList: [],
       sortByTalentList: [],
       allSongs: true,
+      newSongs: false,
       hot: false,
       forMe: false,
       sortByGenres: false,
@@ -22,7 +23,7 @@ class UnFinishedSongs extends React.Component{
     this.sortByHot = this.sortByHot.bind(this);
 
     this.setToHot = this.setToHot.bind(this);
-    this.setToAll = this.setToAll.bind(this);
+    this.setToNew = this.setToNew.bind(this);
     this.setForMe = this.setForMe.bind(this);
     this.setTalentsAndGenres = this.setTalentsAndGenres.bind(this);
 
@@ -80,6 +81,7 @@ class UnFinishedSongs extends React.Component{
     this.setState({hot: false})
     this.setState({allSongs: false})
     this.setState({forMe: false})
+    this.setState({newSongs: false})
   }
 
   setToSortByTalents(){
@@ -88,6 +90,7 @@ class UnFinishedSongs extends React.Component{
     this.setState({hot: false})
     this.setState({allSongs: false})
     this.setState({forMe: false})
+     this.setState({newSongs: false})
   }
 
   setToHot(){
@@ -96,14 +99,16 @@ class UnFinishedSongs extends React.Component{
     this.setState({forMe: false})
     this.setState({sortByGenres: false})
     this.setState({sortByTalents: false})
+     this.setState({newSongs: false})
   }
 
-  setToAll(){
+  setToNew(){
     this.setState({hot: false})
-    this.setState({allSongs: true})
+    this.setState({allSongs: false})
     this.setState({forMe: false})
     this.setState({sortByGenres: false})
     this.setState({sortByTalents: false})
+     this.setState({newSongs: true})
   }
 
   setForMe(){
@@ -112,6 +117,7 @@ class UnFinishedSongs extends React.Component{
     this.setState({forMe: true})
     this.setState({sortByGenres: false})
     this.setState({sortByTalents: false})
+     this.setState({newSongs: false})
   }
 
 // this is the method to grab only the songs that are recommended
@@ -286,6 +292,15 @@ class UnFinishedSongs extends React.Component{
         </div>
       )
     }
+    else if(this.state.newSongs) {
+      return(
+        <div>
+          {this.state.data.slice(0).reverse().map((song, i) => {
+            return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
+          })}
+        </div>
+      )
+    }
   }
 
 
@@ -317,7 +332,7 @@ class UnFinishedSongs extends React.Component{
             </li>
 
             <li id="home-tab" type="button" className="btn btn-default" onClick={this.setToHot}>Hot</li>
-            <li id="home-tab" type="button" className="btn btn-default" onClick={this.setToAll}>New</li>
+            <li id="home-tab" type="button" className="btn btn-default" onClick={this.setToNew}>New</li>
             <li id="home-tab" type="button" className="btn btn-default" onClick={this.setForMe}>Recommended</li>
 
 
