@@ -63,8 +63,8 @@ p#song-title {
   text-shadow:1px 1px #000;
   font-family: georgia;
   font-size: 18px;
-  position: relative;
-  top: -170px;
+  position: absolute;
+  top: 70px;
   margin-left: 20px;
 }
 
@@ -77,8 +77,8 @@ p#song-description {
   color: #e5e5e5;
   text-shadow:1px 1px #000;
   font-size: 14px;
-  position: relative;
-  top: -170px;
+  position: absolute;
+  top: 100px;
   margin-left: 20px;
 }
 
