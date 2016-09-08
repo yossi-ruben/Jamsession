@@ -22,14 +22,17 @@ class UserLikedSongs extends React.Component {
         null
         :
           <div className="liked_song">
-            <a href={'/songs/' + info.song.id}><img className="song_img" src={info.song.img_file_path} alt="Chania" /></a>
-              <div className="song_details">
-              <a href={'/songs/' + info.song.id}>Song Title: {info.song.title}</a>
+            <ul className="details_list">
+            <li><a href={'/songs/' + info.song.id}><img className="song_img" src={info.song.img_file_path} alt="Chania" /></a></li>
+            <div className="song_details">
+              <li><button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button>
               <br/>
-              <a href={'/users/' + info.user.id}>User: {info.user.username}</a>
-              <h5 className="date">Date: {useMonth + " " + day.toString() + " " + year.toString()}</h5>
-              <button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button>
+              <a className="song_title" href={'/songs/' + info.song.id}>Title: {info.song.title}</a>
+              </li>
+              <li><a href={'/users/' + info.user.id}>Artist: {info.user.username}</a></li>
+              <li><h5 className="date">{useMonth + " " + day.toString() + " " + year.toString()}</h5></li>
               </div>
+              </ul>
           </div>
 
     }

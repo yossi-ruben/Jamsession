@@ -2,9 +2,6 @@ nav {
   min-width: 1200px;
 }
 
-.userpage {
-  background-image: url("/user_back.jpeg")
-}
 .follower_border, .talent_border {
   border-bottom: 1px solid black;
 }
@@ -15,7 +12,6 @@ nav {
 
 .collab_song, .liked_song, .project_song {
   border-bottom: 1px solid gray;
-/*  float: left;*/
   padding: 10px;
 }
 
@@ -25,17 +21,35 @@ nav {
   margin-left: 80%;
 }
 
+.song_title {
+  width: 300px;
+  height: 200px;
+  height: auto;
+}
+
+.details_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.details_list li {
+  display: inline-block;
+  padding: 15px;
+  vertical-align: center;
+}
+
 .song_img {
   max-width: 200px;
-/*  float: left;*/
   display: inline-block;
   margin-right: 10px;
   height: auto;
 }
 
 .song_details {
+  width: 500px;
   margin-left: 20px;
-  display: inline-block;
+  display: inline;
   vertical-align: center;
 }
 
@@ -76,6 +90,7 @@ nav {
   color: black;
   box-shadow: 4px 4px 5px black;
   padding-left: 50px;
+  font-family: Impact;
 }
 
 ul.tab {
@@ -83,7 +98,6 @@ ul.tab {
     margin-top:30px;
     padding-top: 30px;
     overflow: hidden;
-    /*text-align: center;*/
     border-radius: 10px;
     min-width: 700px;
 }
@@ -112,7 +126,6 @@ p, h5 {
 
 }
 
-
 .follow-view {
   margin-top: 15px;
 }
@@ -120,7 +133,6 @@ p, h5 {
 input#search {
   width: 300px;
 }
-
 
 ul.tab li a {
     display: inline-block;
@@ -138,8 +150,6 @@ ul.tab li a:hover {background-color: #bdbdbd;}
 
 /* Create an active/current tablink class */
 ul.tab li a:focus, .active {background-color: #939393;}
-
-
 
 .audio-player-holder {
   position: fixed;

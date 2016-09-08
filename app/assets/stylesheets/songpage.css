@@ -31,11 +31,11 @@ h2.text-left{
 }
 
 div#song-info {
-  border:solid;
+  border-right: solid 0.5px gray;
 }
 
 div#master-history {
-  border:solid;
+
 }
 
 div.jumbotron {
@@ -61,11 +61,11 @@ p#normal14 {
 }
 
 form#feature-submit-form {
-  border: solid;
 }
 
 button#button-submit-feature {
-  margin-top: 50px;
+  margin-top: 200px;
+  margin-left: 340px;
 }
 
 button#badge {
@@ -73,7 +73,6 @@ button#badge {
 }
 
 h4#upload-feature-track {
-  margin-bottom: 0px;
 }
 
 input#yes-im-sure {
