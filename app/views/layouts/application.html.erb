@@ -40,21 +40,15 @@
 
   <body>
 
-    <nav id="navigation-bar-top"class="navbar navbar-inverse">
-<!--
-      <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search For User" %>
-        <%= submit_tag "Search" %>
-      <% end %> -->
+    <nav id="navigation-bar-top" class="navbar navbar-inverse no-border">
       <%= react_component "SearchBar" %>
-        <% if flash[:notice] %>
-          <div class="alert alert-warning">
-            <%= flash[:notice]%>
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          </div>
-        <% end %>
-        <a class= "navbar-brand top_margin" href="/">Home</a>
-
+      <% if flash[:notice] %>
+        <div class="alert alert-warning">
+          <%= flash[:notice]%>
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        </div>
+      <% end %>
+        <a class="no-margin" href="/"><img class="site-logo" src="https://jamsession-app.s3.amazonaws.com/JamSessionLogo.png"><span class="site-name">JAMSession</span></a>
         <% if user_signed_in? %>
           <div class="nav-ul-holder">
             <ul class="nav-ul">
@@ -65,17 +59,10 @@
           </div>
         <% else %>
           <div class = "right_nav">
-          <%= link_to "Sign In", new_user_session_path, :class => "navbar-brand top_margin" %>
-          <%= link_to "Register", new_user_registration_path, :class => "navbar-brand top_margin" %>
-        </div>
+            <%= link_to "Sign In", new_user_session_path, :class => "navbar-brand top_margin" %>
+            <%= link_to "Register", new_user_registration_path, :class => "navbar-brand top_margin" %>
+          </div>
         <% end %>
-<<<<<<< 9068b5af06b42cdffefa70bcb158626755eb0907
-
-
-
-
-=======
->>>>>>> auto complete working
     </nav>
     <%= yield %>
   </body>
