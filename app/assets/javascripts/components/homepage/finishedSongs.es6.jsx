@@ -218,7 +218,7 @@ class FinishedSongs extends React.Component{
       }
       else {
         return (
-          <div>
+          <div className="container">
             {this.state.recommendedList.map((song, i) =>{
               return <Song theSong={song} key={i} setSongSrc={this.props.setSongSrc}/>
             })}

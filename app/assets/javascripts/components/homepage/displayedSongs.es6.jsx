@@ -60,14 +60,23 @@ class DisplayedSong extends React.Component {
 
   render(){
     return (
+      <div>
+        <div id="home-splash" className="jumbotron">
+        <img id="home-pic" src="homemusic.png" />
+        <p id="front-title">JamSession</p>
+        <p id="front-phrase">Making beautiful Music together. Come along for the ride</p>
+        </div>
 
-      <div className="displayedSongs">
-        <p className="songToggle" onClick={this.setSongList}> Switch PlayList</p>
-        {this.songList()}
+        <div id="home-outtermost" className="container">
+          <p className="songToggle" onClick={this.setSongList}> Switch PlayList</p>
+          {this.songList()}
 
-        {this.inputOfSongSrc()}
+          {this.inputOfSongSrc()}
+
+        </div>
 
       </div>
+
     // return closing
     )
 
