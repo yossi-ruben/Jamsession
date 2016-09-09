@@ -25,7 +25,6 @@ class SearchBar extends React.Component{
       <div id="search-form">
         <form action="/users" method="GET">
           <input id="search_area" type="text" name="search" placeholder="Search For Users" />
-          <input type="submit" value="Search" id="search_button" className="btn"/>
         </form>
       </div>
     )

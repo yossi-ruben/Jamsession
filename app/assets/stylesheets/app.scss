@@ -206,7 +206,7 @@ nav#navigation-bar-top {
 
 nav#navigation-bar-top a {
   color: #fff;
-  background-color: #ff5500;
+
 }
 
 .nav-ul {
@@ -226,7 +226,7 @@ nav#navigation-bar-top a {
   display: inline-block;
   font-size: 18px;
   padding: 11.5px;
-  background-color: #ff5500;
+
 }
 
 .nav-ul li {
@@ -256,7 +256,7 @@ nav#navigation-bar-top a {
 
 input#search_area{
   width: 300px;
-  height: 45px;
+  height: 50px;
   position: relative;
   top:-11px;
 }
@@ -270,3 +270,14 @@ input#search_button {
   position: relative;
   top: -11px;
 }
+
+
+.complete-button{
+  background-color: #333333;
+  color: white;
+}
+
+.complete-button:hover, .complete-button:focus, .complete-button.active, .complete-button:active {
+   color: white!important;
+}
+

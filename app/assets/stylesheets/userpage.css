@@ -16,10 +16,6 @@ nav {
 }
 
 
-.right_nav {
-  float: right;
-  margin-left: 80%;
-}
 
 .song_title {
   width: 300px;
@@ -178,6 +174,12 @@ ul.tab li a:focus, .active {background-color: #939393;}
   border-radius: 45%;
   background: transparent;
   border: none;
+}
+
+
+.right_nav {
+  float: right;
+  margin-left: 80%;
 }
 
 .user-song-view {
