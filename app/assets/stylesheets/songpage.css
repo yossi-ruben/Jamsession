@@ -117,3 +117,9 @@ ul.master-history li:last-child {
 div.submission-form-holder {
   background: white;
 }
+
+ul.collaborator-list li {
+  padding-bottom: 0px;
+  padding-top: 10px;
+  border-bottom: none;
+}
