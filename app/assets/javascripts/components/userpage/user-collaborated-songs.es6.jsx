@@ -29,9 +29,9 @@ class UserCollaboratedSongs extends React.Component {
               <br/><br/>
               Title: <a href={'/songs/' + info.song.id}>{info.song.title}</a>
               <br/><br/>
-              Artist: <a href={'/users/' + info.user.id}>{info.user.username}</a></li>
-              <li><h5 className="date">{useMonth + " " + day.toString() + " " + year.toString()}</h5></li>
-              <li><p>Played {info.talent}</p></li>
+              Artist: <a href={'/users/' + info.user.id}>{info.user.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+              <span className="date">{useMonth + " " + day.toString() + " " + year.toString()} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>Played {info.talent}</span></li>
             </div>
             </ul>
           </div>
