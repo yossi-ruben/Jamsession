@@ -6,8 +6,10 @@ nav {
   border-bottom: 1px solid black;
 }
 
-.date {
+.date, .contribution {
   color: black;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .collab_song, .liked_song, .project_song {

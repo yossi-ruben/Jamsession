@@ -31,7 +31,7 @@ class UserCollaboratedSongs extends React.Component {
               <br/><br/>
               Artist: <a href={'/users/' + info.user.id}>{info.user.username} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
               <span className="date">{useMonth + " " + day.toString() + " " + year.toString()} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>Played {info.talent}</span></li>
+              <span className="contribution">Played {info.talent}</span></li>
             </div>
             </ul>
           </div>

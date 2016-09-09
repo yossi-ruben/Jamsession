@@ -130,8 +130,7 @@ ul.collaborator-list li {
 }
 
 .feature-track-holder {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0px 20px 30px;
   width: 400px;
   border-bottom: 1px solid #C0C0C0;
 }
