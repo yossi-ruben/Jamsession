@@ -25,10 +25,10 @@ class UserCollaboratedSongs extends React.Component {
           <ul className="details_list">
             <div className="song_details">
             <li><a href={'/songs/' + info.song.id}><img className="song_img" src={info.song.img_file_path} alt="Chania" /></a></li>
-              <li><button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button></li>
-              <li><a href={'/songs/' + info.song.id}>Title: {info.song.title}</a></li>
-              <br/>
-              <li><a href={'/users/' + info.user.id}>Artist: {info.user.username}</a></li>
+              <li><button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button>
+              <br/><br/>
+              Title: <a href={'/songs/' + info.song.id}>{info.song.title}</a></li>
+              <li>Artist: <a href={'/users/' + info.user.id}>{info.user.username}</a></li>
               <li><h5 className="date">{useMonth + " " + day.toString() + " " + year.toString()}</h5></li>
               <li><p>Played {info.talent}</p></li>
             </div>

@@ -26,10 +26,12 @@ class UserLikedSongs extends React.Component {
             <li><a href={'/songs/' + info.song.id}><img className="song_img" src={info.song.img_file_path} alt="Chania" /></a></li>
             <div className="song_details">
               <li><button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button>
-              <br/>
-              <a className="song_title" href={'/songs/' + info.song.id}>Title: {info.song.title}</a>
+              <br/><br/>
+              Title: <a className="song_title" href={'/songs/' + info.song.id}>{info.song.title}</a>
               </li>
-              <li><a href={'/users/' + info.user.id}>Artist: {info.user.username}</a></li>
+
+              <li>Artist: <a href={'/users/' + info.user.id}>{info.user.username}</a></li>
+
               <li><h5 className="date">{useMonth + " " + day.toString() + " " + year.toString()}</h5></li>
               </div>
               </ul>
