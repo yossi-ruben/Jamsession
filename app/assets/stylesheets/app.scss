@@ -271,3 +271,13 @@ input#search_button {
   top: -11px;
 }
 
+
+.complete-button{
+  background-color: #333333;
+  color: white;
+}
+
+.complete-button:hover, .complete-button:focus, .complete-button.active, .complete-button:active {
+   color: white!important;
+}
+
