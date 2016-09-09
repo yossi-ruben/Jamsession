@@ -185,7 +185,7 @@ class MasterTrack extends React.Component {
               </div>
             </div>
 
-            <div>
+            <div className="master-details">
               { this.state.displayComments ?
                   < CommentDisplay
                     masterTrack={masterTrack}

@@ -35,10 +35,11 @@ h2.text-left{
 
 div#song-info {
   border-right: solid 0.5px gray;
+  font-size: 18px;
 }
 
 div#master-history {
-
+  font-size: 18px;
 }
 
 div.jumbotron {
@@ -122,4 +123,20 @@ ul.collaborator-list li {
   padding-bottom: 0px;
   padding-top: 10px;
   border-bottom: none;
+}
+
+.master-details {
+  font-size: 18px;
+}
+
+.feature-track-holder {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 400px;
+  border-bottom: 1px solid #C0C0C0;
+}
+
+.talent-name {
+  font-size: 24px;
+  font-weight: bold;
 }
