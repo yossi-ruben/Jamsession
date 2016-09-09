@@ -6,8 +6,10 @@ nav {
   border-bottom: 1px solid black;
 }
 
-.date {
+.date, .contribution {
   color: black;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .collab_song, .liked_song, .project_song {
@@ -47,6 +49,7 @@ nav {
   margin-left: 20px;
   display: inline;
   vertical-align: center;
+  font-size: 18px;
 }
 
 .navigation {
@@ -201,6 +204,7 @@ div#user-tab {
 
 #userpage-info {
   margin-left: 15px;
+  font-size: 18px;
 }
 
 p#userpage-info-sub {

@@ -254,15 +254,17 @@ class PrivateSongView extends React.Component {
               })
             return (
             <div key={i}>
-              <h4>{talent}</h4>
+              <h4 className="talent-name">{talent}</h4>
+              <ul className="feature-track-list">
               {featuresWithTalent.map((feature, i) => {
-                return < FeatureTrack
+                return <li key={i}>< FeatureTrack
                          featureTrack={feature}
                          featureContributor={feature.user}
                          removeFeature={this.props.removeFeature}
                          csrf={this.props.csrf}
-                         key={i} />
+                         /></li>
               })}
+              </ul>
             </div>
             )
           })}
