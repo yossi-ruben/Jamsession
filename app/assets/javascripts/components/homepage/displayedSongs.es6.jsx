@@ -67,7 +67,13 @@ class DisplayedSong extends React.Component {
         </div>
 
         <div id="home-outtermost" className="container">
-          <button type="button" className="btn btn-primary" onClick={this.setSongList}> Switch PlayList</button>
+          <button type="button" className="btn btn-primary" onClick={this.setSongList}>
+          { this.state.unFinished ?
+              <span>View Complete</span>
+            :
+              <span>View In Progress</span>
+          }
+          </button>
           {this.songList()}
 
 

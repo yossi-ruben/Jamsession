@@ -246,18 +246,6 @@ class PrivateSongView extends React.Component {
           })}
         </div>
 
-        <div className="jumbotron">
-          <h3 >Features Included in Most Recent Master</h3>
-          {currentMasterTrack.feature_tracks.map((feature, i) => {
-            return < FeatureTrack
-                     featureTrack={feature}
-                     featureContributor={feature.user}
-                     removeFeature={this.props.removeFeature}
-                     csrf={this.props.csrf}
-                     key={i} />
-          })}
-        </div>
-
         <div id="final-jumbo" className="jumbotron">
           <h3>All Features by Talent</h3>
           {this.state.talentArray.map((talent, i) => {
