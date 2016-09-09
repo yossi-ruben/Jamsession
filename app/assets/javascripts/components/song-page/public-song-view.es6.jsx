@@ -76,17 +76,16 @@ class PublicSongView extends React.Component {
 
           <div id="master-history"className="col-lg-9 col-md-9 col-sm-8 col-xs-6">
             <h3 className="text-center">Master History</h3>
-            <div>
+            <ul className="master-history">
               {masterHistory.map((master, i) => {
                 return (
-                  < MasterTrack
+                  <li key={i}>< MasterTrack
                     masterTrack={master}
                     currentUser={this.props.currentUser}
-                    csrf={this.props.csrf}
-                    key={i} />
+                    csrf={this.props.csrf} /></li>
                 )
               })}
-            </div>
+            </ul>
           </div>
 
           { song.finished ?
