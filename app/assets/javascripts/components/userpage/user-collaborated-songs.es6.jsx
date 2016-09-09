@@ -28,6 +28,7 @@ class UserCollaboratedSongs extends React.Component {
               <li><button className="round-btn glyphicon glyphicon-play-circle" onClick={this.sendSongToParent}></button>
               <br/><br/>
               Title: <a href={'/songs/' + info.song.id}>{info.song.title}</a></li>
+              <br/>
               <li>Artist: <a href={'/users/' + info.user.id}>{info.user.username}</a></li>
               <li><h5 className="date">{useMonth + " " + day.toString() + " " + year.toString()}</h5></li>
               <li><p>Played {info.talent}</p></li>
