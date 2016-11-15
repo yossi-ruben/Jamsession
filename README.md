@@ -1,24 +1,9 @@
-# README
+The purpose of this Web Application is to allow people to connect and collaborate on music accross the world.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Problem to Solve
+ Jamsession was built by musicians for musicians. The issue reveals itself when a musician wants to create a song but does not play all the required instruments. Jamsession allows a user to upload a song and put out a request for other musicians to collaborate on that song and add the required instruments. The song creator is then able to view all uploaded tracks to the master track and select which tracks to pull down and mix into the master track. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## To Do
+ [ ] Add Notifications
+ [ ] Allow users to set up a private collaboration
+ [ ] Messaging 
